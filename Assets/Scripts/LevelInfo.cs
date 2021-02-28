@@ -22,23 +22,39 @@ public class LevelInfo : MonoBehaviour
     public int max_echlon_count;
     public int life;
 
-    public List<Transform> Nodes;
-    public List<Transform> enemyspawnPoint;
+    [SerializeField]
+    private GameObject Default_Node;
+    public List<GameObject> Nodes;
     [SerializeField]
     public List<Route> routes;
 
     void Start()
     {
-        SetNodeIndex();
+        //SetNodeIndex();
     }
-    void SetNodeIndex() {
-        for(int i = 0; i < MapSize.x * MapSize.y; i++) {
-            Nodes[i].GetComponent<NodeInfo>().index = new Vector2(i%MapSize.x, Mathf.Floor(i/MapSize.x));
-        }
-    }
+
 
     void Update()
     {
         
+    }
+
+    [ContextMenu("Instantiate Level")]
+    public void InstantiateLevel() {
+        for (int i = 0; i < MapSize.y; i++) {
+            for(int j = 0; j < MapSize.x; j++) {
+                GameObject node = Instantiate(Default_Node);
+                node.transform.position = new Vector3(j, 0, i);
+                node.GetComponent<NodeInfo>().index = new Vector2(j, i);
+                node.transform.SetParent(gameObject.transform);
+                Nodes.Add(node);
+            }
+        }
+    }
+    [ContextMenu("Apply Node Setting")]
+    public void ApplyNodeSetting() {
+        for(int i = 0; i < Nodes.Count; i++) {
+            Nodes[i].GetComponent<NodeInfo>().SetNodeType();
+        }
     }
 }
