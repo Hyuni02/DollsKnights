@@ -4701,12 +4701,24 @@ MonoBehaviour:
   - {fileID: 4167521911546200663}
   routes:
   - routeNodes:
-    - {fileID: 4167521912588657343}
-    - {fileID: 4167521912188065749}
-    - {fileID: 4167521911106257131}
     - {fileID: 4167521912889521062}
     - {fileID: 4167521912537500556}
-  - routeNodes: []
+    - {fileID: 4167521911106257131}
+    - {fileID: 4167521911908050514}
+    - {fileID: 4167521912588657343}
+    - {fileID: 4167521912188065749}
+  WaveEnd: 0
+  waves:
+  - Delay_start: 2
+    Interval_spawn: 3
+    Index_enemy: 0
+    Count_spawn: 2
+    Index_route: 0
+  - Delay_start: 2
+    Interval_spawn: 4
+    Index_enemy: 1
+    Count_spawn: 3
+    Index_route: 0
 --- !u!1 &4167521912991404429
 GameObject:
   m_ObjectHideFlags: 0

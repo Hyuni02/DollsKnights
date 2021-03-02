@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterBase : MonoBehaviour
-{
+public abstract class CharacterBase : MonoBehaviour {
+    [HideInInspector]
     public string Name;
-    void Awake()
-    {
-        
+
+    List<Transform> RouteToMove;
+
+    public virtual void wait() {
+
+    }
+    public virtual void move() {
+
+    }
+    public virtual void attack() {
+
+    }
+    public virtual void die() {
+
     }
 
-    void Update()
-    {
-        
-    }
 }

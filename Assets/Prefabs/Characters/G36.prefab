@@ -835,9 +835,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2624405993460000509}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 3285815848308377290}
   - {fileID: 2309015791483556877}
@@ -873,7 +873,7 @@ Transform:
   - {fileID: 5104016187096012759}
   m_Father: {fileID: 2158951799212510351}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &2301649319432660433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2125,7 +2125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8821e59a582492d44a873738914d2811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Doll_Name: 
+  Name: 
   Sprite_Doll: {fileID: 21300000, guid: 6d9d37b4675069048b5de0433131519f, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: 9b05caf6bb0de044b8ea5ca9766ab12d, type: 3}
 --- !u!114 &1206744650021740682

@@ -1835,6 +1835,7 @@ GameObject:
   - component: {fileID: 2118816050}
   - component: {fileID: 2118816049}
   - component: {fileID: 2118816053}
+  - component: {fileID: 2118816052}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1917,6 +1918,21 @@ MonoBehaviour:
     type: 3}
   Index_SelectedLevel: 0
   Index_SelectedEchlons: []
+--- !u!114 &2118816052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118816047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034ef6f6cfb0cca4cb7c3cb52c38d1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemies:
+  - {fileID: 8928390903056007353, guid: 22388547521b24e49a5748cd54869f26, type: 3}
+  - {fileID: 3685926742180787083, guid: c6b9e4d087ddf5344a59a865897bf0a0, type: 3}
 --- !u!114 &2118816053
 MonoBehaviour:
   m_ObjectHideFlags: 0

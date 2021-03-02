@@ -3293,13 +3293,14 @@ MonoBehaviour:
   - {fileID: 252992037999835191}
   routes:
   - routeNodes:
-    - {fileID: 252992038776060168}
-    - {fileID: 252992039629095061}
     - {fileID: 252992038087741614}
     - {fileID: 252992038842000460}
+    - {fileID: 252992038776060168}
+    - {fileID: 252992039629095061}
   - routeNodes:
     - {fileID: 252992039127144376}
     - {fileID: 252992039629095061}
+  waves: []
 --- !u!1 &252992039262986814
 GameObject:
   m_ObjectHideFlags: 0
