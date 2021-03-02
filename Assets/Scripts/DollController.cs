@@ -22,4 +22,8 @@ public class DollController : CharacterBase
     {
         
     }
+
+    public override void UpdateState() {
+
+    }
 }

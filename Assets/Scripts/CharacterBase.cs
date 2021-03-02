@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class CharacterBase : MonoBehaviour {
+    public enum State { wait, move, attack, die, victory, victoryloop}
+    public State state;
     [HideInInspector]
     public string Name;
 
@@ -21,5 +23,5 @@ public abstract class CharacterBase : MonoBehaviour {
     public virtual void die() {
 
     }
-
+    public abstract void UpdateState();
 }
