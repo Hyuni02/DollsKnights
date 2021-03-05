@@ -8,6 +8,8 @@ public abstract class CharacterBase : MonoBehaviour {
     public State state;
     [HideInInspector]
     public string Name;
+    [HideInInspector]
+    public bool attacking = false;
 
     List<Transform> RouteToMove;
 

@@ -35,8 +35,5 @@ public class NodeInfo : MonoBehaviour
                 Debug.LogError("Wrong Node Type : " + gameObject);
                 break;
         }
-        if (heilport) {
-            //Instantiate(GameManager.instance.Icon_Heilport);
-        }
     }
 }

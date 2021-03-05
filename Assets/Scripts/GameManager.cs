@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [Header("Sprites")]
-    public Sprite Icon_Heilport;
 
     [Header("Doll Container")]
     public Transform DollListContainer;

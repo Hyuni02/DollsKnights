@@ -14,12 +14,17 @@ public class EnemyController : CharacterBase
 
     void Update()
     {
-        
+        UpdateState();
     }
 
     public override void UpdateState() {
         if(type == Type.range) {
-
+            if (blocked) {
+                state = State.attack;
+            }
+            else {
+                state = State.move;
+            }
         }
         else {
 
