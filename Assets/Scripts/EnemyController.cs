@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : CharacterBase
-{
-    public enum Type { melee, range}
+public class EnemyController : CharacterBase {
+    public enum Type { melee, range }
     public Type type;
     public bool blocked = false;
-    void Start()
-    {
-        
+    void Start() {
+
     }
 
-    void Update()
-    {
+    void Update() {
         UpdateState();
     }
 
     public override void UpdateState() {
-        if(type == Type.range) {
+        if(type == Type.melee) {
             if (blocked) {
                 state = State.attack;
             }

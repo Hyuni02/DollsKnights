@@ -23,21 +23,23 @@ public class DollData {
     }
 }
 
+[System.Serializable]
+public struct DollState {
+    public string name, belong, _class;
+    public int rank, hp, damage, accuracy, evasion, rateoffire, armor, speed, armorpen;
+    public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, critrate;
+}
+
 public class GetData : MonoBehaviour
 {
     public static GetData instance;
-    [System.Serializable]
-    struct DollState {
-        public string name, belong, _class;
-        public int rank, hp, damage, accuracy, evasion, rateoffire, armor, speed, armorpen;
-        public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, critrate;
-    }
+
     string FileName_DollStateData = "DollStateData";
     string FileName_DollData = "DollData";
     //string MapListData = "MapListData";
 
     [SerializeField]
-    List<DollState> List_DollState;
+    public List<DollState> List_DollState = new List<DollState>();
     [SerializeField]
     public List<DollData> List_DollData = new List<DollData>();
     [SerializeField]
@@ -66,7 +68,6 @@ public class GetData : MonoBehaviour
     }
     void Load_DollStateData() {
         StreamReader sr = new StreamReader(Application.dataPath + "/Resources/Data/" + FileName_DollStateData + ".csv");
-        List_DollState = new List<DollState>();
         bool endoffile = false;
         while (!endoffile) {
             string data_String = sr.ReadLine();
@@ -247,19 +248,19 @@ public class GetData : MonoBehaviour
                     //UIContainer_DollList.instance.Image_Level = 
                     //UIContainer_DollList.instance.Image_Skill_Icon = 
                     UIContainer_DollList.instance.Image_Sprite.sprite = DollContainer.instance.Dolls[index_doll].GetComponent<DollController>().Sprite_Doll;
-                    UIContainer_DollList.instance.Text_acc.text = "명중 " + (List_DollState[index_doll].accuracy + (List_DollState[index_doll]._accuracy * (level - 1))).ToString();
-                    UIContainer_DollList.instance.Text_armor.text = "장갑 " + (List_DollState[index_doll].armor + (List_DollState[index_doll]._armor * (level - 1))).ToString();
+                    UIContainer_DollList.instance.Text_acc.text = "명중 " + (List_DollState[index_doll].accuracy + (int)(List_DollState[index_doll]._accuracy * (level - 1))).ToString();
+                    UIContainer_DollList.instance.Text_armor.text = "장갑 " + (List_DollState[index_doll].armor + (int)(List_DollState[index_doll]._armor * (level - 1))).ToString();
                     UIContainer_DollList.instance.Text_armorpen.text = "관통 " + List_DollState[index_doll].armorpen.ToString();
                     UIContainer_DollList.instance.Text_belong.text = List_DollState[index_doll].belong;
                     UIContainer_DollList.instance.Text_class.text = List_DollState[index_doll]._class;
                     UIContainer_DollList.instance.Text_crit.text = "치명률 " + List_DollState[index_doll].critrate.ToString();
-                    UIContainer_DollList.instance.Text_dmg.text = "화력 " + (List_DollState[index_doll].damage + (List_DollState[index_doll]._damage * (level - 1))).ToString();
-                    UIContainer_DollList.instance.Text_eva.text = "회피 " + (List_DollState[index_doll].evasion + (List_DollState[index_doll]._evasion * (level - 1))).ToString();
-                    UIContainer_DollList.instance.Text_hp.text = "체력 " + (List_DollState[index_doll].hp + (List_DollState[index_doll]._hp * (level - 1))).ToString();
+                    UIContainer_DollList.instance.Text_dmg.text = "화력 " + (List_DollState[index_doll].damage + (int)(List_DollState[index_doll]._damage * (level - 1))).ToString();
+                    UIContainer_DollList.instance.Text_eva.text = "회피 " + (List_DollState[index_doll].evasion + (int)(List_DollState[index_doll]._evasion * (level - 1))).ToString();
+                    UIContainer_DollList.instance.Text_hp.text = "체력 " + (List_DollState[index_doll].hp + (int)(List_DollState[index_doll]._hp * (level - 1))).ToString();
                     UIContainer_DollList.instance.Text_Level.text = level.ToString();
                     UIContainer_DollList.instance.Text_Name.text = List_DollState[index_doll].name;
                     //UIContainer_DollList.instance.Text_Potential = 
-                    UIContainer_DollList.instance.Text_rof.text = "사속 " + (List_DollState[index_doll].rateoffire + (List_DollState[index_doll]._rateoffire * (level - 1))).ToString();
+                    UIContainer_DollList.instance.Text_rof.text = "사속 " + (List_DollState[index_doll].rateoffire + (int)(List_DollState[index_doll]._rateoffire * (level - 1))).ToString();
                     //UIContainer_DollList.instance.Text_Skill_CoolTime.text =
                     //UIContainer_DollList.instance.Text_Skill_Duration.text = 
                     //UIContainer_DollList.instance.Text_Skill_Explaination.text = 

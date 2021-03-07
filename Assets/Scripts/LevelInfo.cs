@@ -80,10 +80,10 @@ public class LevelInfo : MonoBehaviour
             GameObject spawnedenemy = Instantiate(EnemyContainer.instance.Enemies[_wave.Index_enemy]);
 
             spawnedenemy.transform.position = new Vector3(SelectedRoute[0].position.x, 0.15f, SelectedRoute[0].position.z);
+            spawnedenemy.GetComponent<CharacterBase>().level = enemyLevel;
 
-            //spawnedenemy.GetComponent<EnemyController>().SetRoute(SelectedRoute);
-            //spawnedenemy.GetComponent<CharacterInfo>().level = enemyLevel;
-            //InGameManager.instance.SpawnedEnemy.Add(spawnedenemy);
+            spawnedenemy.GetComponent<EnemyController>().SetRoute(SelectedRoute);
+            InGameManager.instance.Spawned_Enemies.Add(spawnedenemy);
             yield return new WaitForSeconds(_wave.Interval_spawn);
         }
         playingWave = false;

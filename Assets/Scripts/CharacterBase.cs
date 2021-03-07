@@ -6,24 +6,35 @@ using UnityEngine.UI;
 public abstract class CharacterBase : MonoBehaviour {
     public enum State { wait, move, attack, die, victory, victoryloop}
     public State state;
+    public int level = 0;
     [HideInInspector]
     public string Name;
     [HideInInspector]
     public bool attacking = false;
+    [HideInInspector]
+    public bool placed = false;
 
-    List<Transform> RouteToMove;
+    public List<Transform> RouteToMove;
 
-    public virtual void wait() {
-
+    public void SetRoute(List<Transform> route) {
+        RouteToMove = route;
     }
-    public virtual void move() {
 
-    }
-    public virtual void attack() {
+    public virtual void PlayAnimation() {
+        switch (state) {
+            case State.attack:
+                break;
+            case State.die:
+                break;
+            case State.move:
 
+                break;
+            case State.victory:
+                break;
+            case State.victoryloop:
+                break;
+        }
     }
-    public virtual void die() {
 
-    }
     public abstract void UpdateState();
 }

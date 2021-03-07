@@ -1325,6 +1325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7159167755109950293}
   - component: {fileID: 3749963374812476117}
+  - component: {fileID: -9166220041916873482}
   - component: {fileID: 923236984849624354}
   - component: {fileID: 991547582358871730}
   m_Layer: 0
@@ -1381,6 +1382,18 @@ MonoBehaviour:
   _rateoffire: 0
   _armor: 0
   critrate: 0
+--- !u!114 &-9166220041916873482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363794763432884679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0f446c669dff54cb5277110481cd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &923236984849624354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1393,7 +1406,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8821e59a582492d44a873738914d2811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  level: 0
   Name: 
+  attacking: 0
+  placed: 0
+  RouteToMove: []
   Sprite_Doll: {fileID: 21300000, guid: ffe6c24f7600ef34fb5d6ffe10d146bf, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: 71f2d252e2c03144f921ec0b61766fb9, type: 3}
 --- !u!114 &991547582358871730
