@@ -91,7 +91,7 @@ MonoBehaviour:
   title: Tutorial
   MapSize: {x: 7, y: 6}
   enemyLevel: 0
-  max_echlon_count: 1
+  max_echlon_count: 2
   life: 10
   Default_Node: {fileID: 5337722634931610660, guid: 3fad52d7a5c63b3448a40e3016799055,
     type: 3}

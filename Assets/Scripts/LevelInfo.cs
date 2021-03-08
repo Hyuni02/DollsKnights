@@ -109,7 +109,7 @@ public class LevelInfo : MonoBehaviour
     public void ApplyNodeSetting() {
         for(int i = 0; i < Nodes.Count; i++) {
             Nodes[i].GetComponent<NodeInfo>().SetNodeType();
-            if (Nodes[i].GetComponent<NodeInfo>().heilport && Nodes[i].transform.GetChild(0) == null) {
+            if (Nodes[i].GetComponent<NodeInfo>().heilport) {
                 Vector3 icon_pos = Nodes[i].transform.position + new Vector3(0, Nodes[i].transform.localScale.y * 0.5f + 0.01f, 0);
                 Quaternion icon_rot = Quaternion.Euler(90, 0, 0);
                 GameObject icon = Instantiate(heilporticon, icon_pos, icon_rot);
