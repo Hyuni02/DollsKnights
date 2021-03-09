@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FinalState))]
 public class OriginalState : MonoBehaviour
 {
     public int level;

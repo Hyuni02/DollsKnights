@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BuffContainer))]
 public class DollController : CharacterBase
 {
     public Sprite Sprite_Doll;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BuffContainer))]
 public class EnemyController : CharacterBase {
     public enum Type { melee, range }
     public Type type;

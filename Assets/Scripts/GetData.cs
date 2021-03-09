@@ -30,21 +30,39 @@ public struct DollState {
     public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, critrate;
 }
 
+[System.Serializable]
+public struct EnemyState {
+    public string name , type;
+    public int hp, damage, accuracy, evasion, rateoffire, armor, speed, armorpen;
+    public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, range;
+}
+
 public class GetData : MonoBehaviour
 {
     public static GetData instance;
 
     string FileName_DollStateData = "DollStateData";
     string FileName_DollData = "DollData";
+    string FileName_EnemyStateData = "EnemyStateData";
     //string MapListData = "MapListData";
 
+    [Header("인형 능력치")]
     [SerializeField]
+    [Tooltip("인형 능력치 from DollStateData.csv")]
     public List<DollState> List_DollState = new List<DollState>();
+
+    [Header("인형 정보")]
     [SerializeField]
+    [Tooltip("인형 정보(소속 제대, 포지션)")]
     public List<DollData> List_DollData = new List<DollData>();
+
+    [Header("적 능력치")]
+    [SerializeField]
+    [Tooltip("적 정보 from EnemyStateData.csv")]
+    public List<EnemyState> List_EnemyState = new List<EnemyState>();
+
     [SerializeField]
     public List<GameObject> List_DollButton = new List<GameObject>();
-
 
     GameObject doll_prefab;
     DollData doll_data;
@@ -55,14 +73,15 @@ public class GetData : MonoBehaviour
 
     public void DataLoad()
     {
-        //DollStateData.csv 데이터 불러오기(Resources)
-        Load_DollStateData();
-        //DollContainer의 인형 개수 확인
-        Check_DollData();
+        Load_DollStateData();//DollStateData.csv 데이터 불러오기(Resources)
+        Check_DollData();//DollContainer의 인형 개수 확인
+
+        Load_EnemyStateData();//EnemyStateData.csv 데이터 불러오기(Resources)
+        Check_EnemyData();//EnemyContainer의 적 개수 확인
+
         Instantiate_Doll_ButtonList();
         //맵데이터 불러오기
         //==Todo
-
 
         SceneController.instance.ChangeScene(1);
     }
@@ -122,6 +141,53 @@ public class GetData : MonoBehaviour
         //-존재하면 DollData.json 불러오기
         LoadDollDataFile();
     }
+
+    void Load_EnemyStateData() {
+        StreamReader sr = new StreamReader(Application.dataPath + "/Resources/Data/" + FileName_EnemyStateData + ".csv");
+        bool endoffile = false;
+        while (!endoffile) {
+            string data_String = sr.ReadLine();
+            if (data_String == null) {
+                endoffile = true;
+                break;
+            }
+            var data_values = data_String.Split(',');
+
+            int i = 0;
+            float f = 0;
+            EnemyState enemyState;
+            {
+                enemyState.name = data_values[0];
+                enemyState.type = data_values[1];
+                int.TryParse(data_values[2], out i); enemyState.hp = i;
+                float.TryParse(data_values[3], out f); enemyState._hp = f;
+                int.TryParse(data_values[4], out i); enemyState.damage = i;
+                float.TryParse(data_values[5], out f); enemyState._damage = f;
+                int.TryParse(data_values[6], out i); enemyState.accuracy = i;
+                float.TryParse(data_values[7], out f); enemyState._accuracy = f;
+                int.TryParse(data_values[8], out i); enemyState.evasion = i;
+                float.TryParse(data_values[9], out f); enemyState._evasion = f;
+                int.TryParse(data_values[10], out i); enemyState.rateoffire = i;
+                float.TryParse(data_values[11], out f); enemyState._rateoffire = f;
+                int.TryParse(data_values[12], out i); enemyState.armor = i;
+                float.TryParse(data_values[13], out f); enemyState._armor = f;
+                int.TryParse(data_values[14], out i); enemyState.speed = i;
+                int.TryParse(data_values[15], out i); enemyState.armorpen = i;
+                float.TryParse(data_values[16], out f); enemyState.range = f;
+            }
+            List_EnemyState.Add(enemyState);
+        }
+        List_EnemyState.RemoveAt(0);//첫 행 제거
+    }
+    void Check_EnemyData() {
+        //-개수가 일치 하지 않으면 오류발생
+        if (GetComponent<EnemyContainer>().Enemies.Count != List_EnemyState.Count) {
+            Debug.LogError("Enemy Data Count is not match with Enemy Prefab Count");
+            Debug.LogError("EnemyData : " + List_EnemyState.Count + "\n Enemy Prefab : " + List_EnemyState.Count);
+            return;
+        }
+    }
+
     void CreateDollDataFile() {
         for (int i = 0; i < List_DollState.Count; i++) {
             //print("Add " + List_DollState[i].name);
