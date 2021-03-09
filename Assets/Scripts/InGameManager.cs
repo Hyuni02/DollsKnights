@@ -19,7 +19,7 @@ public class InGameManager : MonoBehaviour
         GameObject Map = Instantiate(LevelContainer.instance.Levels[GameManager.instance.Index_SelectedLevel]);
 
         //선택한 제대 생성
-        for (int target_echlon = 0; target_echlon < Map.GetComponent<LevelInfo>().max_echlon_count; target_echlon++) {
+        for (int target_echlon = 0; target_echlon < GameManager.instance.Index_SelectedEchlons.Count; target_echlon++) {
             for (int i = 0; i < GetData.instance.List_DollData.Count; i++) {
                 if (GetData.instance.List_DollData[i].echlon 
                     == GameManager.instance.Index_SelectedEchlons[target_echlon].GetComponent<Button_EchlonInfo>().index_Echlon) {
