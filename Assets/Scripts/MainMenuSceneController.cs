@@ -39,7 +39,10 @@ public class MainMenuSceneController : MonoBehaviour
 
     void Update()
     {
-        
+        if (GameManager.instance.Index_SelectedEchlons.Count == 0)
+            UIContainer_LevelSelect.instance.Button_Start.interactable = false;
+        else
+            UIContainer_LevelSelect.instance.Button_Start.interactable = true;
     }
 
     public void Refresh_Doll_ButtonList(int index = 0) {

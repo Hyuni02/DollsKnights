@@ -12,8 +12,13 @@ public class InGameUIContainer : MonoBehaviour
     public Canvas Canvas_DollInfo;
     public Canvas Canvas_GameInfo;
 
-    //[Header("FormatedDolls-----Panel-----")]
-    //[Header("                          -----Button-----")]
+    [Header("Prefab")]
+    public GameObject Button_FormatedDoll;
+
+    [Header("FormatedDolls-----Panel-----")]
+    public GameObject Panel_FormatedDolls;
+    public GameObject content;
+    [Header("                          -----Button-----")]
 
     //[Header("DollInfo-----Panel-----")]
     //[Header("                   -----Button-----")]
@@ -38,5 +43,11 @@ public class InGameUIContainer : MonoBehaviour
     public void Close_Panel_Pause() {
         Time.timeScale = 1;
         Panel_Pause.SetActive(false);
+    }
+    public void Open_Panel_FormatedDolls() {
+        Panel_FormatedDolls.SetActive(true);
+    }
+    public void Close_Panel_FormatedDolls() {
+        Panel_FormatedDolls.SetActive(false);
     }
 }

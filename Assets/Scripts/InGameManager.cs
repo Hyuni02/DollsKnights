@@ -24,8 +24,11 @@ public class InGameManager : MonoBehaviour
                 if (GetData.instance.List_DollData[i].echlon 
                     == GameManager.instance.Index_SelectedEchlons[target_echlon].GetComponent<Button_EchlonInfo>().index_Echlon) {
                     Formated_Dolls.Add(GetData.instance.List_DollData[i]);
+                    GameObject button = Instantiate(InGameUIContainer.instance.Button_FormatedDoll, InGameUIContainer.instance.content.transform);
                     GameObject doll = Instantiate(DollContainer.instance.Dolls[i]);
                     Spawned_Dolls.Add(doll);
+                    button.GetComponent<Button_FormatedDollInfo>().model = doll;
+                    button.GetComponent<Button_FormatedDollInfo>().Icon = doll.GetComponent<DollController>().Sprite_Doll_face;
 
                     //능력치 적용
                     doll.GetComponent<OriginalState>().level = GetData.instance.List_DollData[i].level;

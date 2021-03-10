@@ -18,6 +18,8 @@ public class UIContainer_LevelSelect : MonoBehaviour
     public GameObject Image_MapPreview;
     public GameObject Panel_Reward;
 
+    public Button Button_Start;
+
     private void Awake() {
         instance = this;
         for (int i = 0; i < Levellist_content.transform.childCount; i++) {
