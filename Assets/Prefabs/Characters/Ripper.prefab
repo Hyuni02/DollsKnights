@@ -270,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 5062790741630747722}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: -0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 5062790742738320705}
   - {fileID: 5062790742286997285}
@@ -807,6 +807,24 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     critrate: 0
+  enemystate:
+    name: 
+    type: 
+    hp: 0
+    damage: 0
+    accuracy: 0
+    evasion: 0
+    rateoffire: 0
+    armor: 0
+    speed: 0
+    armorpen: 0
+    _hp: 0
+    _damage: 0
+    _accuracy: 0
+    _evasion: 0
+    _rateoffire: 0
+    _armor: 0
+    range: 0
 --- !u!114 &5062790742176451757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +852,7 @@ MonoBehaviour:
   _rateoffire: 0
   _armor: 0
   critrate: 0
+  range: 0
 --- !u!114 &5062790742176451756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,9 +866,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  level: 0
   Name: 
   now_animation: 
+  Node_StandOn: {fileID: 0}
   attacking: 0
   placed: 0
   RouteToMove: []

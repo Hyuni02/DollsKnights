@@ -9,6 +9,7 @@ public abstract class CharacterBase : MonoBehaviour {
     public State state;
     //[HideInInspector]
     public string Name, now_animation;
+    public GameObject Node_StandOn;
     [HideInInspector]
     public bool attacking = false;
     public bool placed = false;
@@ -76,6 +77,7 @@ public abstract class CharacterBase : MonoBehaviour {
             int i = RouteToMove.Count - 1;
             float dif_x = RouteToMove[i].transform.position.x - transform.position.x;
             float dif_z = RouteToMove[i].transform.position.z - transform.position.z;
+            SetFaceDir(RouteToMove[i].transform.position.x);
 
             Vector3 dir = new Vector3(dif_x, 0, dif_z);
             if (dir.magnitude <= 0.02f) {
@@ -87,6 +89,24 @@ public abstract class CharacterBase : MonoBehaviour {
                 transform.Translate(dir.normalized * fs.speed * 0.03f * Time.deltaTime, Space.World);
             }
         }
+    }
+
+    void Check_Node_Stand() {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down * 0.2f, out hit)) {
+            if (hit.collider.GetComponent<NodeInfo>()) {
+                Node_StandOn = hit.collider.gameObject;
+            }
+        }
+    }
+
+    void SetFaceDir(float Target_PosX) {
+        if (Target_PosX > transform.position.x)
+            uac.armature.flipX = false;
+        else if (Target_PosX == transform.position.x)
+            return;
+        else
+            uac.armature.flipX = true;
     }
 
     public abstract void UpdateState();
