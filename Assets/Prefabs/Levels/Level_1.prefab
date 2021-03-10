@@ -90,7 +90,6 @@ MonoBehaviour:
   index_level: 0
   title: Tutorial
   MapSize: {x: 7, y: 6}
-  enemyLevel: 0
   max_echlon_count: 2
   life: 10
   Default_Node: {fileID: 5337722634931610660, guid: 3fad52d7a5c63b3448a40e3016799055,
@@ -152,11 +151,13 @@ MonoBehaviour:
   - Delay_start: 2
     Interval_spawn: 3
     Index_enemy: 0
+    Level_enemy: 1
     Count_spawn: 2
     Index_route: 0
   - Delay_start: 2
     Interval_spawn: 4
     Index_enemy: 1
+    Level_enemy: 1
     Count_spawn: 3
     Index_route: 0
 --- !u!1 &3759319038965763815

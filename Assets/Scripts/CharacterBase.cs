@@ -7,8 +7,7 @@ using DragonBones;
 public abstract class CharacterBase : MonoBehaviour {
     public enum State { wait, move, attack, die, victory, victoryloop}
     public State state;
-    public int level = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public string Name, now_animation;
     [HideInInspector]
     public bool attacking = false;
@@ -16,20 +15,23 @@ public abstract class CharacterBase : MonoBehaviour {
 
     public List<UnityEngine.Transform> RouteToMove;
 
-    public void SetRoute(List<UnityEngine.Transform> route) {
-        RouteToMove = route;
-    }
-
     UnityArmatureComponent uac;
     FinalState fs;
-    public void Start() {
+
+    public virtual void Start() {
         uac = GetComponentInChildren<UnityArmatureComponent>();
         fs = GetComponent<FinalState>();
     }
 
     public virtual void Update() {
-        if (state.ToString().Equals(now_animation)) {
-            SetState();
+        SetState();
+        UpdateState();
+    }
+
+    public void SetRoute(List<UnityEngine.Transform> route) {
+        RouteToMove = new List<UnityEngine.Transform>();
+        for(int i = route.Count-1; i > 0; i--) {
+            RouteToMove.Add(route[i]);
         }
     }
 
@@ -61,13 +63,30 @@ public abstract class CharacterBase : MonoBehaviour {
     }
 
     void PlayAnimation(string anim, float timescale = 1, int playtime = -1) {
+        if (state.ToString().Equals(now_animation))
+            return;
+        
         uac.animation.timeScale = timescale;
         now_animation = anim;
         uac.animation.Play(anim, playtime);
     }
 
     public virtual void move() {
+        if (RouteToMove.Count > 0) {
+            int i = RouteToMove.Count - 1;
+            float dif_x = RouteToMove[i].transform.position.x - transform.position.x;
+            float dif_z = RouteToMove[i].transform.position.z - transform.position.z;
 
+            Vector3 dir = new Vector3(dif_x, 0, dif_z);
+            if (dir.magnitude <= 0.02f) {
+                transform.position = new Vector3(RouteToMove[i].transform.position.x, transform.position.y, RouteToMove[i].transform.position.z);
+                RouteToMove.RemoveAt(i);
+                //Check_Node_Stand();
+            }
+            else {
+                transform.Translate(dir.normalized * fs.speed * 0.03f * Time.deltaTime, Space.World);
+            }
+        }
     }
 
     public abstract void UpdateState();

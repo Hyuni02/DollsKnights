@@ -1834,8 +1834,8 @@ GameObject:
   - component: {fileID: 2118816051}
   - component: {fileID: 2118816050}
   - component: {fileID: 2118816049}
-  - component: {fileID: 2118816053}
   - component: {fileID: 2118816052}
+  - component: {fileID: 2118816053}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1894,6 +1894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   List_DollState: []
   List_DollData: []
+  List_EnemyState: []
   List_DollButton: []
 --- !u!114 &2118816051
 MonoBehaviour:

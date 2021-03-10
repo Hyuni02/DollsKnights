@@ -10,6 +10,7 @@ public class Wave {
     public float Delay_start;
     public float Interval_spawn;
     public int Index_enemy;
+    public int Level_enemy;
     public int Count_spawn;
     public int Index_route;
 }
@@ -20,7 +21,6 @@ public class LevelInfo : MonoBehaviour
     public int index_level;
     public string title;
     public Vector2 MapSize;
-    public int enemyLevel;
 
     //waves
     //rewards
@@ -78,9 +78,12 @@ public class LevelInfo : MonoBehaviour
         yield return new WaitForSeconds(_wave.Delay_start);
         for (int i = 0; i < _wave.Count_spawn; i++) {
             GameObject spawnedenemy = Instantiate(EnemyContainer.instance.Enemies[_wave.Index_enemy]);
+            OriginalState originalState = spawnedenemy.GetComponent<OriginalState>();
+            originalState.enemystate = GetData.instance.List_EnemyState[_wave.Index_enemy];
+            originalState.level = _wave.Level_enemy;
+            originalState.SetState_Enemy();
 
             spawnedenemy.transform.position = new Vector3(SelectedRoute[0].position.x, 0.15f, SelectedRoute[0].position.z);
-            spawnedenemy.GetComponent<CharacterBase>().level = enemyLevel;
 
             spawnedenemy.GetComponent<EnemyController>().SetRoute(SelectedRoute);
             InGameManager.instance.Spawned_Enemies.Add(spawnedenemy);
