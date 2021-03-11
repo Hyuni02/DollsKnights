@@ -207,7 +207,7 @@ public class GetData : MonoBehaviour
     public void LoadDollDataFile() {
         string Ddate = File.ReadAllText(Application.streamingAssetsPath + "/" + FileName_DollData + ".json");
         List_DollData = JsonConvert.DeserializeObject<List<DollData>>(Ddate);
-        print("Load DollState File");
+        //print("Load DollState File");
 
         //캐릭터 데이터가 추가되었을 시
         if(List_DollData.Count != List_DollState.Count) {

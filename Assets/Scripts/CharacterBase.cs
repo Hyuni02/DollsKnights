@@ -22,6 +22,7 @@ public abstract class CharacterBase : MonoBehaviour {
     public virtual void Start() {
         uac = GetComponentInChildren<UnityArmatureComponent>();
         fs = GetComponent<FinalState>();
+        Check_Node_Stand();
     }
 
     public virtual void Update() {
@@ -63,7 +64,7 @@ public abstract class CharacterBase : MonoBehaviour {
         }
     }
 
-    void PlayAnimation(string anim, float timescale = 1, int playtime = -1) {
+    void PlayAnimation(string anim, float timescale = 1, int playtime = 0) {
         if (state.ToString().Equals(now_animation))
             return;
         

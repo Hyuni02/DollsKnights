@@ -50,4 +50,9 @@ public class InGameUIContainer : MonoBehaviour
     public void Close_Panel_FormatedDolls() {
         Panel_FormatedDolls.SetActive(false);
     }
+    public void UpdateButtonState() {
+        for(int i = 0; i < content.transform.childCount; i++) {
+            content.transform.GetChild(i).GetComponent<Button_FormatedDollInfo>().UpdateState();
+        }
+    }
 }
