@@ -24,9 +24,12 @@ public class DollController : CharacterBase
     void Blocking() {
         if (fs.block > Blocked_Enemies.Count) {
             for (int i = 0; i < InGameManager.instance.Spawned_Enemies.Count; i++) {
-                if (GetDistance(InGameManager.instance.Spawned_Enemies[i]) < 0.3f) {
-                    InGameManager.instance.Spawned_Enemies[i].GetComponent<EnemyController>().Blocker = gameObject;
-                    Blocked_Enemies.Add(InGameManager.instance.Spawned_Enemies[i]);
+                if (GetDistance(InGameManager.instance.Spawned_Enemies[i]) < 0.7f) {
+                    //중복 확인
+                    if (InGameManager.instance.Spawned_Enemies[i].GetComponent<EnemyController>().Blocker == null) {
+                        InGameManager.instance.Spawned_Enemies[i].GetComponent<EnemyController>().Blocker = gameObject;
+                        Blocked_Enemies.Add(InGameManager.instance.Spawned_Enemies[i]);
+                    }
                 }
             }
         }

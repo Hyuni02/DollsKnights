@@ -52,7 +52,7 @@ public abstract class CharacterBase : MonoBehaviour {
 
         if (Timer_attack <= 0)
             attacking = false;
-
+        
         if (attacking)
             return;
 
