@@ -23,6 +23,8 @@ public class OriginalState : MonoBehaviour
         fs.hp = dollstate.hp + (int)(dollstate._hp * (level - 1));
         fs.rateoffire = dollstate.rateoffire + (int)(dollstate._rateoffire * (level - 1));
         fs.speed = dollstate.speed;
+        fs.range = dollstate.range;
+        fs.block = dollstate.block;
     }
     public void SetState_Enemy() {
         FinalState fs = GetComponent<FinalState>();

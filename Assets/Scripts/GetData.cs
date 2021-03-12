@@ -26,8 +26,8 @@ public class DollData {
 [System.Serializable]
 public struct DollState {
     public string name, belong, _class;
-    public int rank, hp, damage, accuracy, evasion, rateoffire, armor, speed, armorpen;
-    public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, critrate;
+    public int rank, hp, damage, accuracy, evasion, rateoffire, armor, speed, armorpen, block;
+    public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, critrate, range;
 }
 
 [System.Serializable]
@@ -119,6 +119,8 @@ public class GetData : MonoBehaviour
                 int.TryParse(data_values[16], out i); dollState.speed = i;
                 int.TryParse(data_values[17], out i); dollState.armorpen = i;
                 float.TryParse(data_values[18], out f); dollState.critrate = f;
+                int.TryParse(data_values[19], out i); dollState.block = i;
+                float.TryParse(data_values[20], out f); dollState.range = f;
             }
 
             List_DollState.Add(dollState);

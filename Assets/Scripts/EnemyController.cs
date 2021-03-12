@@ -7,6 +7,7 @@ public class EnemyController : CharacterBase {
     public enum Type { melee, range }
     public Type type;
     public bool blocked = false;
+    public GameObject Blocker;
 
     //public override void Start() {
 
@@ -27,6 +28,19 @@ public class EnemyController : CharacterBase {
         }
         else {
 
+        }
+
+        CheckBlocked();
+    }
+
+    void CheckBlocked() {
+        if (Blocker == null)
+            blocked = false;
+        else {
+            if (Blocker.activeSelf == true)
+                blocked = true;
+            else
+                Blocker = null;
         }
     }
 }

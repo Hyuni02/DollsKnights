@@ -29,10 +29,10 @@ public class Button_FormatedDollInfo : MonoBehaviour
         Transform pos = InGameManager.instance.SelectedNode.transform;
         switch (pos.GetComponent<NodeInfo>().type) {
             case NodeInfo.Type.low:
-                model.transform.position = new Vector3(pos.position.x, 0.15f, pos.position.z);
+                model.transform.position = new Vector3(pos.position.x, 0f, pos.position.z);
                 break;
             case NodeInfo.Type.high:
-                model.transform.position = new Vector3(pos.position.x, 0.51f, pos.position.z);
+                model.transform.position = new Vector3(pos.position.x, 0.4f, pos.position.z);
                 break;
         }
 

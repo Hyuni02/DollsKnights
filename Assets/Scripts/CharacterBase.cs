@@ -14,20 +14,29 @@ public abstract class CharacterBase : MonoBehaviour {
     public bool attacking = false;
     public bool placed = false;
 
+    [SerializeField]
+    float Timer_attack;
+
     public List<UnityEngine.Transform> RouteToMove;
 
-    UnityArmatureComponent uac;
-    FinalState fs;
+    [HideInInspector]
+    public UnityArmatureComponent uac;
+    [HideInInspector]
+    public FinalState fs;
 
     public virtual void Start() {
         uac = GetComponentInChildren<UnityArmatureComponent>();
         fs = GetComponent<FinalState>();
         Check_Node_Stand();
+
+        Timer_attack = 1;
     }
 
     public virtual void Update() {
         SetState();
         UpdateState();
+
+        Timer_attack -= Time.deltaTime;
     }
 
     public void SetRoute(List<UnityEngine.Transform> route) {
@@ -38,10 +47,23 @@ public abstract class CharacterBase : MonoBehaviour {
     }
 
     public virtual void SetState() {
+        if (uac.animation.isCompleted)
+            now_animation = null;
+
+        if (Timer_attack <= 0)
+            attacking = false;
+
+        if (attacking)
+            return;
+
         switch (state) {
             case State.attack:
-
-                PlayAnimation(state.ToString(), 1 / fs.rateoffire, 1);
+                if (Timer_attack <= 0) {
+                    attacking = true;
+                    float t = 1 / (fs.rateoffire * 0.02f);
+                    PlayAnimation(state.ToString(), t, 1);
+                    Timer_attack = t;
+                }
                 break;
             case State.die:
 
@@ -62,13 +84,14 @@ public abstract class CharacterBase : MonoBehaviour {
                 PlayAnimation(state.ToString());
                 break;
         }
+
     }
 
     void PlayAnimation(string anim, float timescale = 1, int playtime = 0) {
-        if (state.ToString().Equals(now_animation))
+       if (state.ToString().Equals(now_animation))
             return;
-        
-        uac.animation.timeScale = timescale;
+
+        uac.animation.timeScale = Mathf.Max(timescale, 1);
         now_animation = anim;
         uac.animation.Play(anim, playtime);
     }
@@ -111,4 +134,9 @@ public abstract class CharacterBase : MonoBehaviour {
     }
 
     public abstract void UpdateState();
+
+    public float GetDistance(GameObject target) {
+        float distance = Vector3.Distance(target.transform.position, gameObject.transform.position);
+        return distance;
+    }
 }
