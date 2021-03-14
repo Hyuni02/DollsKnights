@@ -36,7 +36,8 @@ public abstract class CharacterBase : MonoBehaviour {
         SetState();
         UpdateState();
 
-        Timer_attack -= Time.deltaTime;
+        if (Timer_attack > 0)
+            Timer_attack -= Time.deltaTime;
     }
 
     public void SetRoute(List<UnityEngine.Transform> route) {
@@ -117,7 +118,7 @@ public abstract class CharacterBase : MonoBehaviour {
 
     void Check_Node_Stand() {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down * 0.2f, out hit)) {
+        if (Physics.Raycast(transform.position + new Vector3(0,0.15f,0), Vector3.down * 0.2f, out hit)) {
             if (hit.collider.GetComponent<NodeInfo>()) {
                 Node_StandOn = hit.collider.gameObject;
             }

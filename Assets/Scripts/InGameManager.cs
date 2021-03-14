@@ -56,6 +56,9 @@ public class InGameManager : MonoBehaviour {
 
         GetMouseInput();
         CheckInputType();
+
+        DollInfo_Update_HPBar();
+        DollInfo_Update_SkillCool();
     }
 
     void GetMouseInput() {
@@ -136,8 +139,7 @@ public class InGameManager : MonoBehaviour {
         _Reset();
     }
     public void ViewDollInfo(GameObject doll) {
-        print("View Doll Info");
-
+        InGameUIContainer.instance.Open_Panel_DollInfo(doll);
     }
     GameObject FindDoll(GameObject node) {
         for (int i = 0; i < Spawned_Dolls.Count; i++) {
@@ -146,6 +148,20 @@ public class InGameManager : MonoBehaviour {
                 return Spawned_Dolls[i];
         }
         return null;
+    }
+
+    void DollInfo_Update_HPBar() {
+        if (SelectedDoll == null)
+            return;
+
+        InGameUIContainer.instance.Slider_hp.value
+           = (float)SelectedDoll.GetComponent<FinalState>().hp / (float)SelectedDoll.GetComponent<OriginalState>().dollstate.hp;
+    }
+    void DollInfo_Update_SkillCool() {
+        if (SelectedDoll == null)
+            return;
+
+        //TODO
     }
 
     private bool IsPointerOverUIObject() {//터치가 UI를 뚫고 지나가 뒤에 있는 오브젝트에 닿는 것을 막는 함수
