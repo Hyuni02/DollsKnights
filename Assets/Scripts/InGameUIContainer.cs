@@ -94,4 +94,9 @@ public class InGameUIContainer : MonoBehaviour
             content.transform.GetChild(i).GetComponent<Button_FormatedDollInfo>().UpdateState();
         }
     }
+    public void RetreatDoll() {
+        InGameManager.instance.SelectedDoll.GetComponent<DollController>().Retreat();
+        UpdateButtonState();
+        Close_Panel_DollInfo();
+    }
 }

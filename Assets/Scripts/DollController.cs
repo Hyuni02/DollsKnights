@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(BuffContainer))]
 public class DollController : CharacterBase
 {
+    public enum Type { boost, action }//평타 강화형, 모션 스킬형
+    public Type type;
     public Sprite Sprite_Doll;
     public Sprite Sprite_Doll_face;
 
@@ -17,6 +19,12 @@ public class DollController : CharacterBase
     }
 
     public override void UpdateState() {
+        if (type == Type.boost) {
+
+        }
+        else {
+
+        }
 
         Blocking();
     }
@@ -33,5 +41,11 @@ public class DollController : CharacterBase
                 }
             }
         }
+    }
+
+    public void Retreat() {
+        //모든 버프 제거
+        gameObject.SetActive(false);
+        placed = false;
     }
 }

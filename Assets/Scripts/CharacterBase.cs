@@ -48,6 +48,9 @@ public abstract class CharacterBase : MonoBehaviour {
     }
 
     public virtual void SetState() {
+        if (fs.hp <= 0)
+            state = State.die;
+
         if (uac.animation.isCompleted)
             now_animation = null;
 
@@ -67,7 +70,7 @@ public abstract class CharacterBase : MonoBehaviour {
                 }
                 break;
             case State.die:
-
+                Invoke("die", 0.7f);
                 PlayAnimation(state.ToString(), 1, 1);
                 break;
             case State.move:
@@ -114,6 +117,9 @@ public abstract class CharacterBase : MonoBehaviour {
                 transform.Translate(dir.normalized * fs.speed * 0.03f * Time.deltaTime, Space.World);
             }
         }
+    }
+    public virtual void die() {
+        gameObject.SetActive(false);
     }
 
     void Check_Node_Stand() {

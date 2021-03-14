@@ -19,6 +19,7 @@ public class Button_FormatedDollInfo : MonoBehaviour
     }
 
     public void UpdateState() {
+        placed = model.GetComponent<DollController>().placed;
         if (placed)
             button.interactable = false;
         else
