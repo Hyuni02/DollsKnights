@@ -19,11 +19,22 @@ public class DollController : CharacterBase
     }
 
     public override void UpdateState() {
-        if (type == Type.boost) {
+        switch (type) {
+            case Type.boost:
+                if(RouteToMove.Count == 0) {
+                    if (attackable) 
+                        state = State.attack;
+                    else
+                        state = State.wait;
+                }
+                else {
+                    state = State.move;
+                }
+                break;
 
-        }
-        else {
+            case Type.action:
 
+                break;
         }
 
         Blocking();
@@ -41,6 +52,10 @@ public class DollController : CharacterBase
                 }
             }
         }
+    }
+
+    public override void die() {
+        Retreat();
     }
 
     public void Retreat() {

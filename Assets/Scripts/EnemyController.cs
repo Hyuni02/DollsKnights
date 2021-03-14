@@ -18,16 +18,19 @@ public class EnemyController : CharacterBase {
     //}
 
     public override void UpdateState() {
-        if(type == Type.melee) {
-            if (blocked) {
-                state = State.attack;
-            }
-            else {
-                state = State.move;
-            }
-        }
-        else {
+        switch (type) {
+            case Type.melee:
+                if (blocked) {
+                    state = State.attack;
+                }
+                else {
+                    state = State.move;
+                }
+                break;
 
+            case Type.range:
+
+                break;
         }
 
         CheckBlocked();

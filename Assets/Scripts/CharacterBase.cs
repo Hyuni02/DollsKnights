@@ -13,6 +13,7 @@ public abstract class CharacterBase : MonoBehaviour {
     [HideInInspector]
     public bool attacking = false;
     public bool placed = false;
+    public bool attackable;
 
     [SerializeField]
     float Timer_attack;
@@ -27,9 +28,10 @@ public abstract class CharacterBase : MonoBehaviour {
     public virtual void Start() {
         uac = GetComponentInChildren<UnityArmatureComponent>();
         fs = GetComponent<FinalState>();
-        Check_Node_Stand();
 
+        Check_Node_Stand();
         Timer_attack = 1;
+        InvokeRepeating("SearchTarget", 0, 0.1f);
     }
 
     public virtual void Update() {
@@ -138,6 +140,34 @@ public abstract class CharacterBase : MonoBehaviour {
             return;
         else
             uac.armature.flipX = true;
+    }
+
+    public void SearchTarget() {
+        if (!gameObject.activeSelf)
+            return;
+
+        attackable = false;
+        print("Check Target" + gameObject.name);
+        if(GetComponent<DollController>() != null) {
+            for(int i = 0; i < InGameManager.instance.Spawned_Enemies.Count; i++) {
+                if (GetDistance(InGameManager.instance.Spawned_Enemies[i]) <= fs.range) {
+                    attackable = true;
+                    return;
+                }
+                else
+                    attackable = false;
+            }
+        }
+        else {
+            for (int i = 0; i < InGameManager.instance.Spawned_Dolls.Count; i++) {
+                if (GetDistance(InGameManager.instance.Spawned_Dolls[i]) <= fs.range) {
+                    attackable = true;
+                    return;
+                }
+                else
+                    attackable = false;
+            }
+        }
     }
 
     public abstract void UpdateState();
