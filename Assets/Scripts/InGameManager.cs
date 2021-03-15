@@ -51,14 +51,16 @@ public class InGameManager : MonoBehaviour {
 
 
     void Update() {
-        if (IsPointerOverUIObject())
-            return;
-
-        GetMouseInput();
-        CheckInputType();
-
         DollInfo_Update_HPBar();
         DollInfo_Update_SkillCool();
+
+
+        if (!IsPointerOverUIObject()) {
+            GetMouseInput();
+            CheckInputType();
+        }
+
+
     }
 
     void GetMouseInput() {
@@ -154,6 +156,7 @@ public class InGameManager : MonoBehaviour {
         if (SelectedDoll == null)
             return;
 
+        InGameUIContainer.instance.Text_hp.text = "HP." + SelectedDoll.GetComponent<FinalState>().hp.ToString();
         InGameUIContainer.instance.Slider_hp.value
            = (float)SelectedDoll.GetComponent<FinalState>().hp / (float)SelectedDoll.GetComponent<OriginalState>().dollstate.hp;
     }
