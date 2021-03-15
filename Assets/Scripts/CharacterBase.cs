@@ -45,9 +45,10 @@ public abstract class CharacterBase : MonoBehaviour {
 
     public void SetRoute(List<UnityEngine.Transform> route) {
         RouteToMove = new List<UnityEngine.Transform>();
-        for(int i = route.Count-1; i > 0; i--) {
+        for(int i = 0; i <route.Count; i++) {
             RouteToMove.Add(route[i]);
         }
+        Node_StandOn = RouteToMove[RouteToMove.Count - 1].gameObject;
     }
 
     public virtual void SetState() {
@@ -106,20 +107,19 @@ public abstract class CharacterBase : MonoBehaviour {
 
     public virtual void attack() {
         //TODO
-        print(gameObject.name + " attacked " + Target.name);
+        //print(gameObject.name + " attacked " + Target.name);
         Target.GetComponent<CharacterBase>().GetAttacked(fs.damage, fs.accuracy, fs.critrate, fs.armorpen);
     }
     public virtual void move() {
         if (RouteToMove.Count > 0) {
-            int i = RouteToMove.Count - 1;
-            float dif_x = RouteToMove[i].transform.position.x - transform.position.x;
-            float dif_z = RouteToMove[i].transform.position.z - transform.position.z;
-            SetFaceDir(RouteToMove[i].transform.position.x);
+            float dif_x = RouteToMove[0].transform.position.x - transform.position.x;
+            float dif_z = RouteToMove[0].transform.position.z - transform.position.z;
+            SetFaceDir(RouteToMove[0].transform.position.x);
 
             Vector3 dir = new Vector3(dif_x, 0, dif_z);
             if (dir.magnitude <= 0.02f) {
-                transform.position = new Vector3(RouteToMove[i].transform.position.x, transform.position.y, RouteToMove[i].transform.position.z);
-                RouteToMove.RemoveAt(i);
+                transform.position = new Vector3(RouteToMove[0].transform.position.x, transform.position.y, RouteToMove[0].transform.position.z);
+                RouteToMove.RemoveAt(0);
                 //Check_Node_Stand();
             }
             else {

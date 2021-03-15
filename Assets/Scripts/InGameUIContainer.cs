@@ -79,7 +79,6 @@ public class InGameUIContainer : MonoBehaviour
         Text_armor.text = "Amr." + dc.fs.armor.ToString();
         Text_block.text = "BLK." + dc.fs.block.ToString();
         Text_dmg.text = "DMG." + dc.fs.damage.ToString();
-        Text_hp.text = "HP." + dc.fs.hp.ToString();
         Text_eva.text = "EVA." + dc.fs.evasion.ToString();
         //체력바, 스킬 쿨은 InGameManager Update에서
         Panel_DollInfo.SetActive(true);

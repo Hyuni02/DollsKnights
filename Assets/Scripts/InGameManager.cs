@@ -12,7 +12,8 @@ public class InGameManager : MonoBehaviour {
 
     public GameObject StartNode;
     public GameObject EndNode;
-    public List<GameObject> DragedNodes = new List<GameObject>();
+    public List<Transform> DragedNodes = new List<Transform>();
+    List<Transform> R_DragedNodes = new List<Transform>();
     public GameObject SelectedNode;
 
     public GameObject SelectedDoll;
@@ -67,28 +68,25 @@ public class InGameManager : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             RaycastHit hit = UseRay();
             if (hit.transform.tag.Equals("node")) {
-                //print("Click Start");
                 DragedNodes.Clear();
                 StartNode = hit.transform.gameObject;
-                DragedNodes.Add(hit.transform.gameObject);
+                DragedNodes.Add(hit.transform);
             }
         }
         if (Input.GetMouseButton(0)) {
             RaycastHit hit = UseRay();
             if (hit.transform.tag.Equals("node")) {
-                //print("Click ing");
-                if (DragedNodes[DragedNodes.Count - 1] != hit.transform.gameObject) {
-                    DragedNodes.Add(hit.transform.gameObject);
+                if (DragedNodes[DragedNodes.Count - 1] != hit.transform) {
+                    DragedNodes.Add(hit.transform);
                 }
             }
         }
         if (Input.GetMouseButtonUp(0)) {
             RaycastHit hit = UseRay();
             if (hit.transform.tag.Equals("node")) {
-                //print("Click End");
                 if (StartNode != null) {
                     EndNode = hit.transform.gameObject;
-                    DragedNodes.Add(hit.transform.gameObject);
+                    DragedNodes.Add(hit.transform);
                 }
                 else {
                     _Reset();
@@ -115,7 +113,8 @@ public class InGameManager : MonoBehaviour {
 
         //클릭
         if (StartNode == EndNode) {
-            print("Input Type : Click");
+            //print("Input Type : Click");
+
             //노드 위에 서있는 인형 탐색
             SelectedNode = StartNode;
             SelectedDoll = FindDoll(SelectedNode);
@@ -133,9 +132,36 @@ public class InGameManager : MonoBehaviour {
 
         //드래그
         else {
-            print("Input Type : Drag");
+            //print("Input Type : Drag");
 
-            //유효한 루트인지 확인
+            //움직일 인형의 존재 확인
+            SelectedDoll = FindDoll(StartNode);
+            if (SelectedDoll != null) {
+                //지정한 경로의 유효성 확인
+                for(int i = 0; i < DragedNodes.Count; i++) {
+                    if(DragedNodes[i].GetComponent<NodeInfo>().type != StartNode.GetComponent<NodeInfo>().type
+                        || !DragedNodes[i].GetComponent<NodeInfo>().placeable) {
+                        print("Wrong Route");
+                        _Reset();
+                        return;
+                    }
+                }
+
+                //인형 이동
+                print("Move Pos");
+                SelectedDoll.GetComponent<DollController>().SetRoute(DragedNodes);
+
+                //인형 간 위치 교체
+                GameObject target = FindDoll(EndNode);
+                if (target != null) {
+                    print("Switch Pos");
+                    //print(target.name);
+                    R_DragedNodes = DragedNodes;
+                    R_DragedNodes.Reverse();
+                    target.GetComponent<DollController>().SetRoute(R_DragedNodes);
+                }
+
+            }
         }
 
         _Reset();
@@ -146,7 +172,8 @@ public class InGameManager : MonoBehaviour {
     GameObject FindDoll(GameObject node) {
         for (int i = 0; i < Spawned_Dolls.Count; i++) {
             if (Spawned_Dolls[i].GetComponent<DollController>().placed
-                && Spawned_Dolls[i].GetComponent<DollController>().Node_StandOn == node)
+                && Spawned_Dolls[i].GetComponent<DollController>().Node_StandOn == node
+                && Spawned_Dolls[i] != SelectedDoll)
                 return Spawned_Dolls[i];
         }
         return null;
