@@ -17,6 +17,7 @@ public abstract class CharacterBase : MonoBehaviour {
 
     [SerializeField]
     float Timer_attack;
+    public GameObject Target;
 
     public List<UnityEngine.Transform> RouteToMove;
 
@@ -64,8 +65,9 @@ public abstract class CharacterBase : MonoBehaviour {
 
         switch (state) {
             case State.attack:
-                if (Timer_attack <= 0) {
+                if (Timer_attack <= 0 && Target != null) {
                     attacking = true;
+                    attack();
                     float t = 1 / (fs.rateoffire * 0.02f);
                     PlayAnimation(state.ToString(), t, 1);
                     Timer_attack = t;
@@ -102,6 +104,11 @@ public abstract class CharacterBase : MonoBehaviour {
         uac.animation.Play(anim, playtime);
     }
 
+    public virtual void attack() {
+        //TODO
+        print(gameObject.name + " attacked " + Target.name);
+        Target.GetComponent<CharacterBase>().GetAttacked(fs.damage, fs.accuracy, fs.critrate, fs.armorpen);
+    }
     public virtual void move() {
         if (RouteToMove.Count > 0) {
             int i = RouteToMove.Count - 1;
@@ -147,25 +154,33 @@ public abstract class CharacterBase : MonoBehaviour {
             return;
 
         attackable = false;
-        print("Check Target" + gameObject.name);
+        //print("Check Target" + gameObject.name);
         if(GetComponent<DollController>() != null) {
             for(int i = 0; i < InGameManager.instance.Spawned_Enemies.Count; i++) {
-                if (GetDistance(InGameManager.instance.Spawned_Enemies[i]) <= fs.range) {
+                if (GetDistance(InGameManager.instance.Spawned_Enemies[i]) <= fs.range
+                    && InGameManager.instance.Spawned_Enemies[i].activeSelf) {
                     attackable = true;
+                    SetTarget(InGameManager.instance.Spawned_Enemies[i]);
                     return;
                 }
-                else
+                else {
+                    SetTarget();
                     attackable = false;
+                }
             }
         }
         else {
             for (int i = 0; i < InGameManager.instance.Spawned_Dolls.Count; i++) {
-                if (GetDistance(InGameManager.instance.Spawned_Dolls[i]) <= fs.range) {
+                if (GetDistance(InGameManager.instance.Spawned_Dolls[i]) <= fs.range
+                     && InGameManager.instance.Spawned_Dolls[i].activeSelf) {
                     attackable = true;
+                    SetTarget(InGameManager.instance.Spawned_Dolls[i]);
                     return;
                 }
-                else
+                else {
+                    SetTarget();
                     attackable = false;
+                }
             }
         }
     }
@@ -175,5 +190,38 @@ public abstract class CharacterBase : MonoBehaviour {
     public float GetDistance(GameObject target) {
         float distance = Vector3.Distance(target.transform.position, gameObject.transform.position);
         return distance;
+    }
+    public void SetTarget(GameObject target = null) {
+        Target = target;
+    }
+    public void GetAttacked(int dmg, int acc, float critrate = 0, int armorpen = 0) {
+        //회피-명중 계산
+        //-명중 시
+        if (acc > Random.Range(0, acc + fs.evasion)) {
+            //장갑 판정
+            if (armorpen < fs.armor) {
+                fs.hp -= 1;
+                ViewDmgIndicator(1, false, true);
+                return;
+            }
+
+            //치명타 판정
+            if(critrate > Random.Range(0, 1)) {
+                int critdmg = (int)(dmg * 1.5f);
+                fs.hp -= critdmg;
+                ViewDmgIndicator(critdmg, true);
+                return;
+            }
+
+            fs.hp -= dmg;
+            ViewDmgIndicator(dmg);
+        }
+        //-회피 시
+        else {
+            ViewDmgIndicator(0, false, false, true);
+        }
+    }
+    void ViewDmgIndicator(int dmg, bool crit = false, bool blocked = false, bool eva = false) {
+
     }
 }

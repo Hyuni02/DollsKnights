@@ -19,6 +19,9 @@ public class DollController : CharacterBase
     }
 
     public override void UpdateState() {
+        if (state == State.die)
+            return;
+
         switch (type) {
             case Type.boost:
                 if(RouteToMove.Count == 0) {
@@ -43,7 +46,8 @@ public class DollController : CharacterBase
     void Blocking() {
         if (fs.block > Blocked_Enemies.Count) {
             for (int i = 0; i < InGameManager.instance.Spawned_Enemies.Count; i++) {
-                if (GetDistance(InGameManager.instance.Spawned_Enemies[i]) < 0.7f) {
+                if (GetDistance(InGameManager.instance.Spawned_Enemies[i]) < 0.7f
+                    && InGameManager.instance.Spawned_Enemies[i].activeSelf) {
                     //중복 확인
                     if (InGameManager.instance.Spawned_Enemies[i].GetComponent<EnemyController>().Blocker == null) {
                         InGameManager.instance.Spawned_Enemies[i].GetComponent<EnemyController>().Blocker = gameObject;
@@ -52,6 +56,15 @@ public class DollController : CharacterBase
                 }
             }
         }
+
+        if (Blocked_Enemies.Count > 0) {
+            for (int i = Blocked_Enemies.Count - 1; i >= 0; i--) {
+                if (!Blocked_Enemies[i].activeSelf)
+                    Blocked_Enemies.Remove(Blocked_Enemies[i]);
+            }
+        }
+        if (Blocked_Enemies.Count > 0) 
+            SetTarget(Blocked_Enemies[0]);
     }
 
     public override void die() {

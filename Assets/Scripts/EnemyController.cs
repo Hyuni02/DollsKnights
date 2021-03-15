@@ -18,6 +18,9 @@ public class EnemyController : CharacterBase {
     //}
 
     public override void UpdateState() {
+        if (state == State.die)
+            return;
+
         switch (type) {
             case Type.melee:
                 if (blocked) {
@@ -40,8 +43,10 @@ public class EnemyController : CharacterBase {
         if (Blocker == null)
             blocked = false;
         else {
-            if (Blocker.activeSelf == true)
+            if (Blocker.activeSelf == true) {
+                SetTarget(Blocker);
                 blocked = true;
+            }
             else
                 Blocker = null;
         }
