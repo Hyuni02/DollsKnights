@@ -15,8 +15,7 @@ public abstract class CharacterBase : MonoBehaviour {
     public bool placed = false;
     public bool attackable;
 
-    [SerializeField]
-    float Timer_attack;
+    public  float Timer_attack;
     public GameObject Target;
 
     public List<UnityEngine.Transform> RouteToMove;
@@ -55,12 +54,11 @@ public abstract class CharacterBase : MonoBehaviour {
         if (fs.hp <= 0)
             state = State.die;
 
-        if (uac.animation.isCompleted)
+        if (uac.animation.isCompleted) {
             now_animation = null;
-
-        if (Timer_attack <= 0)
             attacking = false;
-        
+        }
+
         if (attacking)
             return;
 
@@ -80,7 +78,7 @@ public abstract class CharacterBase : MonoBehaviour {
                 break;
             case State.move:
                 move();
-                PlayAnimation(state.ToString());
+                PlayAnimation(state.ToString(), 1, 1);
                 break;
             case State.wait:
 
@@ -96,7 +94,7 @@ public abstract class CharacterBase : MonoBehaviour {
 
     }
 
-    void PlayAnimation(string anim, float timescale = 1, int playtime = 0) {
+    public void PlayAnimation(string anim, float timescale = 1, int playtime = 0) {
        if (state.ToString().Equals(now_animation))
             return;
 
@@ -106,7 +104,6 @@ public abstract class CharacterBase : MonoBehaviour {
     }
 
     public virtual void attack() {
-        //TODO
         //print(gameObject.name + " attacked " + Target.name);
         Target.GetComponent<CharacterBase>().GetAttacked(fs.damage, fs.accuracy, fs.critrate, fs.armorpen);
     }
@@ -123,7 +120,7 @@ public abstract class CharacterBase : MonoBehaviour {
                 //Check_Node_Stand();
             }
             else {
-                transform.Translate(dir.normalized * fs.speed * 0.03f * Time.deltaTime, Space.World);
+                transform.Translate(dir.normalized * fs.speed * 0.06f * Time.deltaTime, Space.World);
             }
         }
     }
@@ -223,5 +220,10 @@ public abstract class CharacterBase : MonoBehaviour {
     }
     void ViewDmgIndicator(int dmg, bool crit = false, bool blocked = false, bool eva = false) {
 
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, fs.range);
     }
 }

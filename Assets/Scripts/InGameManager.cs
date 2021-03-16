@@ -108,6 +108,9 @@ public class InGameManager : MonoBehaviour {
     }
 
     void CheckInputType() {
+        SelectedDoll = null;
+        SelectedNode = null;
+
         if (StartNode == null || EndNode == null)
             return;
 
@@ -148,13 +151,13 @@ public class InGameManager : MonoBehaviour {
                 }
 
                 //인형 이동
-                print("Move Pos");
+                //print("Move Pos");
                 SelectedDoll.GetComponent<DollController>().SetRoute(DragedNodes);
 
                 //인형 간 위치 교체
                 GameObject target = FindDoll(EndNode);
                 if (target != null) {
-                    print("Switch Pos");
+                    //print("Switch Pos");
                     //print(target.name);
                     R_DragedNodes = DragedNodes;
                     R_DragedNodes.Reverse();

@@ -59,7 +59,7 @@ public class DollController : CharacterBase
 
         if (Blocked_Enemies.Count > 0) {
             for (int i = Blocked_Enemies.Count - 1; i >= 0; i--) {
-                if (!Blocked_Enemies[i].activeSelf)
+                if (!Blocked_Enemies[i].activeSelf || GetDistance(Blocked_Enemies[i]) > 0.7f)
                     Blocked_Enemies.Remove(Blocked_Enemies[i]);
             }
         }

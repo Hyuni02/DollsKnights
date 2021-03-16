@@ -3667,7 +3667,13 @@ MonoBehaviour:
     - {fileID: 7029471888309474893}
     - {fileID: 7029471888882729312}
   WaveEnd: 0
-  waves: []
+  waves:
+  - Delay_start: 0
+    Interval_spawn: 0
+    Index_enemy: 2
+    Level_enemy: 1
+    Count_spawn: 1
+    Index_route: 0
 --- !u!1 &7029471888535173771
 GameObject:
   m_ObjectHideFlags: 0

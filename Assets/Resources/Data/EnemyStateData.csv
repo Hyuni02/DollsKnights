@@ -1,4 +1,4 @@
 ﻿name,type,hp,_hp,damage,_damage,accuracy,_accuracy,eavsion,_evasion,rateoffire,_rateoffire,armor,_armor,speed,armorpen,range
-Prolwer,melee,63,1.62,1,0.02,5,0.13,0,0.03,30,0,0,0,30,0,0
-Scout,melee,75,1.95,2,0.04,5,0.13,2,0.13,45,0,0,0,50,0,0
-Ripper,range,200,5.2,2,0.04,5,0.15,1,0.12,40,0,0,0,30,0,1
+Prolwer,melee,63,1.62,1,0.02,5,0.13,0,0.03,30,0,0,0,15,0,0
+Scout,melee,75,1.95,2,0.04,5,0.13,2,0.13,45,0,0,0,25,0,0
+Ripper,range,200,5.2,2,0.04,5,0.15,1,0.12,40,0,0,0,15,0,1.5

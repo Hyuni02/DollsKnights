@@ -23,16 +23,29 @@ public class EnemyController : CharacterBase {
 
         switch (type) {
             case Type.melee:
-                if (blocked) {
+                if (blocked) 
                     state = State.attack;
-                }
-                else {
+                else 
                     state = State.move;
-                }
+
                 break;
 
             case Type.range:
-
+                if (blocked) {
+                    if (now_animation == "move") {
+                        state = State.wait;
+                        PlayAnimation("wait");
+                    }
+                    state = State.attack;
+                }
+                else {
+                    if (Timer_attack <= 0 && !attacking && Target != null) {
+                        state = State.attack;
+                    }
+                    else {
+                        state = State.move;
+                    }
+                }
                 break;
         }
 
@@ -48,6 +61,9 @@ public class EnemyController : CharacterBase {
                 blocked = true;
             }
             else
+                Blocker = null;
+
+            if (GetDistance(Blocker) > 0.7f && !attacking)
                 Blocker = null;
         }
     }
