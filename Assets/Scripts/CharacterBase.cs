@@ -222,7 +222,11 @@ public abstract class CharacterBase : MonoBehaviour {
 
     }
 
+
     private void OnDrawGizmosSelected() {
+        if (!Application.isPlaying)
+            return;
+
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, fs.range);
     }

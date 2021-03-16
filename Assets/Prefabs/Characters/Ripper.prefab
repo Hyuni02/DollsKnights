@@ -874,7 +874,9 @@ MonoBehaviour:
   Node_StandOn: {fileID: 0}
   attacking: 0
   placed: 0
+  attackable: 0
   Timer_attack: 0
+  Target: {fileID: 0}
   RouteToMove: []
   uac: {fileID: 0}
   fs: {fileID: 0}
