@@ -192,36 +192,42 @@ public abstract class CharacterBase : MonoBehaviour {
         Target = target;
     }
     public void GetAttacked(int dmg, int acc, float critrate = 0, int armorpen = 0) {
+        DamageIndicator indicator = InGameManager.instance.GetIndicator();
+        indicator.transform.position = transform.position;
         //회피-명중 계산
         //-명중 시
         if (acc > Random.Range(0, acc + fs.evasion)) {
             //장갑 판정
-            if (armorpen < fs.armor) {
-                fs.hp -= 1;
-                ViewDmgIndicator(1, false, true);
-                return;
+            if (fs.armor > 0) {
+                if (armorpen <= fs.armor) {
+                    fs.hp -= 1;
+                    indicator.SetIndicator(DamageIndicator.Type.block, dmg, transform.position);
+                    return;
+                }
+                else {
+                    int blockeddmg = dmg - fs.armor;
+                    fs.hp -= blockeddmg;
+                    indicator.SetIndicator(DamageIndicator.Type.block, blockeddmg, transform.position);
+                    return;
+                }
             }
 
             //치명타 판정
             if(critrate > Random.Range(0, 1)) {
                 int critdmg = (int)(dmg * 1.5f);
                 fs.hp -= critdmg;
-                ViewDmgIndicator(critdmg, true);
+                indicator.SetIndicator(DamageIndicator.Type.crit, critdmg, transform.position);
                 return;
             }
 
             fs.hp -= dmg;
-            ViewDmgIndicator(dmg);
+            indicator.SetIndicator(DamageIndicator.Type.hit, dmg, transform.position);
         }
         //-회피 시
         else {
-            ViewDmgIndicator(0, false, false, true);
+            indicator.SetIndicator(DamageIndicator.Type.miss, dmg, transform.position);
         }
     }
-    void ViewDmgIndicator(int dmg, bool crit = false, bool blocked = false, bool eva = false) {
-
-    }
-
 
     private void OnDrawGizmosSelected() {
         if (!Application.isPlaying)

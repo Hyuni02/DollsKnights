@@ -9,6 +9,7 @@ public class InGameManager : MonoBehaviour {
     public List<DollData> Formated_Dolls;
     public List<GameObject> Spawned_Dolls;
     public List<GameObject> Spawned_Enemies;
+    Queue<DamageIndicator> indicator_Pool = new Queue<DamageIndicator>();
 
     public GameObject StartNode;
     public GameObject EndNode;
@@ -47,7 +48,34 @@ public class InGameManager : MonoBehaviour {
             }
         }
 
-        //스포닝 풀 생성
+        //데미지 텍스트 스포닝 풀 생성
+        for(int i = 0; i < 20; i++) {
+            indicator_Pool.Enqueue(CreateIndicator());
+        }
+    }
+
+    public DamageIndicator CreateIndicator() {
+        GameObject obj
+            = Instantiate(InGameUIContainer.instance.Indicator, InGameUIContainer.instance.Indicator_Container.transform);
+        obj.SetActive(false);
+        obj.GetComponent<Canvas>().worldCamera = Camera.main;
+        return obj.GetComponent<DamageIndicator>();
+    }
+    public DamageIndicator GetIndicator() {
+        if(indicator_Pool.Count > 0) {
+            DamageIndicator indicator = indicator_Pool.Dequeue();
+            indicator.gameObject.SetActive(true);
+            return indicator;
+        }
+        else {
+            DamageIndicator newindicator = CreateIndicator();
+            newindicator.gameObject.SetActive(true);
+            return newindicator;
+        }
+    }
+    public void ReturnIndicator(DamageIndicator obj) {
+        obj.gameObject.SetActive(false);
+        indicator_Pool.Enqueue(obj);
     }
 
 
@@ -196,6 +224,7 @@ public class InGameManager : MonoBehaviour {
 
         //TODO
     }
+
 
     private bool IsPointerOverUIObject() {//터치가 UI를 뚫고 지나가 뒤에 있는 오브젝트에 닿는 것을 막는 함수
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);

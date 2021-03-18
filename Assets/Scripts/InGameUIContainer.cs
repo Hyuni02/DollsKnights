@@ -7,6 +7,8 @@ public class InGameUIContainer : MonoBehaviour
 {
     public static InGameUIContainer instance;
 
+    public GameObject Indicator_Container;
+    public GameObject Indicator;
     [Header("Canvas")]
     public Canvas Canvas_FormatedDolls;
     public Canvas Canvas_DollInfo;
