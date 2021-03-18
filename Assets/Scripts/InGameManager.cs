@@ -49,7 +49,7 @@ public class InGameManager : MonoBehaviour {
         }
 
         //데미지 텍스트 스포닝 풀 생성
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 10; i++) {
             indicator_Pool.Enqueue(CreateIndicator());
         }
     }

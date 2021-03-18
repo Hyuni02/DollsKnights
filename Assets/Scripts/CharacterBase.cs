@@ -213,7 +213,7 @@ public abstract class CharacterBase : MonoBehaviour {
             }
 
             //치명타 판정
-            if(critrate > Random.Range(0, 1)) {
+            if(critrate * 100 > Random.Range(0, 100)) {
                 int critdmg = (int)(dmg * 1.5f);
                 fs.hp -= critdmg;
                 indicator.SetIndicator(DamageIndicator.Type.crit, critdmg, transform.position);
