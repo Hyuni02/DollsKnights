@@ -17,26 +17,27 @@ public class DamageIndicator : MonoBehaviour
         switch (type) {
             case Type.miss:
                 //글씨 색 설정
+                text.color = Color.gray;
                 text.text = "miss";
                 break;
             case Type.hit:
                 //글씨 색 설정
-
+                text.color = Color.red;
                 break;
             case Type.crit:
                 //글씨 색 설정
-
+                text.color = Color.magenta;
                 break;
             case Type.block:
                 //글씨 색 설정
-
+                text.color = Color.yellow;
                 break;
         }
         StartCoroutine(destroy());
     }
 
     IEnumerator destroy() {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         InGameManager.instance.ReturnIndicator(gameObject.GetComponent<DamageIndicator>());
     }
 }
