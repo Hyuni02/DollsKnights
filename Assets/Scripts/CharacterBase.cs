@@ -25,9 +25,18 @@ public abstract class CharacterBase : MonoBehaviour {
     [HideInInspector]
     public FinalState fs;
 
+    //[HideInInspector]
+    public Slider Slider_HPBar, Slider_SkillBar;
+    //[HideInInspector]
+    public GameObject BuffIconViewer;
+
     public virtual void Start() {
         uac = GetComponentInChildren<UnityArmatureComponent>();
         fs = GetComponent<FinalState>();
+
+        //Slider_HPBar = transform.Find("Slider_HPBar").GetComponent<Slider>();
+        //Slider_SkillBar = transform.Find("Slider_SkillBar").GetComponent<Slider>();
+        //BuffIconViewer = transform.Find("BuffIconViewer").gameObject;
 
         Check_Node_Stand();
         Timer_attack = 1;
@@ -191,7 +200,7 @@ public abstract class CharacterBase : MonoBehaviour {
     public void SetTarget(GameObject target = null) {
         Target = target;
     }
-    public void GetAttacked(int dmg, int acc, float critrate = 0, int armorpen = 0) {
+    public virtual void GetAttacked(int dmg, int acc, float critrate = 0, int armorpen = 0) {
         DamageIndicator indicator = InGameManager.instance.GetIndicator();
         indicator.transform.position = transform.position;
         //회피-명중 계산
@@ -227,6 +236,7 @@ public abstract class CharacterBase : MonoBehaviour {
         else {
             indicator.SetIndicator(DamageIndicator.Type.miss, dmg, transform.position);
         }
+
     }
 
     private void OnDrawGizmosSelected() {
