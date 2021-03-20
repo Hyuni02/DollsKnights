@@ -25,18 +25,18 @@ public abstract class CharacterBase : MonoBehaviour {
     [HideInInspector]
     public FinalState fs;
 
-    //[HideInInspector]
+    [HideInInspector]
     public Slider Slider_HPBar, Slider_SkillBar;
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject BuffIconViewer;
 
     public virtual void Start() {
         uac = GetComponentInChildren<UnityArmatureComponent>();
         fs = GetComponent<FinalState>();
 
-        //Slider_HPBar = transform.Find("Slider_HPBar").GetComponent<Slider>();
-        //Slider_SkillBar = transform.Find("Slider_SkillBar").GetComponent<Slider>();
-        //BuffIconViewer = transform.Find("BuffIconViewer").gameObject;
+        Slider_HPBar = transform.Find("Canvas_InGameDoll").transform.Find("Slider_HPBar").GetComponent<Slider>();
+        Slider_SkillBar = transform.Find("Canvas_InGameDoll").transform.Find("Slider_SkillBar").GetComponent<Slider>();
+        BuffIconViewer = transform.Find("Canvas_InGameDoll").transform.Find("BuffIconViewer").gameObject;
 
         Check_Node_Stand();
         Timer_attack = 1;

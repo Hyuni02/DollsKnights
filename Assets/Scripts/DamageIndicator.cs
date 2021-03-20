@@ -16,20 +16,16 @@ public class DamageIndicator : MonoBehaviour
 
         switch (type) {
             case Type.miss:
-                //글씨 색 설정
                 text.color = Color.gray;
                 text.text = "miss";
                 break;
             case Type.hit:
-                //글씨 색 설정
-                text.color = Color.red;
+                text.color = Color.black;
                 break;
             case Type.crit:
-                //글씨 색 설정
-                text.color = Color.magenta;
+                text.color = Color.red;
                 break;
             case Type.block:
-                //글씨 색 설정
                 text.color = Color.yellow;
                 break;
         }
