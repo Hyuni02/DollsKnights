@@ -41,10 +41,16 @@ public class InGameUIContainer : MonoBehaviour
     public Text Text_skillname;
 
     [Header("GameInfo")]
+    public Text Text_EnemyCount;
+    public Text Text_Life;
+
     public GameObject Panel_Pause;
     public Button Button_Pause;
     public Button Button_Resume;
     public Button Button_Quit;
+
+    public GameObject Panel_Clear;
+    public GameObject Panel_Fail;
 
     void Awake() {
         instance = this;
@@ -54,7 +60,11 @@ public class InGameUIContainer : MonoBehaviour
         Close_Panel_DollInfo();
         Close_Panel_FormatedDolls();
         Close_Panel_Pause();
+
+        UpdateEnemyCount();
+        UpdateRemainLife();
     }
+
 
     //Pause
     public void Open_Panel_Pause() {
@@ -99,5 +109,19 @@ public class InGameUIContainer : MonoBehaviour
         InGameManager.instance.SelectedDoll.GetComponent<DollController>().Retreat();
         UpdateButtonState();
         Close_Panel_DollInfo();
+    }
+    public void UpdateEnemyCount() {
+        Text_EnemyCount.text
+            = InGameManager.instance.EliminatedEnemyCount.ToString() + "/" + InGameManager.instance.TotalEnemyCount.ToString();
+    }
+    public void UpdateRemainLife() {
+        Text_Life.text = InGameManager.instance.RemainLife.ToString();
+    }
+
+    public void Open_Panel_Victory() {
+        Panel_Clear.SetActive(true);
+    }
+    public void Open_Panel_Defeat() {
+        Panel_Fail.SetActive(true);
     }
 }

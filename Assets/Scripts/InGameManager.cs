@@ -19,12 +19,24 @@ public class InGameManager : MonoBehaviour {
 
     public GameObject SelectedDoll;
 
+    public int RemainLife;
+    public int EliminatedEnemyCount = 0;
+    public int TotalEnemyCount = 0;
+
+    GameObject Map;
+    bool checking = false;
+    bool check_fin = false;
+
     void Awake() {
         instance = this;
     }
 
     void Start() {
-        GameObject Map = Instantiate(LevelContainer.instance.Levels[GameManager.instance.Index_SelectedLevel]);
+        InGameUIContainer.instance.Panel_Clear.SetActive(false);
+        InGameUIContainer.instance.Panel_Fail.SetActive(false);
+        InGameUIContainer.instance.Panel_Pause.SetActive(false);
+
+       Map = Instantiate(LevelContainer.instance.Levels[GameManager.instance.Index_SelectedLevel]);
 
         //선택한 제대 생성
         for (int target_echlon = 0; target_echlon < GameManager.instance.Index_SelectedEchlons.Count; target_echlon++) {
@@ -52,6 +64,14 @@ public class InGameManager : MonoBehaviour {
         for(int i = 0; i < 7; i++) {
             indicator_Pool.Enqueue(CreateIndicator());
         }
+
+        //목숨 가져오기
+        RemainLife = Map.GetComponent<LevelInfo>().life;
+
+        //총 적 수 가져오기
+        for (int i = 0; i < Map.GetComponent<LevelInfo>().waves.Length; i++) {
+            TotalEnemyCount += Map.GetComponent<LevelInfo>().waves[i].Count_spawn;
+        }
     }
 
     public DamageIndicator CreateIndicator() {
@@ -78,18 +98,21 @@ public class InGameManager : MonoBehaviour {
         indicator_Pool.Enqueue(obj);
     }
 
-
     void Update() {
         DollInfo_Update_HPBar();
         DollInfo_Update_SkillCool();
 
-
+        //조작
         if (!IsPointerOverUIObject()) {
             GetMouseInput();
             CheckInputType();
         }
 
+        if (Map.GetComponent<LevelInfo>().WaveEnd && !checking && !check_fin) {
+            checking = true;
 
+            InvokeRepeating("CheckVictory", 0.7f, 0.7f);
+        }
     }
 
     void GetMouseInput() {
@@ -197,7 +220,7 @@ public class InGameManager : MonoBehaviour {
 
         _Reset();
     }
-    public void ViewDollInfo(GameObject doll) {
+    void ViewDollInfo(GameObject doll) {
         InGameUIContainer.instance.Open_Panel_DollInfo(doll);
     }
     GameObject FindDoll(GameObject node) {
@@ -225,6 +248,27 @@ public class InGameManager : MonoBehaviour {
         //TODO
     }
 
+    public void LifeLossAlert() {
+        //TODO
+        print("Life Loss!!");
+    }
+
+    bool alldied;
+    public void CheckVictory() {
+        alldied = true;
+        for(int i = 0; i < Spawned_Enemies.Count; i++) {
+            if (Spawned_Enemies[i].activeSelf) {
+                alldied = false;
+                return;
+            }
+        }
+        check_fin = true;
+        InGameUIContainer.instance.Open_Panel_Victory();
+    }
+    public void Defeat() {
+        Time.timeScale = 0;
+        InGameUIContainer.instance.Open_Panel_Defeat();
+    }
 
     private bool IsPointerOverUIObject() {//터치가 UI를 뚫고 지나가 뒤에 있는 오브젝트에 닿는 것을 막는 함수
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);

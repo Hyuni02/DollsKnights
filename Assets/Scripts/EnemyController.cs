@@ -9,6 +9,8 @@ public class EnemyController : CharacterBase {
     public bool blocked = false;
     public GameObject Blocker;
 
+    bool arrive = false;
+
     //public override void Start() {
 
     //}
@@ -50,8 +52,33 @@ public class EnemyController : CharacterBase {
         }
 
         CheckBlocked();
+        CheckArrive();
     }
 
+    public override void die() {
+        InGameManager.instance.EliminatedEnemyCount++;
+        InGameUIContainer.instance.UpdateEnemyCount();
+        base.die();
+    }
+
+    //목표 지점 도달 확인
+    void CheckArrive() {
+        if (!arrive && RouteToMove.Count == 0) {
+            InGameManager.instance.RemainLife--;
+            InGameManager.instance.EliminatedEnemyCount++;
+            InGameUIContainer.instance.UpdateRemainLife();
+            InGameUIContainer.instance.UpdateEnemyCount();
+
+            arrive = true;
+            InGameManager.instance.LifeLossAlert();
+
+            if (InGameManager.instance.RemainLife <= 0)
+                InGameManager.instance.Defeat();
+
+            gameObject.SetActive(false);
+        }
+    }
+    //저지 당함 확인
     void CheckBlocked() {
         if (Blocker == null)
             blocked = false;
@@ -67,7 +94,7 @@ public class EnemyController : CharacterBase {
                 Blocker = null;
         }
     }
-
+    //피격
     public override void GetAttacked(int dmg, int acc, float critrate = 0, int armorpen = 0) {
         base.GetAttacked(dmg, acc, critrate, armorpen);
 

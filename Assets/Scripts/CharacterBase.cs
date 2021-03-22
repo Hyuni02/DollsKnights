@@ -11,7 +11,7 @@ public abstract class CharacterBase : MonoBehaviour {
     public string Name, now_animation;
     public GameObject Node_StandOn;
     [HideInInspector]
-    public bool attacking = false;
+    public bool attacking = false, dying = false;
     public bool placed = false;
     public bool attackable;
 
@@ -68,7 +68,7 @@ public abstract class CharacterBase : MonoBehaviour {
             attacking = false;
         }
 
-        if (attacking)
+        if (attacking || dying)
             return;
 
         switch (state) {
@@ -82,6 +82,7 @@ public abstract class CharacterBase : MonoBehaviour {
                 }
                 break;
             case State.die:
+                dying = true;
                 Invoke("die", 0.7f);
                 PlayAnimation(state.ToString(), 1, 1);
                 break;

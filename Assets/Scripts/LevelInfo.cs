@@ -56,7 +56,7 @@ public class LevelInfo : MonoBehaviour
 
     void StartWave() {
         if (now_wave < waves.Length - 1) {
-            print("Wave " + (now_wave + 1));
+            //print("Wave " + (now_wave + 1));
             now_wave++;
             StartCoroutine(MakeWave(waves[now_wave]));
         }
@@ -73,7 +73,8 @@ public class LevelInfo : MonoBehaviour
         }
 
         //경로 표시기 출력
-        print("Draw Route Visualizer");
+        //TODO
+        //print("Draw Route Visualizer");
 
         yield return new WaitForSeconds(_wave.Delay_start);
         for (int i = 0; i < _wave.Count_spawn; i++) {
@@ -93,7 +94,7 @@ public class LevelInfo : MonoBehaviour
         StartWave();
     }
 
-    //--------------------------------------------------------
+    //-------에디터에서 맵 제작용-----------------------------------
 
     [ContextMenu("Instantiate Level")]
     public void InstantiateLevel() {
