@@ -73,7 +73,7 @@ public abstract class CharacterBase : MonoBehaviour {
 
         switch (state) {
             case State.attack:
-                if (Timer_attack <= 0 && Target != null) {
+                if (Timer_attack <= 0 && Target != null && Target.GetComponent<FinalState>().hp > 0) {
                     attacking = true;
                     attack();
                     float t = 1 / (fs.rateoffire * 0.02f);
@@ -91,7 +91,7 @@ public abstract class CharacterBase : MonoBehaviour {
                 PlayAnimation(state.ToString(), 1, 1);
                 break;
             case State.wait:
-
+                wait();
                 PlayAnimation(state.ToString());
                 break;
             case State.victory:
@@ -115,6 +115,7 @@ public abstract class CharacterBase : MonoBehaviour {
 
     public virtual void attack() {
         //print(gameObject.name + " attacked " + Target.name);
+        SetFaceDir(Target.transform.position.x);
         Target.GetComponent<CharacterBase>().GetAttacked(fs.damage, fs.accuracy, fs.critrate, fs.armorpen);
     }
     public virtual void move() {
@@ -134,6 +135,9 @@ public abstract class CharacterBase : MonoBehaviour {
             }
         }
     }
+    public virtual void wait() {
+        SetFaceDir(InGameManager.instance.Map.GetComponent<LevelInfo>().Dir_Standard.transform.position.x);
+    }
     public virtual void die() {
         gameObject.SetActive(false);
     }
@@ -147,7 +151,7 @@ public abstract class CharacterBase : MonoBehaviour {
         }
     }
 
-    void SetFaceDir(float Target_PosX) {
+    public void SetFaceDir(float Target_PosX) {
         if (Target_PosX > transform.position.x)
             uac.armature.flipX = false;
         else if (Target_PosX == transform.position.x)

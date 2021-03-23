@@ -40,7 +40,10 @@ public class Button_FormatedDollInfo : MonoBehaviour
         model.SetActive(true);
         placed = true;
         model.GetComponent<DollController>().placed = true;
+
         InGameUIContainer.instance.UpdateButtonState();
         InGameUIContainer.instance.Close_Panel_FormatedDolls();
+
+
     }
 }

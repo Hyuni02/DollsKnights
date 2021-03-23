@@ -23,7 +23,8 @@ public class InGameManager : MonoBehaviour {
     public int EliminatedEnemyCount = 0;
     public int TotalEnemyCount = 0;
 
-    GameObject Map;
+    [HideInInspector]
+    public GameObject Map;
     bool checking = false;
     bool check_fin = false;
 

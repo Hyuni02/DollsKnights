@@ -22,7 +22,6 @@ public class LevelInfo : MonoBehaviour
     public string title;
     public Vector2 MapSize;
 
-    //waves
     //rewards
     public int max_echlon_count;
     public int life;
@@ -30,6 +29,7 @@ public class LevelInfo : MonoBehaviour
     [SerializeField]
     private GameObject Default_Node;
     public List<GameObject> Nodes;
+    public GameObject Dir_Standard;
     [SerializeField]
     public Route[] routes;
 
