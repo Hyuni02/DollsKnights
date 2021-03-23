@@ -198,10 +198,9 @@ public class GetData : MonoBehaviour
         //--기본 인형 설정
         //Todo
         foreach (DollData doll in List_DollData) {
-            doll.level = 1;
+            doll.level = 0;
         }
    
-
         //새로운 파일 생성
         SaveDollDataFile();
         print("Create New DollData.json File");
@@ -227,6 +226,12 @@ public class GetData : MonoBehaviour
     }
 
     public void Instantiate_Doll_ButtonList() {
+        for(int i = List_DollButton.Count - 1; i >=0; i--) {
+            Destroy(List_DollButton[i]);
+        }
+
+        List_DollButton.Clear();
+
         foreach (DollData doll in List_DollData) {
             if (doll.level > 0) {
                 for(int i = 0; i < DollContainer.instance.Dolls.Count; i++) {

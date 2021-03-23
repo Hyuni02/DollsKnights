@@ -7,7 +7,7 @@ using DragonBones;
 public abstract class CharacterBase : MonoBehaviour {
     public enum State { wait, move, attack, die, victory, victoryloop}
     public State state;
-    //[HideInInspector]
+    [HideInInspector]
     public string Name, now_animation;
     public GameObject Node_StandOn;
     [HideInInspector]
