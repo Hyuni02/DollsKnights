@@ -229,7 +229,6 @@ public class GetData : MonoBehaviour
         for(int i = List_DollButton.Count - 1; i >=0; i--) {
             Destroy(List_DollButton[i]);
         }
-
         List_DollButton.Clear();
 
         foreach (DollData doll in List_DollData) {
@@ -319,7 +318,6 @@ public class GetData : MonoBehaviour
                     int level = List_DollData[index_doll].level;
                     //레벨 이용해서 계산/대입
                     //UIContainer_DollList.instance.Image_Level = 
-                    //UIContainer_DollList.instance.Image_Skill_Icon = 
                     UIContainer_DollList.instance.Image_Sprite.sprite = DollContainer.instance.Dolls[index_doll].GetComponent<DollController>().Sprite_Doll;
                     UIContainer_DollList.instance.Text_acc.text = "명중 " + (List_DollState[index_doll].accuracy + (int)(List_DollState[index_doll]._accuracy * (level - 1))).ToString();
                     UIContainer_DollList.instance.Text_armor.text = "장갑 " + (List_DollState[index_doll].armor + (int)(List_DollState[index_doll]._armor * (level - 1))).ToString();
@@ -332,13 +330,16 @@ public class GetData : MonoBehaviour
                     UIContainer_DollList.instance.Text_hp.text = "체력 " + (List_DollState[index_doll].hp + (int)(List_DollState[index_doll]._hp * (level - 1))).ToString();
                     UIContainer_DollList.instance.Text_Level.text = level.ToString();
                     UIContainer_DollList.instance.Text_Name.text = List_DollState[index_doll].name;
-                    //UIContainer_DollList.instance.Text_Potential = 
                     UIContainer_DollList.instance.Text_rof.text = "사속 " + (List_DollState[index_doll].rateoffire + (int)(List_DollState[index_doll]._rateoffire * (level - 1))).ToString();
-                    //UIContainer_DollList.instance.Text_Skill_CoolTime.text =
-                    //UIContainer_DollList.instance.Text_Skill_Duration.text = 
-                    //UIContainer_DollList.instance.Text_Skill_Explaination.text = 
-                    //UIContainer_DollList.instance.Text_Skill_Name.text = 
                     UIContainer_DollList.instance.Text_speed.text = "기동 " + List_DollState[index_doll].speed.ToString();
+
+                    SkillBase sb = DollContainer.instance.Dolls[index_doll].GetComponent<SkillBase>();
+                    UIContainer_DollList.instance.Image_Skill_Icon.sprite = sb.skill_icon;
+                    UIContainer_DollList.instance.Text_Skill_CoolTime.text = "쿨타임:" + sb.skill_Cooltime[level].ToString();
+                    UIContainer_DollList.instance.Text_Skill_Duration.text = "지속시간:" + sb.skill_Duration[level].ToString();
+                    sb.SkillDescribe();
+                    UIContainer_DollList.instance.Text_Skill_Explaination.text = sb.skill_describe;
+                    UIContainer_DollList.instance.Text_Skill_Name.text = sb.skill_name;
 
                     MainMenuSceneController.instance.Show_DollInfo();
                 }

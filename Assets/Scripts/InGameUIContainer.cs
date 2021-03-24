@@ -39,6 +39,7 @@ public class InGameUIContainer : MonoBehaviour
     public Button Button_Skill;
     public Image Image_skill;
     public Text Text_skillname;
+    public Text Text_skilldescribe;
 
     [Header("GameInfo")]
     public Text Text_EnemyCount;
@@ -92,6 +93,14 @@ public class InGameUIContainer : MonoBehaviour
         Text_block.text = "BLK." + dc.fs.block.ToString();
         Text_dmg.text = "DMG." + dc.fs.damage.ToString();
         Text_eva.text = "EVA." + dc.fs.evasion.ToString();
+
+        SkillBase sb = doll.GetComponent<SkillBase>();
+        Image_skill.sprite = sb.skill_icon;
+        Button_Skill.image.sprite = sb.skill_icon;
+        Text_skillname.text = sb.skill_name;
+        sb.SkillDescribe();
+        Text_skilldescribe.text = sb.skill_describe;
+
         //체력바, 스킬 쿨은 InGameManager Update에서
         Panel_DollInfo.SetActive(true);
     }

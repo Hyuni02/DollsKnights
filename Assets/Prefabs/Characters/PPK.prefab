@@ -985,6 +985,7 @@ GameObject:
   - component: {fileID: -3961775093076925009}
   - component: {fileID: 4871938635096453369}
   - component: {fileID: 2390288076817229910}
+  - component: {fileID: -7040657547989999788}
   m_Layer: 0
   m_Name: PPK
   m_TagString: Untagged
@@ -1107,6 +1108,7 @@ MonoBehaviour:
   now_animation: 
   Node_StandOn: {fileID: 0}
   attacking: 0
+  dying: 0
   placed: 0
   attackable: 0
   Timer_attack: 0
@@ -1133,6 +1135,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7040657547989999788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560506200609923633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74aa80264b499b646ae302eef1233250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill_name: "\uC0AC\uB0E5\uC2E0\uD638"
+  skill_describe_form: "\uD544\uB4DC \uC704\uC758 \uBAA8\uB4E0 \uC778\uD615\uC5D0\uAC8C
+    \uC0AC\uC18D _rof% \uC99D\uAC00, \uCE58\uBA85\uB960 _crit% \uC99D\uAC00"
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: aca2057a90951cf40bb49469c06c8c53, type: 3}
+  type: 0
+  skill_InitCooltime: 6
+  skill_Cooltime:
+  - 15
+  - 14.7
+  - 14.3
+  - 14
+  - 13.7
+  - 13.3
+  - 13
+  - 12.7
+  - 12.3
+  - 12
+  skill_Duration:
+  - 5
+  - 6
+  - 6
+  - 6
+  - 7
+  - 7
+  - 7
+  - 8
+  - 8
+  - 8
+  actoActive: 0
+  increase_rof: 06000000060000000700000007000000080000000800000009000000090000000a0000000a000000
+  increase_crit: 190000001a0000001b0000001c0000001d0000001f00000020000000210000002200000023000000
 --- !u!1 &1560506200612701117
 GameObject:
   m_ObjectHideFlags: 0
