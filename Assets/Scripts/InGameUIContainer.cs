@@ -67,7 +67,6 @@ public class InGameUIContainer : MonoBehaviour
         UpdateRemainLife();
     }
 
-
     //Pause
     public void Open_Panel_Pause() {
         Time.timeScale = 0;

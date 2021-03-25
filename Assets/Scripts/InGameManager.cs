@@ -117,6 +117,10 @@ public class InGameManager : MonoBehaviour {
 
             InvokeRepeating("CheckVictory", 0.7f, 0.7f);
         }
+
+        //temp
+        if (SelectedDoll == null)
+            InGameUIContainer.instance.Close_Panel_DollInfo();
     }
 
     void GetMouseInput() {
@@ -195,8 +199,9 @@ public class InGameManager : MonoBehaviour {
             //움직일 인형의 존재 확인
             SelectedDoll = FindDoll(StartNode);
             if (SelectedDoll != null) {
+                sb = SelectedDoll.GetComponent<SkillBase>();
                 //지정한 경로의 유효성 확인
-                for(int i = 0; i < DragedNodes.Count; i++) {
+                for (int i = 0; i < DragedNodes.Count; i++) {
                     if(DragedNodes[i].GetComponent<NodeInfo>().type != StartNode.GetComponent<NodeInfo>().type
                         || !DragedNodes[i].GetComponent<NodeInfo>().placeable) {
                         print("Wrong Route");
@@ -226,7 +231,6 @@ public class InGameManager : MonoBehaviour {
     }
     void ViewDollInfo(GameObject doll) {
         InGameUIContainer.instance.Open_Panel_DollInfo(doll);
-        sb = SelectedDoll.GetComponent<SkillBase>();
     }
     GameObject FindDoll(GameObject node) {
         for (int i = 0; i < Spawned_Dolls.Count; i++) {
@@ -246,22 +250,20 @@ public class InGameManager : MonoBehaviour {
             return;
 
         InGameUIContainer.instance.Text_hp.text = "HP." + SelectedDoll.GetComponent<FinalState>().hp.ToString();
-        InGameUIContainer.instance.Slider_hp.value
-           = (float)SelectedDoll.GetComponent<FinalState>().hp / (float)SelectedDoll.GetComponent<OriginalState>().dollstate.hp;
+        InGameUIContainer.instance.Slider_hp.maxValue = SelectedDoll.GetComponent<OriginalState>().maxHP;
+        InGameUIContainer.instance.Slider_hp.value = SelectedDoll.GetComponent<FinalState>().hp;
     }
     void DollInfo_Update_SkillCool() {
         if (SelectedDoll == null)
             return;
 
-
         //TODO
-
         if(sb.skill_duration_timer > 0) {
             InGameUIContainer.instance.Button_Skill.interactable = false;
             InGameUIContainer.instance.Image_skill_timer.color = Color.green;
             InGameUIContainer.instance.Image_skill_timer.fillAmount = sb.skill_duration_timer / sb.GetDuration();
         }
-        else if (sb.skill_cool_timer > 0) {
+        else if (sb.skill_cool_timer > 0 && sb.skill_duration_timer <= 0) {
             InGameUIContainer.instance.Button_Skill.interactable = false;
             InGameUIContainer.instance.Image_skill_timer.color = Color.gray;
             InGameUIContainer.instance.Image_skill_timer.fillAmount = sb.skill_cool_timer / sb.GetCoolDown();

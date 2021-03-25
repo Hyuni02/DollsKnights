@@ -24,6 +24,8 @@ public abstract class SkillBase : MonoBehaviour
 
     public void Start() {
         skill_cool_timer = skill_InitCooltime;
+
+        GetLevel();
     }
     public void Update() {
         if(skill_cool_timer >= 0)
@@ -36,7 +38,7 @@ public abstract class SkillBase : MonoBehaviour
         return skill_name;
     }
 
-    public virtual void SkillDescribe() {
+    public void GetLevel() {
         for (int i = 0; i < GetData.instance.List_DollData.Count; i++) {
             if (GetData.instance.List_DollData[i].name.Equals(transform.name.Replace("(Clone)", ""))) {
                 level = GetData.instance.List_DollData[i].level;
@@ -44,11 +46,14 @@ public abstract class SkillBase : MonoBehaviour
             }
         }
     }
+    public virtual void SkillDescribe() {
+        GetLevel();
+    }
     public virtual float GetDuration() {
-        return skill_Duration[level];
+        return skill_Duration[level - 1];
     }
     public virtual float GetCoolDown() {
-        return skill_Cooltime[level];
+        return skill_Cooltime[level - 1];
     }
 
     public abstract void SkillActive();

@@ -37,6 +37,7 @@ public class Button_FormatedDollInfo : MonoBehaviour
                 break;
         }
 
+        model.GetComponent<DollController>().Node_StandOn = InGameManager.instance.SelectedNode;
         model.SetActive(true);
         placed = true;
         model.GetComponent<DollController>().placed = true;

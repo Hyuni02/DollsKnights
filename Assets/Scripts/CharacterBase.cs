@@ -24,6 +24,7 @@ public abstract class CharacterBase : MonoBehaviour {
     public UnityArmatureComponent uac;
     [HideInInspector]
     public FinalState fs;
+    OriginalState os;
 
     [HideInInspector]
     public Slider Slider_HPBar, Slider_SkillBar;
@@ -34,11 +35,15 @@ public abstract class CharacterBase : MonoBehaviour {
         uac = GetComponentInChildren<UnityArmatureComponent>();
         fs = GetComponent<FinalState>();
 
+        os = GetComponent<OriginalState>();
+        os.SetState();
         Slider_HPBar = transform.Find("Canvas_InGameDoll").transform.Find("Slider_HPBar").GetComponent<Slider>();
+        Slider_HPBar.maxValue = os.maxHP;
+        Slider_HPBar.value = os.maxHP;
         Slider_SkillBar = transform.Find("Canvas_InGameDoll").transform.Find("Slider_SkillBar").GetComponent<Slider>();
         BuffIconViewer = transform.Find("Canvas_InGameDoll").transform.Find("BuffIconViewer").gameObject;
 
-        Check_Node_Stand();
+        //Check_Node_Stand();
         Timer_attack = 1;
         InvokeRepeating("SearchTarget", 0, 0.1f);
     }
@@ -142,14 +147,14 @@ public abstract class CharacterBase : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    void Check_Node_Stand() {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position + new Vector3(0,0.15f,0), Vector3.down * 0.2f, out hit)) {
-            if (hit.collider.GetComponent<NodeInfo>()) {
-                Node_StandOn = hit.collider.gameObject;
-            }
-        }
-    }
+    //void Check_Node_Stand() {
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(transform.position + new Vector3(0,0.15f,0), Vector3.down * 0.2f, out hit)) {
+    //        if (hit.collider.GetComponent<NodeInfo>()) {
+    //            Node_StandOn = hit.collider.gameObject;
+    //        }
+    //    }
+    //}
 
     public void SetFaceDir(float Target_PosX) {
         if (Target_PosX > transform.position.x)
