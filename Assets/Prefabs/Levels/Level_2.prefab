@@ -3669,7 +3669,7 @@ MonoBehaviour:
     - {fileID: 7029471888882729312}
   WaveEnd: 0
   waves:
-  - Delay_start: 0
+  - Delay_start: 60
     Interval_spawn: 0
     Index_enemy: 2
     Level_enemy: 1

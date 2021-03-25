@@ -43,7 +43,5 @@ public class Button_FormatedDollInfo : MonoBehaviour
 
         InGameUIContainer.instance.UpdateButtonState();
         InGameUIContainer.instance.Close_Panel_FormatedDolls();
-
-
     }
 }

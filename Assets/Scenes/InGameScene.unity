@@ -2529,6 +2529,7 @@ MonoBehaviour:
   EliminatedEnemyCount: 0
   TotalEnemyCount: 0
   Map: {fileID: 0}
+  buff: {fileID: 2111770217990403569, guid: c722f4f7c2b90d842b5b497f4191905a, type: 3}
 --- !u!114 &1487363050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2581,6 +2582,7 @@ MonoBehaviour:
   Image_skill: {fileID: 1037316182814868787}
   Text_skillname: {fileID: 1037316183646549649}
   Text_skilldescribe: {fileID: 265673206}
+  Image_skill_timer: {fileID: 1037316183543971070}
   Text_EnemyCount: {fileID: 1737868574}
   Text_Life: {fileID: 1365272681}
   Panel_Pause: {fileID: 1872518165}
@@ -3921,9 +3923,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: UseSkill
+      - m_Target: {fileID: 1487363049}
+        m_TargetAssemblyTypeName: InGameManager, Assembly-CSharp
+        m_MethodName: UseDollSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3933,9 +3935,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ClosePanel_DollInfo
+      - m_Target: {fileID: 1487363051}
+        m_TargetAssemblyTypeName: InGameUIContainer, Assembly-CSharp
+        m_MethodName: Close_Panel_DollInfo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

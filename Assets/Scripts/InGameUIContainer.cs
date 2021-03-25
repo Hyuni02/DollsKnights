@@ -40,6 +40,7 @@ public class InGameUIContainer : MonoBehaviour
     public Image Image_skill;
     public Text Text_skillname;
     public Text Text_skilldescribe;
+    public Image Image_skill_timer;
 
     [Header("GameInfo")]
     public Text Text_EnemyCount;

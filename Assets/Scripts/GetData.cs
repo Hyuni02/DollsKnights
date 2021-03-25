@@ -332,7 +332,8 @@ public class GetData : MonoBehaviour
                     UIContainer_DollList.instance.Text_Name.text = List_DollState[index_doll].name;
                     UIContainer_DollList.instance.Text_rof.text = "사속 " + (List_DollState[index_doll].rateoffire + (int)(List_DollState[index_doll]._rateoffire * (level - 1))).ToString();
                     UIContainer_DollList.instance.Text_speed.text = "기동 " + List_DollState[index_doll].speed.ToString();
-
+                    
+                    //스킬 정보 보여주기
                     SkillBase sb = DollContainer.instance.Dolls[index_doll].GetComponent<SkillBase>();
                     UIContainer_DollList.instance.Image_Skill_Icon.sprite = sb.skill_icon;
                     UIContainer_DollList.instance.Text_Skill_CoolTime.text = "쿨타임:" + sb.skill_Cooltime[level].ToString();

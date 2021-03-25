@@ -17,10 +17,25 @@ public abstract class SkillBase : MonoBehaviour
     public float skill_InitCooltime;
     public float[] skill_Cooltime;
     public float[] skill_Duration;
-    float timer = 0;
-    public bool actoActive;
+    public bool autoActive;
 
-    public abstract void SkillActive();
+    //[HideInInspector]
+    public float skill_cool_timer, skill_duration_timer;
+
+    public void Start() {
+        skill_cool_timer = skill_InitCooltime;
+    }
+    public void Update() {
+        if(skill_cool_timer >= 0)
+            skill_cool_timer -= Time.deltaTime;
+        if(skill_duration_timer >= 0)
+            skill_duration_timer -= Time.deltaTime;
+    }
+
+    public virtual string GetSkillName() {
+        return skill_name;
+    }
+
     public virtual void SkillDescribe() {
         for (int i = 0; i < GetData.instance.List_DollData.Count; i++) {
             if (GetData.instance.List_DollData[i].name.Equals(transform.name.Replace("(Clone)", ""))) {
@@ -29,4 +44,13 @@ public abstract class SkillBase : MonoBehaviour
             }
         }
     }
+    public virtual float GetDuration() {
+        return skill_Duration[level];
+    }
+    public virtual float GetCoolDown() {
+        return skill_Cooltime[level];
+    }
+
+    public abstract void SkillActive();
+
 }

@@ -82,7 +82,7 @@ public class LevelInfo : MonoBehaviour
             OriginalState originalState = spawnedenemy.GetComponent<OriginalState>();
             originalState.enemystate = GetData.instance.List_EnemyState[_wave.Index_enemy];
             originalState.level = _wave.Level_enemy;
-            originalState.SetState_Enemy();
+            originalState.SetState();
 
             spawnedenemy.transform.position = new Vector3(SelectedRoute[0].position.x, 0f, SelectedRoute[0].position.z);
 

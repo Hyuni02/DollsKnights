@@ -18,6 +18,8 @@ public class InGameManager : MonoBehaviour {
     public GameObject SelectedNode;
 
     public GameObject SelectedDoll;
+    SkillBase sb;
+
 
     public int RemainLife;
     public int EliminatedEnemyCount = 0;
@@ -27,6 +29,7 @@ public class InGameManager : MonoBehaviour {
     public GameObject Map;
     bool checking = false;
     bool check_fin = false;
+    public GameObject buff;
 
     void Awake() {
         instance = this;
@@ -54,7 +57,7 @@ public class InGameManager : MonoBehaviour {
                     //능력치 적용
                     doll.GetComponent<OriginalState>().level = GetData.instance.List_DollData[i].level;
                     doll.GetComponent<OriginalState>().dollstate = GetData.instance.List_DollState[i];
-                    doll.GetComponent<OriginalState>().SetState_Doll();
+                    doll.GetComponent<OriginalState>().SetState();
 
                     doll.SetActive(false);
                 }
@@ -168,7 +171,7 @@ public class InGameManager : MonoBehaviour {
 
         //클릭
         if (StartNode == EndNode) {
-            //print("Input Type : Click");
+            print("Input Type : Click");
 
             //노드 위에 서있는 인형 탐색
             SelectedNode = StartNode;
@@ -187,7 +190,7 @@ public class InGameManager : MonoBehaviour {
 
         //드래그
         else {
-            //print("Input Type : Drag");
+            print("Input Type : Drag");
 
             //움직일 인형의 존재 확인
             SelectedDoll = FindDoll(StartNode);
@@ -203,14 +206,14 @@ public class InGameManager : MonoBehaviour {
                 }
 
                 //인형 이동
-                //print("Move Pos");
+                print("Move Pos");
                 SelectedDoll.GetComponent<DollController>().SetRoute(DragedNodes);
 
                 //인형 간 위치 교체
                 GameObject target = FindDoll(EndNode);
                 if (target != null) {
-                    //print("Switch Pos");
-                    //print(target.name);
+                    print("Switch Pos");
+                    print(target.name);
                     R_DragedNodes = DragedNodes;
                     R_DragedNodes.Reverse();
                     target.GetComponent<DollController>().SetRoute(R_DragedNodes);
@@ -223,6 +226,7 @@ public class InGameManager : MonoBehaviour {
     }
     void ViewDollInfo(GameObject doll) {
         InGameUIContainer.instance.Open_Panel_DollInfo(doll);
+        sb = SelectedDoll.GetComponent<SkillBase>();
     }
     GameObject FindDoll(GameObject node) {
         for (int i = 0; i < Spawned_Dolls.Count; i++) {
@@ -232,6 +236,9 @@ public class InGameManager : MonoBehaviour {
                 return Spawned_Dolls[i];
         }
         return null;
+    }
+    public void UseDollSkill() {
+        SelectedDoll.GetComponent<SkillBase>().SkillActive();
     }
 
     void DollInfo_Update_HPBar() {
@@ -246,7 +253,23 @@ public class InGameManager : MonoBehaviour {
         if (SelectedDoll == null)
             return;
 
+
         //TODO
+
+        if(sb.skill_duration_timer > 0) {
+            InGameUIContainer.instance.Button_Skill.interactable = false;
+            InGameUIContainer.instance.Image_skill_timer.color = Color.green;
+            InGameUIContainer.instance.Image_skill_timer.fillAmount = sb.skill_duration_timer / sb.GetDuration();
+        }
+        else if (sb.skill_cool_timer > 0) {
+            InGameUIContainer.instance.Button_Skill.interactable = false;
+            InGameUIContainer.instance.Image_skill_timer.color = Color.gray;
+            InGameUIContainer.instance.Image_skill_timer.fillAmount = sb.skill_cool_timer / sb.GetCoolDown();
+        }
+        else {
+            InGameUIContainer.instance.Button_Skill.interactable = true;
+            InGameUIContainer.instance.Image_skill_timer.fillAmount = 0;
+        }
     }
 
     public void LifeLossAlert() {
