@@ -55,6 +55,7 @@ public class Buff : MonoBehaviour
     void AddBuff() {
         target.GetComponent<BuffContainer>().BuffList.Add(gameObject);
         target.GetComponent<OriginalState>().SetState();
+        target.GetComponent<BuffContainer>().UpdateBuffViewer(gameObject);
         //InGameManager.instance.OpenPanel_DollInfo(InGameManager.instance.SelectedDoll);
     }
 

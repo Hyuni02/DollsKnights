@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class InGameManager : MonoBehaviour {
@@ -30,6 +31,7 @@ public class InGameManager : MonoBehaviour {
     bool checking = false;
     bool check_fin = false;
     public GameObject buff;
+    public Image bufficon;
 
     void Awake() {
         instance = this;
@@ -167,8 +169,6 @@ public class InGameManager : MonoBehaviour {
     }
 
     void CheckInputType() {
-        SelectedDoll = null;
-        SelectedNode = null;
 
         if (StartNode == null || EndNode == null)
             return;
@@ -178,12 +178,16 @@ public class InGameManager : MonoBehaviour {
             print("Input Type : Click");
 
             //노드 위에 서있는 인형 탐색
+            SelectedNode = null;
             SelectedNode = StartNode;
+            SelectedDoll = null;
             SelectedDoll = FindDoll(SelectedNode);
 
             //인형이 서있으면 인형 정보 표시
-            if (SelectedDoll != null)
+            if (SelectedDoll != null) {
                 ViewDollInfo(SelectedDoll);
+                sb = SelectedDoll.GetComponent<SkillBase>();
+            }
             else {
                 //노드가 헬리포트이면 편성표 표시
                 if (StartNode.GetComponent<NodeInfo>().heilport) {
@@ -197,6 +201,7 @@ public class InGameManager : MonoBehaviour {
             print("Input Type : Drag");
 
             //움직일 인형의 존재 확인
+            SelectedDoll = null;
             SelectedDoll = FindDoll(StartNode);
             if (SelectedDoll != null) {
                 sb = SelectedDoll.GetComponent<SkillBase>();

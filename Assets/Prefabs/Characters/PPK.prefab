@@ -3198,11 +3198,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_InGameDoll
       objectReference: {fileID: 0}
-    - target: {fileID: 6212342306239114249, guid: 6f37067ff18a63043b3e14c9ac5104ea,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6875710114618447816, guid: 6f37067ff18a63043b3e14c9ac5104ea,
         type: 3}
       propertyPath: m_AnchorMax.x

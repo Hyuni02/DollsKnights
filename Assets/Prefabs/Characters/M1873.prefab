@@ -1390,6 +1390,7 @@ GameObject:
   - component: {fileID: -4681476937042934911}
   - component: {fileID: 5909665338567827225}
   - component: {fileID: 3673510945409991706}
+  - component: {fileID: 5098048909862143065}
   m_Layer: 0
   m_Name: M1873
   m_TagString: Untagged
@@ -1426,6 +1427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  maxHP: 0
   dollstate:
     name: 
     belong: 
@@ -1512,6 +1514,7 @@ MonoBehaviour:
   now_animation: 
   Node_StandOn: {fileID: 0}
   attacking: 0
+  dying: 0
   placed: 0
   attackable: 0
   Timer_attack: 0
@@ -1538,6 +1541,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuffList: []
+--- !u!114 &5098048909862143065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148996069013754883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ebae98fe62a654ab407f19b681478b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  skill_name: "\uC77C\uC81C\uC0AC\uACA9"
+  skill_describe_form: "\uC544\uAD70 \uC804\uCCB4 \uD654\uB825 _dmg% \uC99D\uAC00"
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: 4687066c540c10848bacd703e6cf7bcc, type: 3}
+  type: 0
+  skill_InitCooltime: 6
+  skill_Cooltime:
+  - 15
+  - 14.7
+  - 14.3
+  - 14
+  - 13.7
+  - 13.3
+  - 13
+  - 12.7
+  - 12.3
+  - 12
+  skill_Duration:
+  - 5
+  - 6
+  - 6
+  - 6
+  - 7
+  - 7
+  - 7
+  - 8
+  - 8
+  - 8
+  autoActive: 0
+  skill_cool_timer: 0
+  skill_duration_timer: 0
+  increase_dmg: 0c0000000d0000000e0000000f000000100000001100000012000000140000001500000016000000
 --- !u!1 &7148996069119144676
 GameObject:
   m_ObjectHideFlags: 0
