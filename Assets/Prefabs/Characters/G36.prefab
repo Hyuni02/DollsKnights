@@ -2060,6 +2060,7 @@ GameObject:
   - component: {fileID: -2776280659873925102}
   - component: {fileID: 2973299039600415466}
   - component: {fileID: 1206744650021740682}
+  - component: {fileID: -7466749911419998347}
   m_Layer: 0
   m_Name: G36
   m_TagString: Untagged
@@ -2194,7 +2195,6 @@ MonoBehaviour:
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
-  bufficon: {fileID: 0}
   type: 0
   Sprite_Doll: {fileID: 21300000, guid: 6d9d37b4675069048b5de0433131519f, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: 9b05caf6bb0de044b8ea5ca9766ab12d, type: 3}
@@ -2212,6 +2212,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuffList: []
+--- !u!114 &-7466749911419998347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6796042003376622278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47fb0e406bc1e248bc0249d93a85f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skilllevel: 0
+  skill_name: "\uD654\uB825\uC804\uAC1C"
+  skill_describe_form: "\uC790\uC2E0\uC758 \uD654\uB825 _dmg% \uC99D\uAC00"
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: 528e08666ea67b340b76626149ffc5cd, type: 3}
+  type: 0
+  skill_InitCooltime: 4
+  skill_Cooltime:
+  - 20
+  - 19.6
+  - 19.1
+  - 18.7
+  - 18.2
+  - 17.8
+  - 17.3
+  - 16.9
+  - 1.64
+  - 16
+  skill_Duration:
+  - 6
+  - 6.4
+  - 6.9
+  - 7.3
+  - 7.8
+  - 8.2
+  - 8.7
+  - 9.1
+  - 9.6
+  - 10
+  autoActive: 0
+  skill_cool_timer: 0
+  skill_duration_timer: 0
+  increase_dmg: 280000002b0000002f0000003200000035000000390000003c0000003f0000004300000046000000
 --- !u!1 &7192131146124682975
 GameObject:
   m_ObjectHideFlags: 0

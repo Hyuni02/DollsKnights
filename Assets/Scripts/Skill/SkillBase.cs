@@ -6,7 +6,8 @@ public abstract class SkillBase : MonoBehaviour
 {
     public enum Type { boost, action}
 
-    public int level;
+    int level;
+    public int skilllevel;
     public string skill_name;
     [TextArea]
     public string skill_describe_form;
@@ -42,6 +43,7 @@ public abstract class SkillBase : MonoBehaviour
         for (int i = 0; i < GetData.instance.List_DollData.Count; i++) {
             if (GetData.instance.List_DollData[i].name.Equals(transform.name.Replace("(Clone)", ""))) {
                 level = GetData.instance.List_DollData[i].level;
+                skilllevel = (int)((level - 1) * 0.1f);
                 break;
             }
         }
@@ -50,10 +52,10 @@ public abstract class SkillBase : MonoBehaviour
         GetLevel();
     }
     public virtual float GetDuration() {
-        return skill_Duration[level - 1];
+        return skill_Duration[skilllevel];
     }
     public virtual float GetCoolDown() {
-        return skill_Cooltime[level - 1];
+        return skill_Cooltime[skilllevel];
     }
 
     public abstract void SkillActive();

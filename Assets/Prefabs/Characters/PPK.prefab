@@ -1149,10 +1149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74aa80264b499b646ae302eef1233250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  skilllevel: 0
   skill_name: "\uC0AC\uB0E5\uC2E0\uD638"
-  skill_describe_form: "\uD544\uB4DC \uC704\uC758 \uBAA8\uB4E0 \uC778\uD615\uC5D0\uAC8C
-    \uC0AC\uC18D _rof% \uC99D\uAC00, \uCE58\uBA85\uB960 _crit% \uC99D\uAC00"
+  skill_describe_form: "\uBAA8\uB4E0 \uC778\uD615\uC758 \uD654\uB825 _dmg% \uC99D\uAC00,
+    \uCE58\uBA85\uB960 _crit% \uC99D\uAC00"
   skill_describe: 
   skill_icon: {fileID: 21300000, guid: aca2057a90951cf40bb49469c06c8c53, type: 3}
   type: 0
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   autoActive: 0
   skill_cool_timer: 0
   skill_duration_timer: 0
-  increase_rof: 06000000060000000700000007000000080000000800000009000000090000000a0000000a000000
+  increase_dmg: 06000000060000000700000007000000080000000800000009000000090000000a0000000a000000
   increase_crit: 190000001a0000001b0000001c0000001d0000001f00000020000000210000002200000023000000
 --- !u!1 &1560506200612701117
 GameObject:
