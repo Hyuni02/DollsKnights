@@ -5,13 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(BuffContainer))]
 public class DollController : CharacterBase
 {
-    public enum Type { boost, action }//평타 강화형, 모션 스킬형
-    public Type type;
+    //public enum Type { boost, action }//평타 강화형, 모션 스킬형
+    //public Type type;
     public Sprite Sprite_Doll;
     public Sprite Sprite_Doll_face;
 
     public List<GameObject> Blocked_Enemies;
-
+    public uint stunFrame = 0;
+    public Transform skillPoint;
     private void Awake() {
         if(Sprite_Doll == null || Sprite_Doll_face == null) {
             Debug.LogError(Name + "'s Sprite is null");
@@ -22,8 +23,8 @@ public class DollController : CharacterBase
         if (state == State.die)
             return;
 
-        switch (type) {
-            case Type.boost:
+        switch (GetComponent<SkillBase>().type) {
+            case SkillBase.Type.boost:
                 if(RouteToMove.Count == 0) {
                     if (attackable) 
                         state = State.attack;
@@ -35,8 +36,28 @@ public class DollController : CharacterBase
                 }
                 break;
 
-            case Type.action:
-
+            case SkillBase.Type.action:
+                if (stun)
+                    return;
+                if (state == State.s) {
+                    if (uac.animation.isCompleted) {
+                        state = State.wait;
+                    }
+                    else {
+                        PlayAnimation("s", 1, 1);
+                    }
+                }
+                else {
+                    if (RouteToMove.Count == 0) {
+                        if (attackable)
+                            state = State.attack;
+                        else
+                            state = State.wait;
+                    }
+                    else {
+                        state = State.move;
+                    }
+                }
                 break;
         }
 
@@ -81,5 +102,18 @@ public class DollController : CharacterBase
         //모든 버프 제거
         gameObject.SetActive(false);
         placed = false;
+    }
+
+    public override void Getstun() {
+        //if (now_animation != "stun") {
+        //    uac.animation.Play("die", 1);
+        //}
+        //else {
+        //    if (!uac.animation.isPlaying) {
+        //        uac.animation.Stop();
+        //    }
+        //}
+
+        uac.animation.GotoAndStopByFrame("die", stunFrame);
     }
 }

@@ -5,9 +5,10 @@ using UnityEngine.UI;
 using DragonBones;
 
 public abstract class CharacterBase : MonoBehaviour {
-    public enum State { wait, move, attack, die, victory, victoryloop}
+    public enum State { wait, move, attack, die, victory, victoryloop, s }
     public State state;
-    [HideInInspector]
+    public bool stun = false;
+    //[HideInInspector]
     public string Name, now_animation;
     public GameObject Node_StandOn;
     [HideInInspector]
@@ -75,6 +76,14 @@ public abstract class CharacterBase : MonoBehaviour {
 
         if (attacking || dying)
             return;
+
+        if (stun) {
+            Getstun();
+            now_animation = "stun";
+            float t = 1 / (fs.rateoffire * 0.02f);
+            Timer_attack = t;
+            return;
+        }
 
         switch (state) {
             case State.attack:
@@ -146,6 +155,7 @@ public abstract class CharacterBase : MonoBehaviour {
     public virtual void die() {
         gameObject.SetActive(false);
     }
+    public abstract void Getstun();
 
     //void Check_Node_Stand() {
     //    RaycastHit hit;

@@ -84,7 +84,7 @@ public class LevelInfo : MonoBehaviour
             originalState.level = _wave.Level_enemy;
             originalState.SetState();
 
-            spawnedenemy.transform.position = new Vector3(SelectedRoute[0].position.x, 0f, SelectedRoute[0].position.z);
+            spawnedenemy.transform.position = new Vector3(SelectedRoute[0].position.x, 0.05f, SelectedRoute[0].position.z);
 
             spawnedenemy.GetComponent<EnemyController>().SetRoute(SelectedRoute);
             InGameManager.instance.Spawned_Enemies.Add(spawnedenemy);

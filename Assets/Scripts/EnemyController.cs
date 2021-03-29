@@ -100,4 +100,8 @@ public class EnemyController : CharacterBase {
 
         Slider_HPBar.value = (float)fs.hp / (float)GetComponent<OriginalState>().enemystate.hp;
     }
+
+    public override void Getstun() {
+        uac.animation.Stop();
+    }
 }

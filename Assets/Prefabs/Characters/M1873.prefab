@@ -1510,6 +1510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stun: 0
   Name: 
   now_animation: 
   Node_StandOn: {fileID: 0}
@@ -1529,6 +1530,7 @@ MonoBehaviour:
   Sprite_Doll: {fileID: 21300000, guid: 881b08eeddb876a46a9c0adaa48884a3, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: 49195b9d268159a49995b02c672f5cc6, type: 3}
   Blocked_Enemies: []
+  stunFrame: 1
 --- !u!114 &3673510945409991706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,7 +1556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ebae98fe62a654ab407f19b681478b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  skilllevel: 0
   skill_name: "\uC77C\uC81C\uC0AC\uACA9"
   skill_describe_form: "\uC544\uAD70 \uC804\uCCB4 \uD654\uB825 _dmg% \uC99D\uAC00"
   skill_describe: 

@@ -22,9 +22,13 @@ public class Buff : MonoBehaviour
     public int HP;//체력
     public float tick = 0.5f;
 
+    [Header("스턴")]
+    public bool stun = false;
+    public float stun_duration;
+
     public void Initialized(string name, float _duration, Sprite _icon, GameObject _caster, GameObject _target,
             int _dmg = 0, int _speed = 0, int _armor = 0, int _rateoffire = 0, int _accuracy = 0, int _evasion = 0, 
-            int cRate = 0, bool conti = false, int hp = 0) {
+            int cRate = 0, bool conti = false, int hp = 0, bool _stun = false, float _stun_duration = 0) {
 
         if (!_target.activeSelf) {
             transform.parent = GameObject.Find("InGameManager").transform;
@@ -47,6 +51,8 @@ public class Buff : MonoBehaviour
         critrate = cRate;
         continuous = conti;
         HP = hp;
+        stun = _stun;
+        stun_duration = _stun_duration;
 
         AddBuff();
         Invoke("RemoveBuff", duration);

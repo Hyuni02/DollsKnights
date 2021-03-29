@@ -1105,6 +1105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stun: 0
   Name: 
   now_animation: 
   Node_StandOn: {fileID: 0}
@@ -1124,6 +1125,7 @@ MonoBehaviour:
   Sprite_Doll: {fileID: 21300000, guid: e954baf1280da4f4581fd2a2a41e5ee6, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: b4bf12ee25c16104999080b3db4d9cf7, type: 3}
   Blocked_Enemies: []
+  stunFrame: 10
 --- !u!114 &2390288076817229910
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -175,7 +175,7 @@ public class InGameManager : MonoBehaviour {
 
         //클릭
         if (StartNode == EndNode) {
-            print("Input Type : Click");
+            //print("Input Type : Click");
 
             //노드 위에 서있는 인형 탐색
             SelectedNode = null;
@@ -198,7 +198,7 @@ public class InGameManager : MonoBehaviour {
 
         //드래그
         else {
-            print("Input Type : Drag");
+            //print("Input Type : Drag");
 
             //움직일 인형의 존재 확인
             SelectedDoll = null;
@@ -216,13 +216,13 @@ public class InGameManager : MonoBehaviour {
                 }
 
                 //인형 이동
-                print("Move Pos");
+                //print("Move Pos");
                 SelectedDoll.GetComponent<DollController>().SetRoute(DragedNodes);
 
                 //인형 간 위치 교체
                 GameObject target = FindDoll(EndNode);
                 if (target != null) {
-                    print("Switch Pos");
+                    //print("Switch Pos");
                     print(target.name);
                     R_DragedNodes = DragedNodes;
                     R_DragedNodes.Reverse();

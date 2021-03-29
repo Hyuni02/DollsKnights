@@ -3670,10 +3670,10 @@ MonoBehaviour:
   WaveEnd: 0
   waves:
   - Delay_start: 60
-    Interval_spawn: 0
+    Interval_spawn: 10
     Index_enemy: 2
     Level_enemy: 1
-    Count_spawn: 1
+    Count_spawn: 5
     Index_route: 0
 --- !u!1 &7029471888535173771
 GameObject:

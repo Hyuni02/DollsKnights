@@ -20,7 +20,7 @@ public abstract class SkillBase : MonoBehaviour
     public float[] skill_Duration;
     public bool autoActive;
 
-    //[HideInInspector]
+    [HideInInspector]
     public float skill_cool_timer, skill_duration_timer;
 
     public void Start() {
@@ -50,6 +50,7 @@ public abstract class SkillBase : MonoBehaviour
     }
     public virtual void SkillDescribe() {
         GetLevel();
+        skill_describe = skill_describe_form;
     }
     public virtual float GetDuration() {
         return skill_Duration[skilllevel];
@@ -59,5 +60,6 @@ public abstract class SkillBase : MonoBehaviour
     }
 
     public abstract void SkillActive();
+    public virtual void Effect(GameObject target) { }
 
 }
