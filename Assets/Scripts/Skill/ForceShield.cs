@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForceShield : MonoBehaviour
+public class ForceShield : SkillBase
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+    public override void SkillActive() {
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void SkillDescribe() {
+
     }
 }
