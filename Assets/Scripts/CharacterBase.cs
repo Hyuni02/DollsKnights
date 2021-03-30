@@ -230,6 +230,11 @@ public abstract class CharacterBase : MonoBehaviour {
         }
 
         //회피-명중 계산
+        if(acc == -1) {
+            fs.hp -= dmg;
+            indicator.SetIndicator(DamageIndicator.Type.hit, dmg, transform.position);
+            return;
+        }
         //-명중 시
         if (acc > Random.Range(0, acc + fs.evasion)) {
             //장갑 판정

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2810256202797234678}
   - component: {fileID: 2810256202797234677}
   - component: {fileID: 2810256202797234676}
+  - component: {fileID: 8275312609646447505}
   m_Layer: 0
   m_Name: AR15
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  maxHP: 0
   dollstate:
     name: 
     belong: 
@@ -130,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuffList: []
 --- !u!114 &2810256202797234676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stun: 0
+  forceShield: 0
   Name: 
   now_animation: 
   Node_StandOn: {fileID: 0}
@@ -158,10 +163,56 @@ MonoBehaviour:
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
-  type: 0
   Sprite_Doll: {fileID: 21300000, guid: 9264446729bae1e439d4b58b420f27a1, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: ea15cf3a5055f62479748a423546352f, type: 3}
   Blocked_Enemies: []
+  stunFrame: 0
+  skillPoint: {fileID: 0}
+--- !u!114 &8275312609646447505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810256202797234674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8864f5869254614899faa22dad3cf81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skilllevel: 0
+  skill_name: "\uACE0\uC18D\uC0AC\uACA9"
+  skill_describe_form: "\uC790\uC2E0\uC758 \uC0AC\uC18D\uC744 _rof% \uC99D\uAC00"
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: 421f738ca2529cd4b81fac75c237dce8, type: 3}
+  type: 0
+  skill_InitCooltime: 4
+  skill_Cooltime:
+  - 20
+  - 19.6
+  - 19.1
+  - 18.7
+  - 18.2
+  - 17.8
+  - 17.3
+  - 16.9
+  - 16.4
+  - 16
+  skill_Duration:
+  - 9
+  - 9.7
+  - 10.3
+  - 11
+  - 11.7
+  - 12.3
+  - 13
+  - 13.7
+  - 14.3
+  - 15
+  autoActive: 0
+  skill_cool_timer: 0
+  skill_duration_timer: 0
+  increase_rof: 190000001b0000001d0000002000000022000000240000002600000029000000
 --- !u!1 &2810256202883637449
 GameObject:
   m_ObjectHideFlags: 0

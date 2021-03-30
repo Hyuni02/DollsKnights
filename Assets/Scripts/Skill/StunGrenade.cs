@@ -17,15 +17,12 @@ public class StunGrenade : SkillBase
             return;
 
         print("use skill : " + GetSkillName() + "    LV." + skilllevel);
-        //배치된 모든 인형들에게 버프 부여
         skill_cool_timer = GetCoolDown();
         skill_duration_timer = GetDuration();
 
         //투척물 소환
         GetComponent<CharacterBase>().state = CharacterBase.State.s;
         Invoke("ThrowStunGrenade", 1.5f);
-        //GameObject buff_m16 = Instantiate(InGameManager.instance.buff);
-        //buff_m16.GetComponent<Buff>().Initialized(GetSkillName(), GetDuration(), GetComponent<SkillBase>().skill_icon, gameObject, GetComponent<CharacterBase>().Target, 0, 0, 0, 0, 0, 0, 0, false, 0, true, GetDuration());
     }
 
     void ThrowStunGrenade() {

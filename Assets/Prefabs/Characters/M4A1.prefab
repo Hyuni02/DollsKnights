@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5579210799496708907}
   - component: {fileID: 5579210799496708906}
   - component: {fileID: 5579210799496708885}
+  - component: {fileID: -7441863327308474478}
   m_Layer: 0
   m_Name: M4A1
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  maxHP: 0
   dollstate:
     name: 
     belong: 
@@ -130,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuffList: []
 --- !u!114 &5579210799496708885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stun: 0
+  forceShield: 0
   Name: 
   now_animation: 
   Node_StandOn: {fileID: 0}
@@ -158,10 +163,56 @@ MonoBehaviour:
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
-  type: 0
   Sprite_Doll: {fileID: 21300000, guid: a0f5f4697a447fb439996520371fe04c, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: 69240e4a4ede4744289ddf3b58e56cd9, type: 3}
   Blocked_Enemies: []
+  stunFrame: 0
+  skillPoint: {fileID: 0}
+--- !u!114 &-7441863327308474478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5579210799496708884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47fb0e406bc1e248bc0249d93a85f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skilllevel: 0
+  skill_name: "\uD654\uB825\uC804\uAC1C"
+  skill_describe_form: "\uC790\uC2E0\uC758 \uD654\uB825 _dmg% \uC99D\uAC00"
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: 528e08666ea67b340b76626149ffc5cd, type: 3}
+  type: 0
+  skill_InitCooltime: 4
+  skill_Cooltime:
+  - 20
+  - 19.6
+  - 19.1
+  - 18.7
+  - 18.2
+  - 17.8
+  - 17.3
+  - 16.9
+  - 1.64
+  - 16
+  skill_Duration:
+  - 6
+  - 6.4
+  - 6.9
+  - 7.3
+  - 7.8
+  - 8.2
+  - 8.7
+  - 9.1
+  - 9.6
+  - 10
+  autoActive: 0
+  skill_cool_timer: 0
+  skill_duration_timer: 0
+  increase_dmg: 280000002b0000002f0000003200000035000000390000003c0000003f0000004300000046000000
 --- !u!1 &5579210799606674887
 GameObject:
   m_ObjectHideFlags: 0

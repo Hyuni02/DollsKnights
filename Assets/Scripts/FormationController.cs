@@ -82,7 +82,7 @@ public class FormationController : MonoBehaviour {
         DollData target_remove = Find_Doll(Index_Echlon, Index_Pos_X, Index_Pos_Y);
         if (target_remove != null) {
             Set_Doll_Formation(target_remove, 0, 0, 0);
-            print("remove " + target_remove.name);
+            //print("remove " + target_remove.name);
         }
         Initialize();
     }
@@ -99,7 +99,7 @@ public class FormationController : MonoBehaviour {
         for(int i=0; i < List_Echlon_Dolls.Count; i++) {
             UIContainer_Formation.instance.Image_Dolls[i].sprite = List_Echlon_Dolls[i].GetComponent<Button_DollInfo>().sprite_f;
         }
-        print("refresh image");
+        //print("refresh image");
     }
     public void Refresh_Formation_Pos_Image() {
         for(int i = 0; i < UIContainer_Formation.instance.Image_Nodes.Length; i++) {
@@ -114,7 +114,7 @@ public class FormationController : MonoBehaviour {
                 }
             }
         }
-        print("refresh formation");
+        //print("refresh formation");
     }
 
     public void Initialize() {

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &761475724734452076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7726230260264066524}
+  m_Layer: 0
+  m_Name: skillpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7726230260264066524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761475724734452076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.396, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4935433759393288551}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4935433757726733484
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +286,7 @@ GameObject:
   - component: {fileID: 4935433757848981106}
   - component: {fileID: 4935433757848981107}
   - component: {fileID: 4935433757848981104}
+  - component: {fileID: 3589608067619107503}
   m_Layer: 0
   m_Name: M4SOPMODII
   m_TagString: Untagged
@@ -292,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  maxHP: 0
   dollstate:
     name: 
     belong: 
@@ -373,6 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuffList: []
 --- !u!114 &4935433757848981104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stun: 0
+  forceShield: 0
   Name: 
   now_animation: 
   Node_StandOn: {fileID: 0}
@@ -401,10 +436,72 @@ MonoBehaviour:
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
-  type: 0
   Sprite_Doll: {fileID: 21300000, guid: f5d0f528df0e5ba4791ad5b761f53cdb, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: 9bd5b33b92ecdab40bbcfea17fa9e47e, type: 3}
   Blocked_Enemies: []
+  stunFrame: 0
+  skillPoint: {fileID: 7726230260264066524}
+--- !u!114 &3589608067619107503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935433757848981105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415b8ef1be9fcd74d816f7b55f717064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skilllevel: 0
+  skill_name: "\uC0B4\uC0C1\uB958\uD0C4"
+  skill_describe_form: "\uC720\uD0C4\uC744 \uBC1C\uC0AC\uD558\uC5EC 1.5 \uBC94\uC704\uC5D0
+    \uACF5\uACA9\uB825\uC758 _c_dmg\uBC30\uC758 \uD53C\uD574\uB97C \uC900"
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: 4985faafc2f10824ab60203f566d73f6, type: 3}
+  type: 1
+  skill_InitCooltime: 8
+  skill_Cooltime:
+  - 20
+  - 19.6
+  - 19.1
+  - 18.7
+  - 18.2
+  - 17.8
+  - 17.3
+  - 16.9
+  - 16.4
+  - 16
+  skill_Duration:
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  autoActive: 0
+  skill_cool_timer: 0
+  skill_duration_timer: 0
+  target: {fileID: 0}
+  projectile: {fileID: 6685063657170782947, guid: 8979cb97380920c47ac521b749a0e09c,
+    type: 3}
+  image: {fileID: 21300000, guid: 4985faafc2f10824ab60203f566d73f6, type: 3}
+  range: 1.5
+  maxHeight: 2
+  cofficient_dmg:
+  - 5
+  - 5.8
+  - 6.6
+  - 7.3
+  - 8.1
+  - 9.6
+  - 10.4
+  - 11.2
+  - 12
 --- !u!1 &4935433757858981904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,7 +2312,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: -0.000040605268, w: 1}
   m_LocalPosition: {x: 0.14975064, y: 0.57068413, z: -0.028}
   m_LocalScale: {x: 0.9999999, y: 1.0000002, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7726230260264066524}
   m_Father: {fileID: 4935433759439854438}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

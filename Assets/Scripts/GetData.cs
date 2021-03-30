@@ -198,7 +198,7 @@ public class GetData : MonoBehaviour
         //--기본 인형 설정
         //Todo
         foreach (DollData doll in List_DollData) {
-            doll.level = 0;
+            doll.level = 1;
         }
    
         //새로운 파일 생성
@@ -346,7 +346,7 @@ public class GetData : MonoBehaviour
                 }
                 break;
             case ScreenType.formation: {
-                    print("click doll button : " + button.GetComponent<Button_DollInfo>().Name);
+                    //print("click doll button : " + button.GetComponent<Button_DollInfo>().Name);
                     FormationController.instance.Set_Clicked_Button(button, _name);
                 }
                 break;

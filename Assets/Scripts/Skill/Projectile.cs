@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour {
 
     public void ExplosionSetting(float _range, float _dmg) {
         range = _range;
-        dmg = _dmg;
+        //dmg = _dmg;
     }
     public void DeployFieldSetting() {
 

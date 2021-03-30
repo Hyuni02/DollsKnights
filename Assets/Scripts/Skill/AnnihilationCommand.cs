@@ -23,7 +23,7 @@ public class AnnihilationCommand : SkillBase
     public override void SkillDescribe() {
         base.SkillDescribe();
 
-        skill_describe = skill_describe_form.Replace("_dmg", increase_dmg[skilllevel].ToString());
+        skill_describe = skill_describe.Replace("_dmg", increase_dmg[skilllevel].ToString());
         skill_describe = skill_describe.Replace("_crit", increase_crit[skilllevel].ToString());
     }
 }

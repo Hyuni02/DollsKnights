@@ -51,7 +51,7 @@ public class OriginalState : MonoBehaviour {
                 fs.damage = Mathf.RoundToInt((1 + buff.dmg * 0.01f) * fs.damage);
                 fs.evasion = Mathf.RoundToInt((1 + buff.evasion * 0.01f) * fs.evasion);
                 fs.speed = Mathf.RoundToInt((1 + buff.speed * 0.01f) * fs.speed);
-                fs.rateoffire = Mathf.RoundToInt((1 - buff.rateoffire * 0.01f) * fs.rateoffire);
+                fs.rateoffire = Mathf.RoundToInt((1 + buff.rateoffire * 0.01f) * fs.rateoffire);
                 fs.critrate = Mathf.RoundToInt((1 + buff.critrate * 0.01f) * fs.critrate);
                 GetComponent<CharacterBase>().stun |= buff.stun;
                 GetComponent<CharacterBase>().forceShield |= buff.forceshield;
