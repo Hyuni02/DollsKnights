@@ -26,9 +26,13 @@ public class Buff : MonoBehaviour
     public bool stun = false;
     public float stun_duration;
 
+    [Header("역장")]
+    public bool forceshield = false;
+    public float shield_duration;
+
     public void Initialized(string name, float _duration, Sprite _icon, GameObject _caster, GameObject _target,
             int _dmg = 0, int _speed = 0, int _armor = 0, int _rateoffire = 0, int _accuracy = 0, int _evasion = 0, 
-            int cRate = 0, bool conti = false, int hp = 0, bool _stun = false, float _stun_duration = 0) {
+            int cRate = 0, bool conti = false, int hp = 0, bool _stun = false, float _stun_duration = 0, bool _forceshield = false, float _shield_duration = 0) {
 
         if (!_target.activeSelf) {
             transform.parent = GameObject.Find("InGameManager").transform;
@@ -36,6 +40,7 @@ public class Buff : MonoBehaviour
             return;
         }
 
+        transform.name = "buff : " + name;
         transform.parent = _target.transform;
         buff_name = name;
         duration = _duration;
@@ -49,10 +54,15 @@ public class Buff : MonoBehaviour
         accuracy = _accuracy;
         evasion = _evasion;
         critrate = cRate;
+
         continuous = conti;
         HP = hp;
+
         stun = _stun;
         stun_duration = _stun_duration;
+
+        forceshield = _forceshield;
+        shield_duration = _shield_duration;
 
         AddBuff();
         Invoke("RemoveBuff", duration);

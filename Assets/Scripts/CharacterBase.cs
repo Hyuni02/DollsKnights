@@ -8,6 +8,7 @@ public abstract class CharacterBase : MonoBehaviour {
     public enum State { wait, move, attack, die, victory, victoryloop, s }
     public State state;
     public bool stun = false;
+    public bool forceShield = false;
     //[HideInInspector]
     public string Name, now_animation;
     public GameObject Node_StandOn;
@@ -223,6 +224,11 @@ public abstract class CharacterBase : MonoBehaviour {
     public virtual void GetAttacked(int dmg, int acc, float critrate = 0, int armorpen = 0) {
         DamageIndicator indicator = InGameManager.instance.GetIndicator();
         indicator.transform.position = transform.position;
+        if (forceShield) {
+            indicator.SetIndicator(DamageIndicator.Type.shield, 0, transform.position);
+            return;
+        }
+
         //회피-명중 계산
         //-명중 시
         if (acc > Random.Range(0, acc + fs.evasion)) {

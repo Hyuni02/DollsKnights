@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DamageIndicator : MonoBehaviour
 {
     public Text text;
-    public enum Type { miss, hit, crit, block}
+    public enum Type { miss, hit, crit, block, shield}
     public Type type;
 
     public void SetIndicator(Type type, int dmg, Vector3 pos) {
@@ -27,6 +27,9 @@ public class DamageIndicator : MonoBehaviour
                 break;
             case Type.block:
                 text.color = Color.yellow;
+                break;
+            case Type.shield:
+                text.color = Color.white;
                 break;
         }
         StartCoroutine(destroy());

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4691679268395731924}
   - component: {fileID: 2137910016855919794}
   - component: {fileID: 7217810051953711527}
+  - component: {fileID: -7925796711121034597}
   m_Layer: 0
   m_Name: MP5
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  maxHP: 0
   dollstate:
     name: 
     belong: 
@@ -131,10 +133,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stun: 0
+  forceShield: 0
   Name: 
   now_animation: 
   Node_StandOn: {fileID: 0}
   attacking: 0
+  dying: 0
   placed: 0
   attackable: 0
   Timer_attack: 0
@@ -145,10 +150,11 @@ MonoBehaviour:
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
-  type: 0
   Sprite_Doll: {fileID: 21300000, guid: 5d1be2febe1e21041a0798494825c31e, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: 91e5be041ea6fb042890322f32887fb7, type: 3}
   Blocked_Enemies: []
+  stunFrame: 0
+  skillPoint: {fileID: 0}
 --- !u!114 &7217810051953711527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +167,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuffList: []
+--- !u!114 &-7925796711121034597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479873044527880167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad348edc82701574c99c1c6ae26cc2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skilllevel: 0
+  skill_name: "\uD3EC\uC2A4\uC2E4\uB4DC"
+  skill_describe_form: "\uC790\uC2E0\uC5D0\uAC8C \uD53C\uD574\uB97C \uB9C9\uB294
+    \uBC29\uBCBD\uC744 \uC0DD\uC131\uD55C\uB2E4."
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: fe7460a094e1c4a47a1053bc1fad1d73, type: 3}
+  type: 0
+  skill_InitCooltime: 8
+  skill_Cooltime:
+  - 20
+  - 19.6
+  - 19.1
+  - 18.7
+  - 18.2
+  - 17.8
+  - 17.3
+  - 16.9
+  - 16.4
+  - 16
+  skill_Duration:
+  - 1.5
+  - 1.7
+  - 1.8
+  - 2
+  - 2.2
+  - 0
+  - 2.5
+  - 2.7
+  - 2.8
+  - 3
+  autoActive: 0
+  skill_cool_timer: 0
+  skill_duration_timer: 0
 --- !u!1 &5355389893989441071
 GameObject:
   m_ObjectHideFlags: 0

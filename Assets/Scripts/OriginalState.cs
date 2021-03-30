@@ -42,6 +42,7 @@ public class OriginalState : MonoBehaviour {
 
         BuffContainer bf = GetComponent<BuffContainer>();
         GetComponent<CharacterBase>().stun = false;
+        GetComponent<CharacterBase>().forceShield = false;
         if (bf.BuffList.Count > 0) {
             for(int i = 0; i < bf.BuffList.Count; i++) {
                 Buff buff = bf.BuffList[i].GetComponent<Buff>();
@@ -52,7 +53,8 @@ public class OriginalState : MonoBehaviour {
                 fs.speed = Mathf.RoundToInt((1 + buff.speed * 0.01f) * fs.speed);
                 fs.rateoffire = Mathf.RoundToInt((1 - buff.rateoffire * 0.01f) * fs.rateoffire);
                 fs.critrate = Mathf.RoundToInt((1 + buff.critrate * 0.01f) * fs.critrate);
-                GetComponent<CharacterBase>().stun |= buff.stun; 
+                GetComponent<CharacterBase>().stun |= buff.stun;
+                GetComponent<CharacterBase>().forceShield |= buff.forceshield;
             }
         }
     }
