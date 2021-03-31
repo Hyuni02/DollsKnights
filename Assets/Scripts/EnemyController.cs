@@ -98,7 +98,7 @@ public class EnemyController : CharacterBase {
     public override void GetAttacked(int dmg, int acc, float critrate = 0, int armorpen = 0) {
         base.GetAttacked(dmg, acc, critrate, armorpen);
 
-        Slider_HPBar.value = (float)fs.hp / (float)GetComponent<OriginalState>().enemystate.hp;
+        Slider_HPBar.value = fs.hp;
     }
 
     public override void Getstun() {

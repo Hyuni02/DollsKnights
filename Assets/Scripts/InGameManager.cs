@@ -32,6 +32,8 @@ public class InGameManager : MonoBehaviour {
     bool check_fin = false;
     public GameObject buff;
     public Image bufficon;
+    public GameObject field;
+    public GameObject projectile;
 
     void Awake() {
         instance = this;
@@ -262,17 +264,19 @@ public class InGameManager : MonoBehaviour {
         if (SelectedDoll == null)
             return;
 
-        //TODO
+        //스킬 사용중
         if(sb.skill_duration_timer > 0) {
             InGameUIContainer.instance.Button_Skill.interactable = false;
             InGameUIContainer.instance.Image_skill_timer.color = Color.green;
             InGameUIContainer.instance.Image_skill_timer.fillAmount = sb.skill_duration_timer / sb.GetDuration();
         }
+        //스킬 쿨타임
         else if (sb.skill_cool_timer > 0 && sb.skill_duration_timer <= 0) {
             InGameUIContainer.instance.Button_Skill.interactable = false;
             InGameUIContainer.instance.Image_skill_timer.color = Color.gray;
             InGameUIContainer.instance.Image_skill_timer.fillAmount = sb.skill_cool_timer / sb.GetCoolDown();
         }
+        //스킬 사용가능
         else {
             InGameUIContainer.instance.Button_Skill.interactable = true;
             InGameUIContainer.instance.Image_skill_timer.fillAmount = 0;

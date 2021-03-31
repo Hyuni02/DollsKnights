@@ -20,7 +20,7 @@ public class Buff : MonoBehaviour
     [Header("지속 딜/힐")]
     public bool continuous;
     public int HP;//체력
-    public float tick = 0.5f;
+    public float tick = 0.33f;
 
     [Header("스턴")]
     public bool stun = false;

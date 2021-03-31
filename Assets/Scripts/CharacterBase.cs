@@ -27,15 +27,18 @@ public abstract class CharacterBase : MonoBehaviour {
     [HideInInspector]
     public FinalState fs;
     OriginalState os;
+    SkillBase sb;
 
     [HideInInspector]
     public Slider Slider_HPBar, Slider_SkillBar;
+    Image skill_fill;
     [HideInInspector]
     public GameObject BuffIconViewer;
 
     public virtual void Start() {
         uac = GetComponentInChildren<UnityArmatureComponent>();
         fs = GetComponent<FinalState>();
+        sb = GetComponent<SkillBase>();
 
         os = GetComponent<OriginalState>();
         os.SetState();
@@ -43,6 +46,7 @@ public abstract class CharacterBase : MonoBehaviour {
         Slider_HPBar.maxValue = os.maxHP;
         Slider_HPBar.value = os.maxHP;
         Slider_SkillBar = transform.Find("Canvas_InGameDoll").transform.Find("Slider_SkillBar").GetComponent<Slider>();
+        skill_fill = transform.Find("Canvas_InGameDoll").transform.Find("Slider_SkillBar").transform.Find("Fill Area").transform.Find("Fill").GetComponent<Image>();
         BuffIconViewer = transform.Find("Canvas_InGameDoll").transform.Find("BuffIconViewer").gameObject;
 
         //Check_Node_Stand();
@@ -53,6 +57,7 @@ public abstract class CharacterBase : MonoBehaviour {
     public virtual void Update() {
         SetState();
         UpdateState();
+        UpdateBar();
 
         if (Timer_attack > 0)
             Timer_attack -= Time.deltaTime;
@@ -215,6 +220,9 @@ public abstract class CharacterBase : MonoBehaviour {
     public abstract void UpdateState();
 
     public float GetDistance(GameObject target) {
+        if (target == null)
+            return 0;
+
         float distance = Vector3.Distance(target.transform.position, gameObject.transform.position);
         return distance;
     }
@@ -268,6 +276,42 @@ public abstract class CharacterBase : MonoBehaviour {
             indicator.SetIndicator(DamageIndicator.Type.miss, dmg, transform.position);
         }
 
+    }
+
+    public void UpdateBar() {
+        Slider_HPBar.value = fs.hp;
+
+        if(GetComponent<DollController>() != null) {
+            //사용중
+            //-빨강색
+            //-최대값 : 지속시간
+            if (sb.skill_duration_timer > 0) {
+                skill_fill.color = Color.red;
+                Slider_SkillBar.maxValue = sb.GetDuration();
+                Slider_SkillBar.value = sb.skill_duration_timer;
+                return;
+            }
+            //충전중
+            //-하늘색
+            //-최대값 : 쿨타임
+            else if (sb.skill_cool_timer > 0 && sb.skill_duration_timer <= 0) {
+                skill_fill.color = Color.cyan;
+                Slider_SkillBar.maxValue = sb.GetCoolDown();
+                Slider_SkillBar.value = sb.GetCoolDown() - sb.skill_cool_timer;
+                return;
+            }
+            //충전 완료
+            //-주황색
+            //-최대값 : 쿨타임
+            else {
+                skill_fill.color = Color.blue;
+                Slider_SkillBar.value = Slider_SkillBar.maxValue;
+                return;
+            }
+        }
+        else {
+            Slider_SkillBar.value = 0;
+        }
     }
 
     private void OnDrawGizmosSelected() {

@@ -1658,6 +1658,7 @@ GameObject:
   - component: {fileID: 944067974040685162}
   - component: {fileID: 2048972174919357203}
   - component: {fileID: 8663810822310917561}
+  - component: {fileID: -6183308697443218218}
   m_Layer: 0
   m_Name: PA15
   m_TagString: Untagged
@@ -1694,6 +1695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  maxHP: 0
   dollstate:
     name: 
     belong: 
@@ -1776,10 +1778,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stun: 0
+  forceShield: 0
   Name: 
   now_animation: 
   Node_StandOn: {fileID: 0}
   attacking: 0
+  dying: 0
   placed: 0
   attackable: 0
   Timer_attack: 0
@@ -1790,10 +1795,11 @@ MonoBehaviour:
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
-  type: 0
   Sprite_Doll: {fileID: 21300000, guid: 5a3a38f4bcbd15144b3bddbcee0df3ac, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: e1d86582f6d47b24b957d5f841f34064, type: 3}
   Blocked_Enemies: []
+  stunFrame: 0
+  skillPoint: {fileID: 0}
 --- !u!114 &8663810822310917561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1806,6 +1812,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuffList: []
+--- !u!114 &-6183308697443218218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6159268845441013351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86274303158bd3439ddad88efe80d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skilllevel: 0
+  skill_name: "\uC9DC\uB9BF\uD55C \uD55C\uBC29"
+  skill_describe_form: "\uCCB4\uB825\uC774 \uAC00\uC7A5 \uB9CE\uC740 \uC801\uC744
+    _duration\uCD08 \uAE30\uC808\uC2DC\uD0A4\uACE0 _c_dmg\uBC30\uC758 \uBE44\uD574\uB97C
+    \uC900\uB2E4. \uBAA9\uD45C\uC5D0\uC11C 2.5 \uC774\uB0B4\uC5D0 \uB2E4\uB978 \uC801\uC774
+    \uC788\uC744 \uC2DC \uBC94\uC704 \uB0B4 \uBAA8\uB4E0 \uC801\uC744 _duration2\uCD08
+    \uAE30\uC808\uC2DC\uD0A4\uACE0 _c_dmg2\uBC30\uC758 \uD53C\uD574\uB97C \uC900\uB2E4."
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: 5511947233b5e4541a582ac6345f2df2, type: 3}
+  type: 0
+  skill_InitCooltime: 6
+  skill_Cooltime: []
+  skill_Duration: []
+  autoActive: 0
+  skill_cool_timer: 0
+  skill_duration_timer: 0
 --- !u!1 &6159268845513726694
 GameObject:
   m_ObjectHideFlags: 0

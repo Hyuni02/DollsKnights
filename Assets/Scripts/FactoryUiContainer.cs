@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class FactoryUiContainer : MonoBehaviour
 {
-    public FactoryUiContainer instance;
+    public static FactoryUiContainer instance;
 
     public Button Button_Start;
     public GameObject Panel_TierList;
-    public Image Image_EventThumbnail;
+    public GameObject Panel_ThumbNail;
 
 
     void Awake() {

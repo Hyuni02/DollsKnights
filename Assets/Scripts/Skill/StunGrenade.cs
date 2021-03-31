@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class StunGrenade : SkillBase
 {
     public GameObject target;
-    public GameObject projectile;
     public Sprite image;
     public float range = 1.5f;
     public float maxHeight;
@@ -33,7 +32,7 @@ public class StunGrenade : SkillBase
             return;
 
         print("throw stun");
-        GameObject stunGrenade = Instantiate(projectile);
+        GameObject stunGrenade = Instantiate(InGameManager.instance.projectile);
         stunGrenade.GetComponent<Projectile>().Caster = gameObject;
         stunGrenade.GetComponent<Projectile>().ExplosionSetting(range, 0);
         stunGrenade.GetComponent<Projectile>().LaunchProjectile(image, GetComponent<DollController>().skillPoint, target.transform, maxHeight, true, false);

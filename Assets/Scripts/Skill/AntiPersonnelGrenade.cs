@@ -5,7 +5,6 @@ using UnityEngine;
 public class AntiPersonnelGrenade : SkillBase
 {
     public GameObject target;
-    public GameObject projectile;
     public Sprite image;
     public float range = 1.5f;
     public float maxHeight;
@@ -34,7 +33,7 @@ public class AntiPersonnelGrenade : SkillBase
             return;
 
         print("launch grenade");
-        GameObject grenade = Instantiate(projectile);
+        GameObject grenade = Instantiate(InGameManager.instance.projectile);
         grenade.GetComponent<Projectile>().Caster = gameObject;
         dmg = GetComponent<FinalState>().damage * cofficient_dmg[skilllevel];
         grenade.GetComponent<Projectile>().ExplosionSetting(range, dmg);

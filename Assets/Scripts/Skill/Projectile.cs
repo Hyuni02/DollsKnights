@@ -17,6 +17,11 @@ public class Projectile : MonoBehaviour {
     public float range;
     public float dmg;
 
+    [Header("Field")]
+    public float field_range;
+    public float duration;
+    public float field_dmg;
+
     public void LaunchProjectile(Sprite sprite, Transform _startPos, Transform _endPos, float _maxHeight, bool _explosion, bool _deployField) {
         Image_projectile = GetComponentInChildren<SpriteRenderer>();
         Image_projectile.sprite = sprite;
@@ -25,7 +30,7 @@ public class Projectile : MonoBehaviour {
         explosion = _explosion;
         deployField = _deployField;
 
-        endPos = _endPos.position + new Vector3(0, 0.5f, 0);
+        endPos = _endPos.position;
         initDistance = Vector3.Distance(startPos, endPos);
         transform.position = startPos;
     }
@@ -34,8 +39,11 @@ public class Projectile : MonoBehaviour {
         range = _range;
         //dmg = _dmg;
     }
-    public void DeployFieldSetting() {
-
+    public void DeployFieldSetting(float _range, float _duration, float _dmg, GameObject caster) {
+        field_dmg = _dmg;
+        field_range = _range;
+        duration = _duration;
+        Caster = caster;
     }
 
     GameObject temp;
@@ -59,7 +67,13 @@ public class Projectile : MonoBehaviour {
         }
 
         if (deployField) {
+            GameObject field = Instantiate(InGameManager.instance.field);
+            field.transform.position = transform.position;
 
+            field.GetComponent<Field>().duration = duration;
+            field.GetComponent<Field>().dmg = field_dmg;
+            field.GetComponent<Field>().range = range;
+            field.GetComponent<Field>().caster = Caster;
         }
     }
 
