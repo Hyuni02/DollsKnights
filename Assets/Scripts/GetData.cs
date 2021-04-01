@@ -37,6 +37,21 @@ public struct EnemyState {
     public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, range;
 }
 
+[System.Serializable]
+public class LevelData {
+    public int index;
+    public int count_try;
+    public int count_clear;
+    public bool open;
+
+    public LevelData(int _index, bool _open = false, int _try = 0, int _clear = 0) {
+        this.index = _index;
+        this.count_clear = _clear;
+        this.count_try = _try;
+        this.open = _open;
+    }
+}
+
 public class GetData : MonoBehaviour
 {
     public static GetData instance;
@@ -44,6 +59,7 @@ public class GetData : MonoBehaviour
     string FileName_DollStateData = "DollStateData";
     string FileName_DollData = "DollData";
     string FileName_EnemyStateData = "EnemyStateData";
+    string FileName_LevelData = "LevelData";
     //string MapListData = "MapListData";
 
     [Header("인형 능력치")]
@@ -60,6 +76,11 @@ public class GetData : MonoBehaviour
     [SerializeField]
     [Tooltip("적 정보 from EnemyStateData.csv")]
     public List<EnemyState> List_EnemyState = new List<EnemyState>();
+
+    [Header("레벨 클리어 정보")]
+    [SerializeField]
+    [Tooltip("레벨 클리어 정보(시도 횟수, 클리어 횟수, 진입가능 여부)")]
+    public List<LevelData> List_LevelData = new List<LevelData>();
 
     [SerializeField]
     public List<GameObject> List_DollButton = new List<GameObject>();
@@ -80,8 +101,9 @@ public class GetData : MonoBehaviour
         Check_EnemyData();//EnemyContainer의 적 개수 확인
 
         Instantiate_Doll_ButtonList();
+
         //맵데이터 불러오기
-        //==Todo
+        Check_LevelData();
 
         SceneController.instance.ChangeScene(1);
     }
@@ -255,16 +277,52 @@ public class GetData : MonoBehaviour
         }
     }
 
-    //void Load_MapListData() {
+    void Check_LevelData() {
+        //LevelData.json 존재 확인
+        FileInfo LevelDataFile = new FileInfo(Application.streamingAssetsPath + "/" + FileName_LevelData + ".json");
+        //-존재하지 않으면 List_LevelData를 기준으로 새로 생성
+        if (!LevelDataFile.Exists) {
+            print("No Level Data File");
+            CreateLevelDataFile();
+        }
+        //-존재하면 LevelData.json 불러오기
+        LoadLevelDataFile();
+    }
+    void CreateLevelDataFile() {
+        for (int i = 0; i < LevelContainer.instance.Levels.Count; i++) {
+            //print("Add " + LevelContainer.instance.Levels[i]);
+            List_LevelData.Add(new LevelData(i + 1));
+        }
+        List_LevelData[0].open = true;
 
-    //}
-    //void Load_MapClearData() {
+        //새로운 파일 생성
+        SaveLevelDataFile();
+        print("Create New LevelData.json File");
+    }
+    void LoadLevelDataFile() {
+        string Ldate = File.ReadAllText(Application.streamingAssetsPath + "/" + FileName_LevelData + ".json");
+        List_LevelData = JsonConvert.DeserializeObject<List<LevelData>>(Ldate);
+        //print("Load LevelData File");
 
-    //}
+        //레벨 데이터가 추가되었을 시
+        if (List_LevelData.Count != LevelContainer.instance.Levels.Count) {
+            int length = List_LevelData.Count;
+            for (int i = length; i < LevelContainer.instance.Levels.Count; i++) {
+                List_LevelData.Add(new LevelData(i + 1));
+            }
+            print("Save File's Format has Updated(level data)");
+            SaveLevelDataFile();
+        }
+    }
+    public void SaveLevelDataFile() {
+        for(int i = 0; i < LevelContainer.instance.Levels.Count - 1; i++) {
+            if(List_LevelData[i].count_clear > 0) {
+                List_LevelData[i + 1].open = true;
+            }
+        }
 
-    void Update()
-    {
-        
+        string Ldata = JsonConvert.SerializeObject(List_LevelData);
+        File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_LevelData + ".json", Ldata);
     }
 
     public void Refresh_DollButton(GameObject target ,DollData dolldata) {

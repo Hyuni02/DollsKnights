@@ -298,7 +298,13 @@ public class InGameManager : MonoBehaviour {
             }
         }
         check_fin = true;
-        InGameUIContainer.instance.Open_Panel_Victory();
+
+        if (InGameUIContainer.instance.Panel_Clear.activeSelf == false) {
+            InGameUIContainer.instance.Open_Panel_Victory();
+
+            GetData.instance.List_LevelData[GameManager.instance.Index_SelectedLevel].count_clear++;
+            GetData.instance.SaveLevelDataFile();
+        }
     }
     public void Defeat() {
         Time.timeScale = 0;

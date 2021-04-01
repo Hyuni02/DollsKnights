@@ -78,7 +78,9 @@ public class Buff : MonoBehaviour
     void RemoveBuff() {
         target.GetComponent<BuffContainer>().BuffList.Remove(gameObject);
         target.GetComponent<OriginalState>().SetState();
-        InGameUIContainer.instance.Open_Panel_DollInfo(InGameManager.instance.SelectedDoll);
+        if (InGameUIContainer.instance.Panel_DollInfo.activeSelf == true) {
+            InGameUIContainer.instance.Open_Panel_DollInfo(InGameManager.instance.SelectedDoll);
+        }
         //InGameManager.instance.OpenPanel_DollInfo(InGameManager.instance.SelectedDoll);
         transform.parent = GameObject.Find("InGameManager").transform;
         gameObject.SetActive(false);

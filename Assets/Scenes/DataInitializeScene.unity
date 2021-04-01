@@ -1899,6 +1899,7 @@ MonoBehaviour:
   List_DollState: []
   List_DollData: []
   List_EnemyState: []
+  List_LevelData: []
   List_DollButton: []
 --- !u!114 &2118816051
 MonoBehaviour:
