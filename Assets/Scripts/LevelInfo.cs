@@ -20,9 +20,10 @@ public class LevelInfo : MonoBehaviour
     public GameObject heilporticon;
     public int index_level;
     public string title;
+    public int First_Reward = 0;
+    public int Next_Reward = 0;
     public Vector2 MapSize;
 
-    //rewards
     public int max_echlon_count;
     public int life;
 

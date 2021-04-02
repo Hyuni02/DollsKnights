@@ -3611,6 +3611,8 @@ MonoBehaviour:
     type: 3}
   index_level: 1
   title: Tutorial2
+  First_Reward: 10
+  Next_Reward: 2
   MapSize: {x: 8, y: 5}
   max_echlon_count: 1
   life: 10

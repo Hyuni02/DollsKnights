@@ -288,7 +288,7 @@ public class GetData : MonoBehaviour
         FileInfo LevelDataFile = new FileInfo(Application.streamingAssetsPath + "/" + FileName_LevelData + ".json");
         //-존재하지 않으면 List_LevelData를 기준으로 새로 생성
         if (!LevelDataFile.Exists) {
-            print("No Level Data File");
+            //print("No Level Data File");
             CreateLevelDataFile();
         }
         //-존재하면 LevelData.json 불러오기

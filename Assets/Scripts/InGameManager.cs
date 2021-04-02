@@ -289,6 +289,7 @@ public class InGameManager : MonoBehaviour {
     }
 
     bool alldied;
+    int reward = 0;
     public void CheckVictory() {
         alldied = true;
         for(int i = 0; i < Spawned_Enemies.Count; i++) {
@@ -301,6 +302,21 @@ public class InGameManager : MonoBehaviour {
 
         if (InGameUIContainer.instance.Panel_Clear.activeSelf == false) {
             InGameUIContainer.instance.Open_Panel_Victory();
+
+            if(GetData.instance.List_LevelData[GameManager.instance.Index_SelectedLevel].count_clear == 0) { //첫 클리어
+                reward = Map.GetComponent<LevelInfo>().First_Reward;
+            }
+            else {
+                reward = Map.GetComponent<LevelInfo>().Next_Reward;
+            }
+            
+            InGameUIContainer.instance.Text_MapName.text = Map.GetComponent<LevelInfo>().title; //맵 이름 띄우기
+            //MVP 띄우기
+            InGameUIContainer.instance.Text_RestHP.text = RemainLife.ToString();//잔여 HP 띄우기
+            InGameUIContainer.instance.Text_Reward.text = reward.ToString(); //보상 띄우기
+
+            GetData.instance.Token += reward;
+            GetData.instance.SavePlayerInfoFile();
 
             GetData.instance.List_LevelData[GameManager.instance.Index_SelectedLevel].count_clear++;
             GetData.instance.SaveLevelDataFile();

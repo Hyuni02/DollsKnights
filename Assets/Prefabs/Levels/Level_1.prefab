@@ -89,6 +89,8 @@ MonoBehaviour:
     type: 3}
   index_level: 0
   title: Tutorial
+  First_Reward: 10
+  Next_Reward: 0
   MapSize: {x: 7, y: 6}
   max_echlon_count: 2
   life: 1

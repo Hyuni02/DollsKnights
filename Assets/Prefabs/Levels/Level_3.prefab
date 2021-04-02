@@ -3081,8 +3081,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heilporticon: {fileID: 7815657644439843718, guid: 07782f7eea37f084197275b28c4a335f,
     type: 3}
-  index_level: 0
+  index_level: 2
   title: Tutorial3
+  First_Reward: 10
+  Next_Reward: 2
   MapSize: {x: 9, y: 3}
   max_echlon_count: 1
   life: 10

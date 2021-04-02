@@ -46,12 +46,20 @@ public class InGameUIContainer : MonoBehaviour
     public Text Text_EnemyCount;
     public Text Text_Life;
 
+    [Header("Pause Panel")]
     public GameObject Panel_Pause;
     public Button Button_Pause;
     public Button Button_Resume;
     public Button Button_Quit;
 
+    [Header("Victory Panel")]
     public GameObject Panel_Clear;
+    public Image Image_mvp;
+    public Text Text_MapName;
+    public Text Text_RestHP;
+    public Text Text_Reward;
+
+    [Header("Defeat Panel")]
     public GameObject Panel_Fail;
 
     void Awake() {
