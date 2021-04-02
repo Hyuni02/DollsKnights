@@ -60,8 +60,12 @@ public class GetData : MonoBehaviour
     string FileName_DollData = "DollData";
     string FileName_EnemyStateData = "EnemyStateData";
     string FileName_LevelData = "LevelData";
+    string FileName_PlayerInfo = "PlayerInfo";
     //string MapListData = "MapListData";
 
+    [Header("Player Info")]
+    public int Token = 0;
+    
     [Header("인형 능력치")]
     [SerializeField]
     [Tooltip("인형 능력치 from DollStateData.csv")]
@@ -87,13 +91,15 @@ public class GetData : MonoBehaviour
 
     GameObject doll_prefab;
     DollData doll_data;
-
+    
     private void Awake() {
         instance = this;
     }
 
     public void DataLoad()
     {
+        LoadPlayerInfoFile();//플레이어 정보 가져오기
+
         Load_DollStateData();//DollStateData.csv 데이터 불러오기(Resources)
         Check_DollData();//DollContainer의 인형 개수 확인
 
@@ -104,7 +110,7 @@ public class GetData : MonoBehaviour
 
         //맵데이터 불러오기
         Check_LevelData();
-
+        
         SceneController.instance.ChangeScene(1);
     }
     void Load_DollStateData() {
@@ -323,6 +329,27 @@ public class GetData : MonoBehaviour
 
         string Ldata = JsonConvert.SerializeObject(List_LevelData);
         File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_LevelData + ".json", Ldata);
+    }
+
+    void CreatePlayerInfoFile() {
+        //새로운 파일 생성
+        SavePlayerInfoFile();
+        print("Create New PlayerInfo.json File");
+    }
+    public void LoadPlayerInfoFile() {
+        FileInfo PlayerInfoFile = new FileInfo(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json");
+        //-존재하지 않으면 DollStateData를 기준으로 새로 생성
+        if (!PlayerInfoFile.Exists) {
+            CreatePlayerInfoFile();
+        }
+
+        string Pdate = File.ReadAllText(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json");
+        Token = JsonConvert.DeserializeObject<int>(Pdate);
+        //print("Load LevelData File");
+    }
+    public void SavePlayerInfoFile() {
+        string Pdata = JsonConvert.SerializeObject(Token);
+        File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json", Pdata);
     }
 
     public void Refresh_DollButton(GameObject target ,DollData dolldata) {
