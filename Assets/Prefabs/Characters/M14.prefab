@@ -416,8 +416,8 @@ GameObject:
   - component: {fileID: 7568058977958836549}
   - component: {fileID: 7568058977958836548}
   - component: {fileID: 7568058977958836551}
-  - component: {fileID: 7568058977958836550}
   - component: {fileID: 1094898439987460813}
+  - component: {fileID: 7568058977958836550}
   - component: {fileID: 7568058977958836568}
   m_Layer: 0
   m_Name: M14
@@ -525,19 +525,6 @@ MonoBehaviour:
   _evasion: 0
   _rateoffire: 0
   _armor: 0
---- !u!114 &7568058977958836550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7568058977958836571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BuffList: []
 --- !u!114 &1094898439987460813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,6 +560,19 @@ MonoBehaviour:
   Blocked_Enemies: []
   stunFrame: 0
   skillPoint: {fileID: 0}
+--- !u!114 &7568058977958836550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7568058977958836571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuffList: []
 --- !u!114 &7568058977958836568
 MonoBehaviour:
   m_ObjectHideFlags: 0

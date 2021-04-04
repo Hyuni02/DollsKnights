@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 4314234549748653489}
   - component: {fileID: 4314234549748653488}
   - component: {fileID: 4314234549748653491}
-  - component: {fileID: 4314234549748653490}
+  - component: {fileID: 3550306293497905155}
   - component: {fileID: 4314234549748653517}
   m_Layer: 0
   m_Name: IWS2000
@@ -720,7 +720,7 @@ MonoBehaviour:
   _evasion: 0
   _rateoffire: 0
   _armor: 0
---- !u!114 &4314234549748653490
+--- !u!114 &3550306293497905155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4314234549748653516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8821e59a582492d44a873738914d2811, type: 3}
+  m_Script: {fileID: 11500000, guid: a1f8214972476c74d829434ddce09c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0

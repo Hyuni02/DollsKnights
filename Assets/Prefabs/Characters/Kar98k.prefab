@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 2225219807899587025}
   - component: {fileID: 2225219807899587024}
   - component: {fileID: 2225219807899587027}
-  - component: {fileID: 2225219807899587026}
+  - component: {fileID: -4912699594136032068}
   - component: {fileID: 2225219807899587021}
   m_Layer: 0
   m_Name: Kar98k
@@ -686,7 +686,7 @@ MonoBehaviour:
   _evasion: 0
   _rateoffire: 0
   _armor: 0
---- !u!114 &2225219807899587026
+--- !u!114 &-4912699594136032068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2225219807899587020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8821e59a582492d44a873738914d2811, type: 3}
+  m_Script: {fileID: 11500000, guid: a1f8214972476c74d829434ddce09c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
