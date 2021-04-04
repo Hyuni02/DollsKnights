@@ -183,7 +183,7 @@ MonoBehaviour:
   skilllevel: 0
   skill_name: "\uACE0\uC18D\uC0AC\uACA9"
   skill_describe_form: "\uC790\uC2E0\uC758 \uC0AC\uC18D\uC744 _rof% \uC99D\uAC00"
-  skill_describe: 
+  skill_describe: "\uC790\uC2E0\uC758 \uC0AC\uC18D\uC744 25% \uC99D\uAC00"
   skill_icon: {fileID: 21300000, guid: 421f738ca2529cd4b81fac75c237dce8, type: 3}
   type: 0
   skill_InitCooltime: 4
@@ -212,7 +212,7 @@ MonoBehaviour:
   autoActive: 0
   skill_cool_timer: 0
   skill_duration_timer: 0
-  increase_rof: 190000001b0000001d0000002000000022000000240000002600000029000000
+  increase_rof: 190000001b0000001d00000020000000220000002400000026000000290000002b0000002d000000
 --- !u!1 &2810256202883637449
 GameObject:
   m_ObjectHideFlags: 0

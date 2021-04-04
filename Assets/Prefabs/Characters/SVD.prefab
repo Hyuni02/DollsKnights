@@ -2874,8 +2874,9 @@ GameObject:
   - component: {fileID: 7596737116335029253}
   - component: {fileID: 7596737116335029254}
   - component: {fileID: 7596737116335029255}
-  - component: {fileID: 7596737116335029304}
+  - component: {fileID: 6342819224617120884}
   - component: {fileID: 7596737116335029305}
+  - component: {fileID: 6668202087797131826}
   m_Layer: 0
   m_Name: SVD
   m_TagString: Untagged
@@ -2982,7 +2983,7 @@ MonoBehaviour:
   _evasion: 0
   _rateoffire: 0
   _armor: 0
---- !u!114 &7596737116335029304
+--- !u!114 &6342819224617120884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2991,7 +2992,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7596737116335029306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8821e59a582492d44a873738914d2811, type: 3}
+  m_Script: {fileID: 11500000, guid: 192b0802e8e43ad4ab2c2620b092cd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
@@ -3030,6 +3031,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuffList: []
+--- !u!114 &6668202087797131826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7596737116335029306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8864f5869254614899faa22dad3cf81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skilllevel: 0
+  skill_name: "\uACE0\uC18D\uC0AC\uACA9"
+  skill_describe_form: "\uC790\uC2E0\uC758 \uC0AC\uC18D\uC744 _rof% \uC99D\uAC00"
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: 421f738ca2529cd4b81fac75c237dce8, type: 3}
+  type: 0
+  skill_InitCooltime: 5
+  skill_Cooltime:
+  - 10
+  - 9.8
+  - 9.6
+  - 9.3
+  - 9.1
+  - 8.9
+  - 8.7
+  - 8.4
+  - 8.2
+  - 8
+  skill_Duration:
+  - 3
+  - 3.2
+  - 3.4
+  - 3.7
+  - 3.9
+  - 4.1
+  - 4.3
+  - 4.6
+  - 4.8
+  - 5
+  autoActive: 0
+  skill_cool_timer: 0
+  skill_duration_timer: 0
+  increase_rof: 280000002b0000002e000000300000003300000036000000390000003b0000003e00000041000000
 --- !u!1 &7596737116363808933
 GameObject:
   m_ObjectHideFlags: 0
