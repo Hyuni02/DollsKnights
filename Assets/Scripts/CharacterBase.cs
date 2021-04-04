@@ -181,7 +181,7 @@ public abstract class CharacterBase : MonoBehaviour {
             uac.armature.flipX = true;
     }
 
-    public void SearchTarget() {
+    public virtual void SearchTarget() {
         if (!gameObject.activeSelf)
             return;
 

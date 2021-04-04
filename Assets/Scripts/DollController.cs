@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(BuffContainer))]
 public class DollController : CharacterBase
 {
-    //public enum Type { boost, action }//평타 강화형, 모션 스킬형
-    //public Type type;
     public Sprite Sprite_Doll;
     public Sprite Sprite_Doll_face;
 
@@ -105,15 +103,6 @@ public class DollController : CharacterBase
     }
 
     public override void Getstun() {
-        //if (now_animation != "stun") {
-        //    uac.animation.Play("die", 1);
-        //}
-        //else {
-        //    if (!uac.animation.isPlaying) {
-        //        uac.animation.Stop();
-        //    }
-        //}
-
         uac.animation.GotoAndStopByFrame("die", stunFrame);
     }
 }

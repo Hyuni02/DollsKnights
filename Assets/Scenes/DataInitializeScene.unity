@@ -1884,6 +1884,7 @@ MonoBehaviour:
   - {fileID: 4935433757848981105, guid: a7dd0997a77486b478c05586708d87b1, type: 3}
   - {fileID: 8118026396284628424, guid: a12ace4d551432a4d893155ea202ab9f, type: 3}
   - {fileID: 2810256202797234674, guid: ced28a185d331dc40a41e75acb0ed77e, type: 3}
+  - {fileID: 7568058977958836571, guid: 1b65f54c6d1486643a71fbdbed195750, type: 3}
 --- !u!114 &2118816050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1896,10 +1897,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ca395b31ddbad44a44d12c4ad84c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Token: 0
   List_DollState: []
   List_DollData: []
   List_EnemyState: []
   List_LevelData: []
+  List_PickUpData: []
   List_DollButton: []
 --- !u!114 &2118816051
 MonoBehaviour:

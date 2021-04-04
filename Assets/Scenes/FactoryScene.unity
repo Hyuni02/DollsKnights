@@ -1309,6 +1309,7 @@ MonoBehaviour:
       tier: 3
       List_Doll:
       - {fileID: 4544257551402898616, guid: 77d532dbefb94cb4f85761d7f3966006, type: 3}
+      - {fileID: 7568058977958836571, guid: 1b65f54c6d1486643a71fbdbed195750, type: 3}
     - possibility: 13
       tier: 4
       List_Doll:
