@@ -614,6 +614,7 @@ GameObject:
   - component: {fileID: 4314234549748653491}
   - component: {fileID: 3550306293497905155}
   - component: {fileID: 4314234549748653517}
+  - component: {fileID: -4511562235236312903}
   m_Layer: 0
   m_Name: IWS2000
   m_TagString: Untagged
@@ -768,6 +769,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuffList: []
+--- !u!114 &-4511562235236312903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4314234549748653516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004a8fc1b0632f24588ea8a1a386c7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skilllevel: 0
+  skill_name: "\uC721\uCC38\uACE8\uB2E8"
+  skill_describe_form: "\uC790\uC2E0\uC758 \uD654\uB825\uC744 _dmg% \uC99D\uAC00\uC2DC\uD0A4\uACE0,
+    \uC0AC\uC18D\uC744 _rof%\uAC10\uC18C \uC2DC\uD0A8\uB2E4"
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: b3f243cfb200dbb4e9ffec67755cce65, type: 3}
+  type: 0
+  skill_InitCooltime: 6
+  skill_Cooltime:
+  - 20
+  - 19.6
+  - 19.1
+  - 18.7
+  - 18.2
+  - 17.8
+  - 17.3
+  - 16.9
+  - 16.4
+  - 16
+  skill_Duration:
+  - 6
+  - 6.4
+  - 6.8
+  - 7.2
+  - 7.6
+  - 8
+  - 8.4
+  - 8.8
+  - 9.4
+  - 10
+  autoActive: 0
+  skill_cool_timer: 0
+  skill_duration_timer: 0
 --- !u!1 &4314234549795435784
 GameObject:
   m_ObjectHideFlags: 0

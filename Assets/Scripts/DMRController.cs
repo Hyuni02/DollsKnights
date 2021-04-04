@@ -17,12 +17,11 @@ public class DMRController : DollController {
         for (int i = 0; i < InGameManager.instance.Spawned_Enemies.Count; i++) {
             if (GetDistance(InGameManager.instance.Spawned_Enemies[i]) <= fs.range
                 && InGameManager.instance.Spawned_Enemies[i].activeSelf) {
-                attackable = true;
+                attackable |= true;
 
                 if(temp_target == null)
                     temp_target = InGameManager.instance.Spawned_Enemies[0];
 
-                //print(InGameManager.instance.Spawned_Enemies[i].GetComponent<FinalState>().hp);
                 if (InGameManager.instance.Spawned_Enemies[i].GetComponent<FinalState>().hp
                     < temp_target.GetComponent<FinalState>().hp) {
                     temp_target = InGameManager.instance.Spawned_Enemies[i];
@@ -35,7 +34,7 @@ public class DMRController : DollController {
             }
             else {
                 SetTarget();
-                attackable = false;
+                attackable |= false;
             }
         }
 

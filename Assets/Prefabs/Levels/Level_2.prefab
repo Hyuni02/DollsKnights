@@ -3673,13 +3673,13 @@ MonoBehaviour:
   waves:
   - Delay_start: 0
     Interval_spawn: 0
-    Index_enemy: 0
+    Index_enemy: 2
     Level_enemy: 1
     Count_spawn: 1
     Index_route: 0
   - Delay_start: 0
     Interval_spawn: 1
-    Index_enemy: 2
+    Index_enemy: 0
     Level_enemy: 1
     Count_spawn: 1
     Index_route: 0
