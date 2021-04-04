@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int Index_SelectedLevel;
     public List<GameObject> Index_SelectedEchlons = new List<GameObject>();
 
+
     private void Awake() {
         instance = this;
     }

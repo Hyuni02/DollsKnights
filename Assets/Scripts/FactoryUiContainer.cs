@@ -7,13 +7,23 @@ public class FactoryUiContainer : MonoBehaviour
 {
     public static FactoryUiContainer instance;
 
-    public Button Button_Start;
+    public Text Text_Token;
+    public Button Button_PickUp;
+    public GameObject content_Button_PickUp;
     public GameObject Panel_TierList;
-    public GameObject Panel_ThumbNail;
-
+    public Image Image_ThumbNail;
+    public List<GameObject> List_EventButtons;
 
     void Awake() {
         instance = this;
     }
 
+    private void Start() {
+        ViewToken();
+    }
+
+    void ViewToken() {
+        GetData.instance.LoadPlayerInfoFile();
+        Text_Token.text = GetData.instance.Token.ToString();
+    }
 }

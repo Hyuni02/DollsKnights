@@ -61,6 +61,7 @@ public class GetData : MonoBehaviour
     string FileName_EnemyStateData = "EnemyStateData";
     string FileName_LevelData = "LevelData";
     string FileName_PlayerInfo = "PlayerInfo";
+    string FileName_PickUpData = "PickUpData";
     //string MapListData = "MapListData";
 
     [Header("Player Info")]
@@ -85,6 +86,11 @@ public class GetData : MonoBehaviour
     [SerializeField]
     [Tooltip("레벨 클리어 정보(시도 횟수, 클리어 횟수, 진입가능 여부)")]
     public List<LevelData> List_LevelData = new List<LevelData>();
+
+    [Header("픽업 정보")]
+    [SerializeField]
+    [Tooltip("픽업 정보(이벤트 이름, 공개 여부, 픽업 횟수)")]
+    public List<PickUp> List_PickUpData = new List<PickUp>();
 
     [SerializeField]
     public List<GameObject> List_DollButton = new List<GameObject>();
@@ -251,6 +257,47 @@ public class GetData : MonoBehaviour
     public void SaveDollDataFile() {
         string Ddata = JsonConvert.SerializeObject(List_DollData);
         File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_DollData + ".json", Ddata);
+    }
+
+    public void Check_PickUpData() {
+        //PickUpData.json 존재 확인
+        FileInfo PickUpDataFile = new FileInfo(Application.streamingAssetsPath + "/" + FileName_PickUpData + ".json");
+        //-존재하지 않으면 List_PickUpData를 기준으로 새로 생성
+        if (!PickUpDataFile.Exists) {
+            //print("No Level Data File");
+            CreatePickUpDataFile();
+        }
+        //-존재하면 LevelData.json 불러오기
+        LoadPickUpDataFile();
+    }
+    void CreatePickUpDataFile() {
+        for (int i = 0; i < RandomPickUp.instance.PickUps.Count; i++) {
+            //print("Add " + List_DollState[i].name);
+            List_PickUpData.Add(new PickUp(RandomPickUp.instance.PickUps[i].Event_Name, 0));
+        }
+
+        //새로운 파일 생성
+        SavePickUpDataFile();
+        print("Create New PickUpData.json File");
+    }
+    void LoadPickUpDataFile() {
+        string Pdate = File.ReadAllText(Application.streamingAssetsPath + "/" + FileName_PickUpData + ".json");
+        List_PickUpData = JsonConvert.DeserializeObject<List<PickUp>>(Pdate);
+        //print("Load PickUp Data File");
+
+        //픽업 데이터가 추가되었을 시
+        if (List_PickUpData.Count != RandomPickUp.instance.PickUps.Count) {
+            int length = List_PickUpData.Count;
+            for (int i = length; i < RandomPickUp.instance.PickUps.Count; i++) {
+                List_PickUpData.Add(new PickUp(RandomPickUp.instance.PickUps[i].Event_Name, 0));
+            }
+            print("Save File's Format has Updated(Pick Up)");
+            SavePickUpDataFile();
+        }
+    }
+    public void SavePickUpDataFile() {
+        string Pdata = JsonConvert.SerializeObject(List_PickUpData);
+        File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_PickUpData + ".json", Pdata);
     }
 
     public void Instantiate_Doll_ButtonList() {
