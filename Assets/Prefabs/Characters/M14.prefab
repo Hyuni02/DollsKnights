@@ -470,6 +470,7 @@ MonoBehaviour:
     speed: 0
     armorpen: 0
     block: 0
+    ammo: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -517,6 +518,7 @@ MonoBehaviour:
   speed: 0
   armorpen: 0
   block: 0
+  ammo: 0
   critrate: 0
   range: 0
   _hp: 0

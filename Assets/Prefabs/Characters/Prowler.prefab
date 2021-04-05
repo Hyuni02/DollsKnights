@@ -1028,6 +1028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  maxHP: 0
   dollstate:
     name: 
     belong: 
@@ -1042,6 +1043,7 @@ MonoBehaviour:
     speed: 0
     armorpen: 0
     block: 0
+    ammo: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -1089,6 +1091,7 @@ MonoBehaviour:
   speed: 0
   armorpen: 0
   block: 0
+  ammo: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -1110,10 +1113,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  stun: 0
+  forceShield: 0
   Name: 
   now_animation: 
   Node_StandOn: {fileID: 0}
   attacking: 0
+  dying: 0
   placed: 0
   attackable: 0
   Timer_attack: 0
@@ -1139,6 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuffList: []
 --- !u!1 &3685926742253133422
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,6 +26,7 @@ public class OriginalState : MonoBehaviour {
             fs.speed = dollstate.speed;
             fs.range = dollstate.range;
             fs.block = dollstate.block;
+            fs.ammo = dollstate.ammo;
         }
         else {
             fs.accuracy = enemystate.accuracy + (int)(enemystate._accuracy * (level - 1));

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using DragonBones;
 
 public abstract class CharacterBase : MonoBehaviour {
-    public enum State { wait, move, attack, die, victory, victoryloop, s }
+    public enum State { wait, move, attack, die, victory, victoryloop, s, reload }
     public State state;
     public bool stun = false;
     public bool forceShield = false;

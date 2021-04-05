@@ -1037,6 +1037,7 @@ MonoBehaviour:
     speed: 0
     armorpen: 0
     block: 0
+    ammo: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -1084,6 +1085,7 @@ MonoBehaviour:
   speed: 0
   armorpen: 0
   block: 0
+  ammo: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -1106,6 +1108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   stun: 0
+  forceShield: 0
   Name: 
   now_animation: 
   Node_StandOn: {fileID: 0}
@@ -1121,11 +1124,11 @@ MonoBehaviour:
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
-  type: 0
   Sprite_Doll: {fileID: 21300000, guid: e954baf1280da4f4581fd2a2a41e5ee6, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: b4bf12ee25c16104999080b3db4d9cf7, type: 3}
   Blocked_Enemies: []
   stunFrame: 10
+  skillPoint: {fileID: 0}
 --- !u!114 &2390288076817229910
 MonoBehaviour:
   m_ObjectHideFlags: 0
