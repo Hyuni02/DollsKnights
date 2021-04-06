@@ -21,7 +21,8 @@ public class InGameManager : MonoBehaviour {
     public GameObject SelectedDoll;
     SkillBase sb;
 
-
+    public float cost = 0;
+    public int parts = 0;
     public int RemainLife;
     public int EliminatedEnemyCount = 0;
     public int TotalEnemyCount = 0;
@@ -43,8 +44,13 @@ public class InGameManager : MonoBehaviour {
         InGameUIContainer.instance.Panel_Clear.SetActive(false);
         InGameUIContainer.instance.Panel_Fail.SetActive(false);
         InGameUIContainer.instance.Panel_Pause.SetActive(false);
-
+        
+        //맵 생성
        Map = Instantiate(LevelContainer.instance.Levels[GameManager.instance.Index_SelectedLevel]);
+
+        //맵 데이터 가져오기
+        cost = Map.GetComponent<LevelInfo>().init_cost;
+        parts = Map.GetComponent<LevelInfo>().init_parts;
 
         //선택한 제대 생성
         for (int target_echlon = 0; target_echlon < GameManager.instance.Index_SelectedEchlons.Count; target_echlon++) {
@@ -57,6 +63,7 @@ public class InGameManager : MonoBehaviour {
                     Spawned_Dolls.Add(doll);
                     button.GetComponent<Button_FormatedDollInfo>().model = doll;
                     button.GetComponent<Button_FormatedDollInfo>().Icon = doll.GetComponent<DollController>().Sprite_Doll_face;
+                    button.GetComponent<Button_FormatedDollInfo>().dollState = GetData.instance.List_DollState[i];
 
                     //능력치 적용
                     doll.GetComponent<OriginalState>().level = GetData.instance.List_DollData[i].level;
@@ -109,6 +116,9 @@ public class InGameManager : MonoBehaviour {
     void Update() {
         DollInfo_Update_HPBar();
         DollInfo_Update_SkillCool();
+
+        InGameUIContainer.instance.Text_Cost.text = cost.ToString("N0");
+        InGameUIContainer.instance.Text_Parts.text = parts.ToString();
 
         //조작
         if (!IsPointerOverUIObject()) {
@@ -187,8 +197,16 @@ public class InGameManager : MonoBehaviour {
 
             //인형이 서있으면 인형 정보 표시
             if (SelectedDoll != null) {
-                ViewDollInfo(SelectedDoll);
                 sb = SelectedDoll.GetComponent<SkillBase>();
+                if (StartNode.GetComponent<NodeInfo>().heilport 
+                    && SelectedDoll.GetComponent<DollController>().state != CharacterBase.State.move
+                    && SelectedDoll.GetComponent<DollController>().state != CharacterBase.State.s) {
+                    InGameUIContainer.instance.Button_DeSpawn.interactable = true;
+                }
+                else {
+                    InGameUIContainer.instance.Button_DeSpawn.interactable = false;
+                }
+                ViewDollInfo(SelectedDoll);
             }
             else {
                 //노드가 헬리포트이면 편성표 표시
@@ -286,6 +304,11 @@ public class InGameManager : MonoBehaviour {
     public void LifeLossAlert() {
         //TODO
         print("Life Loss!!");
+    }
+
+    public void Eliminated(int _cost, int _parts) {
+        cost += _cost;
+        parts += _parts;
     }
 
     bool alldied;

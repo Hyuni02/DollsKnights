@@ -3079,15 +3079,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8683b6b6d82cf4f8a7034b797ec1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heilporticon: {fileID: 7815657644439843718, guid: 07782f7eea37f084197275b28c4a335f,
-    type: 3}
   index_level: 2
   title: Tutorial3
   First_Reward: 10
   Next_Reward: 2
-  MapSize: {x: 9, y: 3}
   max_echlon_count: 1
   life: 10
+  init_cost: 10
+  recovery_cost: 1.3
+  init_parts: 10
+  MapSize: {x: 9, y: 3}
+  heilporticon: {fileID: 7815657644439843718, guid: 07782f7eea37f084197275b28c4a335f,
+    type: 3}
   Default_Node: {fileID: 5337722634931610660, guid: 3fad52d7a5c63b3448a40e3016799055,
     type: 3}
   Nodes:

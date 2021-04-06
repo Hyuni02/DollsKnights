@@ -59,6 +59,7 @@ public class EnemyController : CharacterBase {
         InGameManager.instance.EliminatedEnemyCount++;
         InGameUIContainer.instance.UpdateEnemyCount();
         base.die();
+        InGameManager.instance.Eliminated(fs.cost, fs.part);
     }
 
     //목표 지점 도달 확인

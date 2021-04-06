@@ -17,16 +17,21 @@ public class Wave {
 
 public class LevelInfo : MonoBehaviour
 {
-    public GameObject heilporticon;
     public int index_level;
     public string title;
     public int First_Reward = 0;
     public int Next_Reward = 0;
-    public Vector2 MapSize;
 
     public int max_echlon_count;
     public int life;
 
+    public int init_cost;//초기 보유 코스트
+    public float recovery_cost;//초당 코스트 회복량
+    public int init_parts;//초기 보유 부품(수복용)
+
+    [Header("Map Info")]
+    public Vector2 MapSize;
+    public GameObject heilporticon;
     [SerializeField]
     private GameObject Default_Node;
     public List<GameObject> Nodes;
@@ -45,6 +50,7 @@ public class LevelInfo : MonoBehaviour
     void Start()
     {
         Invoke("StartWave", 3f);
+        InvokeRepeating("Cost_Recover", 2f, 1f);
     }
 
 
@@ -55,6 +61,12 @@ public class LevelInfo : MonoBehaviour
         //}
     }
 
+    //초당 코스트 회복
+    void Cost_Recover() {
+        InGameManager.instance.cost += recovery_cost;
+    }
+
+    //웨이브 생성기
     void StartWave() {
         if (now_wave < waves.Length - 1) {
             //print("Wave " + (now_wave + 1));

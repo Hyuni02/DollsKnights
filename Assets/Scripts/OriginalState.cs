@@ -27,6 +27,7 @@ public class OriginalState : MonoBehaviour {
             fs.range = dollstate.range;
             fs.block = dollstate.block;
             fs.ammo = dollstate.ammo;
+            fs.cost = dollstate.cost + (int)(dollstate._cost * (level - 1));
         }
         else {
             fs.accuracy = enemystate.accuracy + (int)(enemystate._accuracy * (level - 1));
@@ -38,6 +39,8 @@ public class OriginalState : MonoBehaviour {
             fs.rateoffire = enemystate.rateoffire + (int)(enemystate._rateoffire * (level - 1));
             fs.speed = enemystate.speed;
             fs.range = enemystate.range;
+            fs.cost = enemystate.cost + (int)(enemystate._cost * (level - 1));
+            fs.part = enemystate.part + (int)(enemystate._part * (level - 1));
         }
         maxHP = fs.hp;
 

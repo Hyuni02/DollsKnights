@@ -26,15 +26,15 @@ public class DollData {
 [System.Serializable]
 public struct DollState {
     public string name, belong, _class;
-    public int rank, hp, damage, accuracy, evasion, rateoffire, armor, speed, armorpen, block, ammo;
-    public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, critrate, range;
+    public int rank, hp, damage, accuracy, evasion, rateoffire, armor, speed, armorpen, block, ammo, cost;
+    public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, critrate, range , _cost;
 }
 
 [System.Serializable]
 public struct EnemyState {
     public string name , type;
-    public int hp, damage, accuracy, evasion, rateoffire, armor, speed, armorpen;
-    public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, range;
+    public int hp, damage, accuracy, evasion, rateoffire, armor, speed, armorpen, cost, part;
+    public float _hp, _damage, _accuracy, _evasion, _rateoffire, _armor, range, _cost, _part;
 }
 
 [System.Serializable]
@@ -156,6 +156,8 @@ public class GetData : MonoBehaviour
                 int.TryParse(data_values[19], out i); dollState.block = i;
                 float.TryParse(data_values[20], out f); dollState.range = f;
                 int.TryParse(data_values[21], out i); dollState.ammo = i;
+                int.TryParse(data_values[22], out i); dollState.cost = i;
+                float.TryParse(data_values[23], out f); dollState._cost = f;
             }
 
             List_DollState.Add(dollState);
@@ -211,6 +213,10 @@ public class GetData : MonoBehaviour
                 int.TryParse(data_values[14], out i); enemyState.speed = i;
                 int.TryParse(data_values[15], out i); enemyState.armorpen = i;
                 float.TryParse(data_values[16], out f); enemyState.range = f;
+                int.TryParse(data_values[17], out i); enemyState.cost = i;
+                float.TryParse(data_values[18], out f); enemyState._cost = f;
+                int.TryParse(data_values[19], out i); enemyState.part = i;
+                float.TryParse(data_values[20], out f); enemyState._part = f;
             }
             List_EnemyState.Add(enemyState);
         }

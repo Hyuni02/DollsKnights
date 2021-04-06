@@ -45,6 +45,8 @@ public class InGameUIContainer : MonoBehaviour
     [Header("GameInfo")]
     public Text Text_EnemyCount;
     public Text Text_Life;
+    public Text Text_Cost;
+    public Text Text_Parts;
 
     [Header("Pause Panel")]
     public GameObject Panel_Pause;
