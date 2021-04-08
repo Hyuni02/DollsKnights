@@ -125,6 +125,12 @@ public class InGameUIContainer : MonoBehaviour
         }
     }
     public void RetreatDoll() {
+        if (InGameManager.instance.cost < 4) {
+            //코스트 창 강조
+            return;
+        }
+
+        InGameManager.instance.cost -= 4;
         InGameManager.instance.SelectedDoll.GetComponent<DollController>().Retreat();
         UpdateButtonState();
         Close_Panel_DollInfo();

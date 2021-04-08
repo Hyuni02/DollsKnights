@@ -52,6 +52,7 @@ public class RandomPickUp : MonoBehaviour
         Select_Event("일반제조");
     }
 
+    //이벤트 리스트 나열(버튼 생성)
     void List_Events() {
         for(int i = 0; i < PickUps.Count; i++) {
             GameObject button = Instantiate(Button_prefab, FactoryUiContainer.instance.content_Button_PickUp.transform);
@@ -66,6 +67,7 @@ public class RandomPickUp : MonoBehaviour
         }
     }
 
+    //이벤트 선택(이름)
     public void Select_Event(string eventName) {
         for (int i = 0; i < PickUps.Count; i++) {
             if (PickUps[i].Event_Name.Equals(eventName)) {
@@ -76,12 +78,26 @@ public class RandomPickUp : MonoBehaviour
 
         print("Selected Event : " + Selected_Event.Event_Name);
         //FactoryUiContainer.instance.Image_ThumbNail.sprite = Selected_Event.Image_EventThumbNail;
-        //ViewTierList();
+        ViewTierList();
         CheckToken();
     }
 
+    GameObject[] temps;
     void ViewTierList() {
+        temps = GameObject.FindGameObjectsWithTag("tierviewer");
+        foreach(var t in temps) {
+            Destroy(t);
+        }
 
+        for(int i = 0; i < Selected_Event.List_Tier.Count; i++) {
+            GameObject tier = Instantiate(FactoryUiContainer.instance.Prefab_Tier, FactoryUiContainer.instance.content_TierList);
+            tier.GetComponent<content_Tier>().Text_Tier.text = Selected_Event.List_Tier[i].tier.ToString();
+            for(int j = 0; j < Selected_Event.List_Tier[i].List_Doll.Count; j++) {
+                Image image = Instantiate(tier.GetComponent<content_Tier>().prefab, tier.GetComponent<content_Tier>().content_Dolls);
+                image.gameObject.SetActive(true);
+                image.sprite = Selected_Event.List_Tier[i].List_Doll[j].GetComponent<DollController>().Sprite_Doll_face;
+            }
+        }
     }
 
     void CheckToken() {
@@ -93,6 +109,7 @@ public class RandomPickUp : MonoBehaviour
         }
     }
 
+    //뽑기
     int index = 0;
     public void PickUp() {
         GetData.instance.Token -= Selected_Event.cost;

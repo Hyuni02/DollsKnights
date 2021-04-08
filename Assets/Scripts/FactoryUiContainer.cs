@@ -13,6 +13,9 @@ public class FactoryUiContainer : MonoBehaviour
     public GameObject Panel_TierList;
     public Image Image_ThumbNail;
     public List<GameObject> List_EventButtons;
+    public Transform content_TierList;
+    public List<GameObject> List_TierList;
+    public GameObject Prefab_Tier;
 
     void Awake() {
         instance = this;
