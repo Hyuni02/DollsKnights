@@ -18,6 +18,7 @@ public class InGameUIContainer : MonoBehaviour
     public GameObject Button_FormatedDoll;
 
     [Header("FormatedDolls")]
+    public GameObject Button_OpenFormatedDolls;
     public GameObject Panel_FormatedDolls;
     public GameObject content;
 
@@ -89,9 +90,12 @@ public class InGameUIContainer : MonoBehaviour
     //FormatedDolls
     public void Open_Panel_FormatedDolls() {
         Panel_FormatedDolls.SetActive(true);
+        Button_FormatedDoll.SetActive(false);
     }
     public void Close_Panel_FormatedDolls() {
         Panel_FormatedDolls.SetActive(false);
+        Button_FormatedDoll.SetActive(true);
+        InGameManager.instance.SelectedNode = null;
     }
     //DollInfo
     public void Open_Panel_DollInfo(GameObject doll) {
@@ -116,6 +120,7 @@ public class InGameUIContainer : MonoBehaviour
     }
     public void Close_Panel_DollInfo() {
         InGameManager.instance.SelectedDoll = null;
+        InGameManager.instance.SelectedNode = null;
         Panel_DollInfo.SetActive(false);
     }
 

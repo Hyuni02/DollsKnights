@@ -7,6 +7,7 @@ TagManager:
   - button
   - node_formation
   - node
+  - tierviewer
   layers:
   - Default
   - TransparentFX

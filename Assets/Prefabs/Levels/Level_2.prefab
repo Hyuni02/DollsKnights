@@ -3612,8 +3612,8 @@ MonoBehaviour:
   First_Reward: 10
   Next_Reward: 2
   max_echlon_count: 1
-  life: 10
-  init_cost: 10
+  life: 100
+  init_cost: 100
   recovery_cost: 1.3
   init_parts: 10
   MapSize: {x: 8, y: 5}
@@ -3674,11 +3674,11 @@ MonoBehaviour:
     - {fileID: 7029471888882729312}
   WaveEnd: 0
   waves:
-  - Delay_start: 0
+  - Delay_start: 3
     Interval_spawn: 5
     Index_enemy: 2
     Level_enemy: 1
-    Count_spawn: 20
+    Count_spawn: 99
     Index_route: 0
 --- !u!1 &7029471888535173771
 GameObject:

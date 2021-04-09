@@ -133,8 +133,8 @@ public class InGameManager : MonoBehaviour {
         }
 
         //temp
-        if (SelectedDoll == null)
-            InGameUIContainer.instance.Close_Panel_DollInfo();
+        //if (SelectedDoll == null)
+        //    InGameUIContainer.instance.Close_Panel_DollInfo();
     }
 
     void GetMouseInput() {
