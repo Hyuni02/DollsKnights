@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FactoryUiContainer : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class FactoryUiContainer : MonoBehaviour
     public List<GameObject> List_TierList;
     public GameObject Prefab_Tier;
 
+    public GameObject Panel_result;
+    public Image Image_result;
+
     void Awake() {
         instance = this;
     }
@@ -28,5 +32,10 @@ public class FactoryUiContainer : MonoBehaviour
     void ViewToken() {
         GetData.instance.LoadPlayerInfoFile();
         Text_Token.text = GetData.instance.Token.ToString();
+    }
+
+    public void Close_Panel_Result() {
+        Panel_result.SetActive(false);
+        SceneManager.LoadScene("FactoryScene");
     }
 }

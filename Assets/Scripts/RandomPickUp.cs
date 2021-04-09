@@ -119,7 +119,7 @@ public class RandomPickUp : MonoBehaviour
             if(index > pick_tier) {
                 int pick_doll = Random.Range(0, Selected_Event.List_Tier[i].List_Doll.Count);
                 print(Selected_Event.List_Tier[i].tier + " : " + Selected_Event.List_Tier[i].List_Doll[pick_doll].name);
-
+                Picked_Doll = Selected_Event.List_Tier[i].List_Doll[pick_doll];
                 break;
             }
             else {
@@ -133,9 +133,24 @@ public class RandomPickUp : MonoBehaviour
         GetData.instance.SavePlayerInfoFile();
 
         //뽑은 인형 보여주기
-
-
-        SceneManager.LoadScene("FactoryScene");
+        ViewPickUpDoll();
     }
 
+    //뽑은거 보여주기
+    void ViewPickUpDoll() {
+        FactoryUiContainer.instance.Panel_result.SetActive(true);
+        FactoryUiContainer.instance.Image_result.sprite = Picked_Doll.GetComponent<DollController>().Sprite_Doll;
+
+        //저장
+        for (int i = 0; i < GetData.instance.List_DollData.Count; i++) {
+            if (Picked_Doll.name.Equals(GetData.instance.List_DollData[i].name)) {
+                print(GetData.instance.List_DollData[i].name);
+                GetData.instance.List_DollData[i].level++;
+                GetData.instance.SaveDollDataFile();
+                GetData.instance.Instantiate_Doll_ButtonList();
+                return;
+            }
+        }
+
+    }
 }
