@@ -11,6 +11,8 @@ public class FormationController : MonoBehaviour {
     [SerializeField]
     public GameObject Clicked_Button, Clicked_Node;
     public string Clicked_Button_Name;
+    public Sprite btn_c_grey;
+    public Sprite btn_c_emerald;
 
     DollData target_add;
     public List<GameObject> List_Echlon_Dolls = new List<GameObject>();
@@ -54,7 +56,7 @@ public class FormationController : MonoBehaviour {
                     }
                 }
                 Set_Doll_Formation(target_add, Index_Echlon, Index_Pos_X, Index_Pos_Y);
-                print("set " + Clicked_Button_Name);
+                //print("set " + Clicked_Button_Name);
 
                 Initialize();
             }
@@ -93,7 +95,7 @@ public class FormationController : MonoBehaviour {
     }
     public void Refresh_Formation_Image() {
         for (int i = 0; i < UIContainer_Formation.instance.Image_Dolls.Length; i++) {
-            UIContainer_Formation.instance.Image_Dolls[i].sprite = null;
+            UIContainer_Formation.instance.Image_Dolls[i].sprite = btn_c_emerald;
         }
 
         for(int i=0; i < List_Echlon_Dolls.Count; i++) {
@@ -103,7 +105,7 @@ public class FormationController : MonoBehaviour {
     }
     public void Refresh_Formation_Pos_Image() {
         for(int i = 0; i < UIContainer_Formation.instance.Image_Nodes.Length; i++) {
-            UIContainer_Formation.instance.Image_Nodes[i].sprite = null;
+            UIContainer_Formation.instance.Image_Nodes[i].sprite = btn_c_grey;
         }
 
         for(int i = 0; i < List_Echlon_Dolls.Count; i++) {

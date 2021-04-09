@@ -9,9 +9,10 @@ public class MainMenuSceneController : MonoBehaviour
 {
     public static MainMenuSceneController instance;
     public ScreenType screenType;
-    [Header("Images")]
+    [Header("Lobby")]
     public GameObject Image_Partner;
     public GameObject Image_Background;
+    public GameObject Panel_Setting;
     [Header("Level Select")]
     //public GameObject Button_LevelSelect;
     public GameObject Panel_LevelSelect;
@@ -106,6 +107,7 @@ public class MainMenuSceneController : MonoBehaviour
         Close_Panel_DollList();
         Close_Panel_Formation();
         Close_Panel_LevelSelect();
+        Close_Panel_Setting();
     }
     public void Open_Panel_DollList() {
         SetScreenType(ScreenType.list);
@@ -154,5 +156,11 @@ public class MainMenuSceneController : MonoBehaviour
     }
     public void Close_EchlonListContainer() {
         GameManager.instance.Close_EchlonListContainer();
+    }
+    public void Open_Panel_Setting() {
+        Panel_Setting.SetActive(true);
+    }
+    public void Close_Panel_Setting() {
+        Panel_Setting.SetActive(false);
     }
 }

@@ -16,7 +16,6 @@ public class UIContainer_DollList : MonoBehaviour
     [Header("Text")]
     public Text Text_Name;
     public Text Text_Level;
-    public Text Text_Potential;
     public Text Text_belong;
     public Text Text_class;
     public Text Text_hp;

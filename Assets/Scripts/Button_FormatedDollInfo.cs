@@ -14,6 +14,7 @@ public class Button_FormatedDollInfo : MonoBehaviour
     public bool destroyed = false;
     public DollState dollState;
     public Slider Slider_HP;
+    public Image Image_timer;
     int maxhp;
 
     Button button;
@@ -53,8 +54,12 @@ public class Button_FormatedDollInfo : MonoBehaviour
             button.interactable = false;
         }
 
-        if (healing)
+        if (healing) {
             Button_heal.gameObject.SetActive(false);
+            t -= 0.1f;
+            Image_timer.fillAmount = t / time_heal;
+            Image_timer.GetComponentInChildren<Text>().text = t.ToString("N1");
+        }
     }
 
     public void UpdateState() {
@@ -66,18 +71,18 @@ public class Button_FormatedDollInfo : MonoBehaviour
 
     [SerializeField]
     int cost_heal, part_heal, time_heal = 0;
-    int type_c, type_p = 0;
-    float hp_rate;
+    int type_c, type_p, type_t = 0;
+    float hp_rate, t;
     public void HealDoll() {
         //클래스 별 수복 계수
         switch (model.GetComponent<OriginalState>().dollstate._class) {
-            case "HG": type_c = 20; type_p = 7; break;
-            case "SMG": type_c = 45; type_p = 12; break;
-            case "AR": type_c = 40; type_p = 14; break;
-            case "DMR": type_c = 35; type_p = 16; break;
-            case "SR": type_c = 35; type_p = 16; break;
-            case "SG": type_c = 65; type_p = 32; break;
-            case "MG": type_c = 75; type_p = 30; break;
+            case "HG": type_c = 20; type_p = 7; type_p = 24; break;
+            case "SMG": type_c = 45; type_p = 12; type_p = 48; break;
+            case "AR": type_c = 40; type_p = 14; type_p = 48; break;
+            case "DMR": type_c = 35; type_p = 16; type_p = 48; break;
+            case "SR": type_c = 35; type_p = 16; type_p = 48; break;
+            case "SG": type_c = 65; type_p = 32; type_p = 96; break;
+            case "MG": type_c = 75; type_p = 30; type_p = 96; break;
         }
         //남은 체력 비율
         hp_rate = (float)model.GetComponent<FinalState>().hp / (float)maxhp;
@@ -92,15 +97,17 @@ public class Button_FormatedDollInfo : MonoBehaviour
         }
 
         //수복 시간 계산
-        //temp
-        time_heal = 4;
+        time_heal = type_p;
         InGameManager.instance.cost -= cost_heal;
         InGameManager.instance.parts -= part_heal;
         Invoke("HealDone", time_heal);
+        Image_timer.gameObject.SetActive(true);
+        t = time_heal;
         healing = true;
     }
     void HealDone() {
         model.GetComponent<FinalState>().hp = maxhp;
+        Image_timer.gameObject.SetActive(false);
         healing = false;
     }
 

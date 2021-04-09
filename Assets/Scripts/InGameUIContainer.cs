@@ -90,11 +90,11 @@ public class InGameUIContainer : MonoBehaviour
     //FormatedDolls
     public void Open_Panel_FormatedDolls() {
         Panel_FormatedDolls.SetActive(true);
-        Button_FormatedDoll.SetActive(false);
+        Button_OpenFormatedDolls.SetActive(false);
     }
     public void Close_Panel_FormatedDolls() {
         Panel_FormatedDolls.SetActive(false);
-        Button_FormatedDoll.SetActive(true);
+        Button_OpenFormatedDolls.SetActive(true);
         InGameManager.instance.SelectedNode = null;
     }
     //DollInfo
