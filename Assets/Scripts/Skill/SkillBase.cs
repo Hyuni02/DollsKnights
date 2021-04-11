@@ -23,7 +23,7 @@ public abstract class SkillBase : MonoBehaviour
     [HideInInspector]
     public float skill_cool_timer, skill_duration_timer;
 
-    public void Start() {
+    public virtual void Start() {
         skill_cool_timer = skill_InitCooltime;
 
         GetLevel();

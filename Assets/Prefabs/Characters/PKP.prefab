@@ -92,9 +92,9 @@ GameObject:
   - component: {fileID: 3945091986587538576}
   - component: {fileID: 3945091986587538577}
   - component: {fileID: 3945091986587538590}
+  - component: {fileID: -2186621587374968647}
   - component: {fileID: 3945091986587538591}
-  - component: {fileID: 3945091986587538588}
-  - component: {fileID: 3945091986587538589}
+  - component: {fileID: -6628853724305955744}
   m_Layer: 0
   m_Name: PKP
   m_TagString: Untagged
@@ -147,6 +147,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -155,6 +156,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -166,6 +168,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -173,6 +177,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &3945091986587538590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +201,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -203,7 +211,7 @@ MonoBehaviour:
   _evasion: 0
   _rateoffire: 0
   _armor: 0
---- !u!114 &3945091986587538591
+--- !u!114 &-2186621587374968647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,20 +220,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3945091986587538586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BuffList: []
---- !u!114 &3945091986587538588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3945091986587538586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fed2a2c149f8f284ba9c6509b8b30376, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d155fc06421fb347908c58ab0219bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
@@ -249,10 +244,11 @@ MonoBehaviour:
   Sprite_Doll: {fileID: 21300000, guid: 3ad88891a28685c4d82430a9980b3155, type: 3}
   Sprite_Doll_face: {fileID: 21300000, guid: b875a4b542cc724499acb72de6591d34, type: 3}
   Blocked_Enemies: []
-  stunFrame: 0
+  stunFrame: 4
   skillPoint: {fileID: 0}
   reloading: 0
---- !u!114 &3945091986587538589
+  possibility: 0
+--- !u!114 &3945091986587538591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,42 +257,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 3945091986587538586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f47fb0e406bc1e248bc0249d93a85f51, type: 3}
+  m_Script: {fileID: 11500000, guid: 8aa569d8bd4afda429d9ae4f96ffa1fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuffList: []
+--- !u!114 &-6628853724305955744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945091986587538586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdebef53eac27a4ba22aaf455185c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skilllevel: 0
-  skill_name: "\uD654\uB825\uC804\uAC1C"
-  skill_describe_form: "\uC790\uC2E0\uC758 \uD654\uB825 _dmg% \uC99D\uAC00"
-  skill_describe: "\uC790\uC2E0\uC758 \uD654\uB825 40% \uC99D\uAC00"
-  skill_icon: {fileID: 21300000, guid: 528e08666ea67b340b76626149ffc5cd, type: 3}
+  skill_name: "\uC120\uC804\uD3EC\uACE0"
+  skill_describe_form: "\uB9E4 \uACF5\uACA9 \uC2DC _posi%\uC758 \uD655\uB960\uB85C
+    \uD654\uB825 1.5\uBC30\uC758 \uACF5\uACA9\uC744 \uD568"
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: 3df36660adf5f884ab37b5caf5e9f42b, type: 3}
   type: 0
-  skill_InitCooltime: 4
+  skill_InitCooltime: 0
   skill_Cooltime:
-  - 20
-  - 19.6
-  - 19.1
-  - 18.7
-  - 18.2
-  - 17.8
-  - 17.3
-  - 16.9
-  - 1.64
-  - 16
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   skill_Duration:
-  - 6
-  - 6.4
-  - 6.9
-  - 7.3
-  - 7.8
-  - 8.2
-  - 8.7
-  - 9.1
-  - 9.6
-  - 10
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   autoActive: 0
   skill_cool_timer: 0
   skill_duration_timer: 0
-  increase_dmg: 280000002b0000002f0000003200000035000000390000003c0000003f0000004300000046000000
+  possibility: 0500000007000000080000000a0000000c0000000d0000000f000000110000001200000014000000
 --- !u!1 &3945091986598410990
 GameObject:
   m_ObjectHideFlags: 0
