@@ -58,9 +58,15 @@ public class InGameUIContainer : MonoBehaviour
     [Header("Victory Panel")]
     public GameObject Panel_Clear;
     public Image Image_mvp;
+    public Image Image_result;
     public Text Text_MapName;
     public Text Text_RestHP;
     public Text Text_Reward;
+    [Header("result Images")]
+    public Sprite sprite_S;
+    public Sprite sprite_A;
+    public Sprite sprite_B;
+    public Sprite sprite_C;
 
     [Header("Defeat Panel")]
     public GameObject Panel_Fail;

@@ -332,11 +332,15 @@ public class InGameManager : MonoBehaviour {
             else {
                 reward = Map.GetComponent<LevelInfo>().Next_Reward;
             }
-            
-            InGameUIContainer.instance.Text_MapName.text = Map.GetComponent<LevelInfo>().title; //맵 이름 띄우기
+
             //MVP 띄우기
-            InGameUIContainer.instance.Text_RestHP.text = RemainLife.ToString();//잔여 HP 띄우기
-            InGameUIContainer.instance.Text_Reward.text = reward.ToString(); //보상 띄우기
+            InGameUIContainer.instance.Image_mvp.sprite = Spawned_Dolls[Random.Range(0, Spawned_Dolls.Count)].GetComponent<DollController>().Sprite_Doll;
+
+            //전투 결과 띄우기
+
+            InGameUIContainer.instance.Text_MapName.text = Map.GetComponent<LevelInfo>().title; //맵 이름 띄우기
+            InGameUIContainer.instance.Text_RestHP.text = "잔여 HP : " + RemainLife.ToString();//잔여 HP 띄우기
+            InGameUIContainer.instance.Text_Reward.text = "x" + reward.ToString(); //보상 띄우기
 
             GetData.instance.Token += reward;
             GetData.instance.SavePlayerInfoFile();
