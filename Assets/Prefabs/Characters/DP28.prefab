@@ -3610,7 +3610,7 @@ GameObject:
   - component: {fileID: 6168729030963215671}
   - component: {fileID: 6168729030963215658}
   - component: {fileID: 6168729030963215657}
-  - component: {fileID: 6168729030963215659}
+  - component: {fileID: -1910193850096366699}
   m_Layer: 0
   m_Name: DP28
   m_TagString: Untagged
@@ -3663,6 +3663,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -3671,6 +3672,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -3682,6 +3684,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -3689,6 +3693,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &6168729030963215671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3711,6 +3717,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -3768,7 +3776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuffList: []
---- !u!114 &6168729030963215659
+--- !u!114 &-1910193850096366699
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3777,42 +3785,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 6168729030963215656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f47fb0e406bc1e248bc0249d93a85f51, type: 3}
+  m_Script: {fileID: 11500000, guid: 9069c10c6e5fc7e4fa3233ef36bca297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skilllevel: 0
-  skill_name: "\uD654\uB825\uC804\uAC1C"
-  skill_describe_form: "\uC790\uC2E0\uC758 \uD654\uB825 _dmg% \uC99D\uAC00"
+  skill_name: "\uC900\uBE44\uB9CC\uC804"
+  skill_describe_form: "\uC9C0\uC18D\uC2DC\uAC04 \uB3D9\uC548 \uC790\uC2DD\uC758
+    \uD654\uB825 _dmg% \uC99D\uAC00"
   skill_describe: 
-  skill_icon: {fileID: 21300000, guid: 528e08666ea67b340b76626149ffc5cd, type: 3}
+  skill_icon: {fileID: 21300000, guid: 3df36660adf5f884ab37b5caf5e9f42b, type: 3}
   type: 0
-  skill_InitCooltime: 4
+  skill_InitCooltime: 8
   skill_Cooltime:
-  - 20
-  - 19.6
-  - 19.1
-  - 18.7
-  - 18.2
-  - 17.8
-  - 17.3
-  - 16.9
-  - 1.64
-  - 16
+  - 18
+  - 18
+  - 18
+  - 18
+  - 18
+  - 18
+  - 18
+  - 18
+  - 18
+  - 18
   skill_Duration:
   - 6
+  - 6.2
   - 6.4
+  - 6.7
   - 6.9
+  - 7.1
   - 7.3
+  - 7.6
   - 7.8
-  - 8.2
-  - 8.7
-  - 9.1
-  - 9.6
-  - 10
+  - 8
   autoActive: 0
   skill_cool_timer: 0
   skill_duration_timer: 0
-  increase_dmg: 280000002b0000002f0000003200000035000000390000003c0000003f0000004300000046000000
+  increase_dmg: 10000000110000001300000014000000150000001700000018000000190000001b0000001c000000
 --- !u!1001 &6168729030421138026
 PrefabInstance:
   m_ObjectHideFlags: 0

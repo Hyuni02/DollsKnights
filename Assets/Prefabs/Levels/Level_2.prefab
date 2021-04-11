@@ -3674,8 +3674,8 @@ MonoBehaviour:
     - {fileID: 7029471888882729312}
   WaveEnd: 0
   waves:
-  - Delay_start: 3
-    Interval_spawn: 5
+  - Delay_start: 0
+    Interval_spawn: 10
     Index_enemy: 2
     Level_enemy: 1
     Count_spawn: 99

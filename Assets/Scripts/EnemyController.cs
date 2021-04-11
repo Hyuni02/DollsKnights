@@ -9,7 +9,7 @@ public class EnemyController : CharacterBase {
     public bool blocked = false;
     public GameObject Blocker;
 
-    bool arrive = false;
+    public bool arrive = false;
 
     //public override void Start() {
 

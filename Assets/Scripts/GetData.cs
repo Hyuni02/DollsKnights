@@ -475,8 +475,8 @@ public class GetData : MonoBehaviour
                     //스킬 정보 보여주기
                     SkillBase sb = DollContainer.instance.Dolls[index_doll].GetComponent<SkillBase>();
                     UIContainer_DollList.instance.Image_Skill_Icon.sprite = sb.skill_icon;
-                    UIContainer_DollList.instance.Text_Skill_CoolTime.text = "쿨타임:" + sb.skill_Cooltime[level - 1].ToString();
-                    UIContainer_DollList.instance.Text_Skill_Duration.text = "지속시간:" + sb.skill_Duration[level - 1].ToString();
+                    UIContainer_DollList.instance.Text_Skill_CoolTime.text = "쿨타임:" + sb.skill_Cooltime[(int)(level * 0.1f)].ToString();
+                    UIContainer_DollList.instance.Text_Skill_Duration.text = "지속시간:" + sb.skill_Duration[(int)(level *0.1f)].ToString();
                     sb.SkillDescribe();
                     UIContainer_DollList.instance.Text_Skill_Explaination.text = sb.skill_describe;
                     UIContainer_DollList.instance.Text_Skill_Name.text = sb.skill_name;
