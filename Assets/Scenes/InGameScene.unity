@@ -3026,7 +3026,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197462032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.61}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1439571059}
@@ -3059,7 +3059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260341601}
   m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 3, y: 5, z: -1}
+  m_LocalPosition: {x: 0, y: 5, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1197462033}
@@ -3343,7 +3343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439571056}
   m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 3, y: 5, z: -1}
+  m_LocalPosition: {x: 0, y: 5, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1197462033}
@@ -3440,6 +3440,7 @@ GameObject:
   - component: {fileID: 1487363049}
   - component: {fileID: 1487363050}
   - component: {fileID: 1487363051}
+  - component: {fileID: 1487363052}
   m_Layer: 0
   m_Name: InGameManager
   m_TagString: Untagged
@@ -3566,6 +3567,19 @@ MonoBehaviour:
   sprite_B: {fileID: 0}
   sprite_C: {fileID: 0}
   Panel_Fail: {fileID: 1187668014}
+--- !u!114 &1487363052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487363047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa6a8cd1ed61384a864769b28468efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraPosTarget: {fileID: 1197462032}
 --- !u!1 &1520761074
 GameObject:
   m_ObjectHideFlags: 0
