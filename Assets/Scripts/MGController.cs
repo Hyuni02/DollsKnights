@@ -77,7 +77,7 @@ public class MGController : DollController
     public List<GameObject> List_temp_target = new List<GameObject>();
     public GameObject temp_target;
 
-    //체력이 많은 적 우선 공격
+    //최대 체력이 많은 적 우선 공격
     public override void SearchTarget() {
 
         if (!gameObject.activeSelf)
@@ -89,7 +89,7 @@ public class MGController : DollController
         if (List_temp_target.Count > 0) {
             temp_target = List_temp_target[0];
             for (int i = 0; i < List_temp_target.Count; i++) {
-                if (temp_target.GetComponent<FinalState>().hp <= List_temp_target[i].GetComponent<FinalState>().hp) {
+                if (temp_target.GetComponent<OriginalState>().enemystate.hp <= List_temp_target[i].GetComponent<OriginalState>().enemystate.hp) {
                     temp_target = List_temp_target[i];
                 }
             }
@@ -103,6 +103,7 @@ public class MGController : DollController
     }
 
     public virtual void GetInRangeTarget() {
+        List_temp_target.Clear();
         for (int i = 0; i < InGameManager.instance.Spawned_Enemies.Count; i++) {
             if (GetDistance(InGameManager.instance.Spawned_Enemies[i]) <= fs.range
                 && InGameManager.instance.Spawned_Enemies[i].activeSelf) {
