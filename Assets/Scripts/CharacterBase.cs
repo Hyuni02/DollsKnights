@@ -134,7 +134,6 @@ public abstract class CharacterBase : MonoBehaviour {
     }
 
     public virtual void attack() {
-        //print(gameObject.name + " attacked " + Target.name);
         SetFaceDir(Target.transform.position.x);
         Target.GetComponent<CharacterBase>().GetAttacked(fs.damage, fs.accuracy, fs.critrate, fs.armorpen);
     }

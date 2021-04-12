@@ -1902,13 +1902,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ca395b31ddbad44a44d12c4ad84c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Token: 0
+  playerInfo:
+    token: 0
+    index_partner: 0
   List_DollState: []
   List_DollData: []
   List_EnemyState: []
   List_LevelData: []
   List_PickUpData: []
   List_DollButton: []
+  index_doll: 0
 --- !u!114 &2118816051
 MonoBehaviour:
   m_ObjectHideFlags: 0
