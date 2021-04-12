@@ -3676,7 +3676,7 @@ MonoBehaviour:
   waves:
   - Delay_start: 0
     Interval_spawn: 0
-    Index_enemy: 0
+    Index_enemy: 2
     Level_enemy: 1
     Count_spawn: 3
     Index_route: 0

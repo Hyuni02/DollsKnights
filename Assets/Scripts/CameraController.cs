@@ -25,6 +25,9 @@ public class CameraController : MonoBehaviour {
             if (InGameManager.instance.SelectedDoll != null) {
                 moveCameraSmoothly(InGameManager.instance.SelectedDoll.transform.position);
             }
+            else {
+                moveCameraSmoothly(MapCenter);
+            }
         }
     }
     float velocityX;
