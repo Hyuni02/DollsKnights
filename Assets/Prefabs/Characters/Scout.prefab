@@ -389,6 +389,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -397,6 +398,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -408,6 +410,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -415,6 +419,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &2579494584301104998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,6 +443,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -478,6 +486,7 @@ MonoBehaviour:
   type: 0
   blocked: 0
   Blocker: {fileID: 0}
+  arrive: 0
 --- !u!114 &2579494584301104984
 MonoBehaviour:
   m_ObjectHideFlags: 0
