@@ -10,8 +10,8 @@ public class MainMenuSceneController : MonoBehaviour
     public static MainMenuSceneController instance;
     public ScreenType screenType;
     [Header("Lobby")]
-    public GameObject Image_Partner;
-    public GameObject Image_Background;
+    public Image Image_Partner;
+    public Image Image_Background;
     public GameObject Panel_Setting;
     [Header("Level Select")]
     //public GameObject Button_LevelSelect;
@@ -23,7 +23,7 @@ public class MainMenuSceneController : MonoBehaviour
     //public GameObject Button_Formation;
     public GameObject Panel_Formation;
     [Header("Factory")]
-    public GameObject Button_Factory;
+    public Button Button_Factory;
 
     private void Awake() {
         instance = this;
@@ -123,6 +123,7 @@ public class MainMenuSceneController : MonoBehaviour
         SetScreenType(ScreenType.lobby);
         GameManager.instance.Close_DollListContainer();
         Panel_DollList.SetActive(false);
+        RefreshPartner();
     }
     public void Open_Panel_Formation() {
         SetScreenType(ScreenType.formation);
@@ -134,6 +135,7 @@ public class MainMenuSceneController : MonoBehaviour
         SetScreenType(ScreenType.lobby);
         GameManager.instance.Close_DollListContainer();
         Panel_Formation.SetActive(false);
+        RefreshPartner();
     }
     public void Open_Panel_LevelSelect() {
         Close_Panel_LevelInfo();
@@ -143,7 +145,8 @@ public class MainMenuSceneController : MonoBehaviour
     }
     public void Close_Panel_LevelSelect() {
         SetScreenType(ScreenType.lobby);
-        Panel_LevelSelect.SetActive(false); 
+        Panel_LevelSelect.SetActive(false);
+        RefreshPartner();
     }
     public void Open_Panel_LevelInfo() {
         UIContainer_LevelSelect.instance.Panel_LevelInfo.SetActive(true);
@@ -162,5 +165,13 @@ public class MainMenuSceneController : MonoBehaviour
     }
     public void Close_Panel_Setting() {
         Panel_Setting.SetActive(false);
+    }
+
+    public void SetPartner() {
+        GetData.instance.playerInfo.index_partner = GetData.instance.index_doll;
+    }
+    void RefreshPartner() {
+        Image_Partner.sprite = DollContainer.instance.Dolls[GetData.instance.playerInfo.index_partner].GetComponent<DollController>().Sprite_Doll;
+        GetData.instance.SavePlayerInfoFile();
     }
 }

@@ -1328,6 +1328,7 @@ GameObject:
   - component: {fileID: -9166220041916873482}
   - component: {fileID: 923236984849624354}
   - component: {fileID: 991547582358871730}
+  - component: {fileID: -3255950378871805355}
   m_Layer: 0
   m_Name: FAMAS
   m_TagString: Untagged
@@ -1380,6 +1381,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -1388,6 +1390,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -1399,6 +1402,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -1406,6 +1411,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &-9166220041916873482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1428,6 +1435,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -1484,6 +1493,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuffList: []
+--- !u!114 &-3255950378871805355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363794763432884679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415b8ef1be9fcd74d816f7b55f717064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skilllevel: 0
+  skill_name: "\uC0B4\uC0C1\uB958\uD0C4"
+  skill_describe_form: "\uC720\uD0C4\uC744 \uBC1C\uC0AC\uD558\uC5EC 1.5 \uBC94\uC704\uC5D0
+    \uACF5\uACA9\uB825\uC758 _c_dmg\uBC30\uC758 \uD53C\uD574\uB97C \uC900"
+  skill_describe: 
+  skill_icon: {fileID: 21300000, guid: 4985faafc2f10824ab60203f566d73f6, type: 3}
+  type: 1
+  skill_InitCooltime: 8
+  skill_Cooltime:
+  - 20
+  - 19.6
+  - 19.1
+  - 18.7
+  - 18.2
+  - 17.8
+  - 17.3
+  - 16.9
+  - 16.4
+  - 16
+  skill_Duration:
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  autoActive: 0
+  skill_cool_timer: 0
+  skill_duration_timer: 0
+  target: {fileID: 0}
+  image: {fileID: 21300000, guid: 4985faafc2f10824ab60203f566d73f6, type: 3}
+  range: 1.5
+  maxHeight: 2
+  cofficient_dmg:
+  - 5
+  - 5.8
+  - 6.6
+  - 7.3
+  - 8.1
+  - 9.6
+  - 10.4
+  - 11.2
+  - 12
 --- !u!1 &4648065505560819046
 GameObject:
   m_ObjectHideFlags: 0

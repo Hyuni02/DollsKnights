@@ -31,7 +31,7 @@ public class FactoryUiContainer : MonoBehaviour
 
     void ViewToken() {
         GetData.instance.LoadPlayerInfoFile();
-        Text_Token.text = GetData.instance.Token.ToString();
+        Text_Token.text = GetData.instance.playerInfo.token.ToString();
     }
 
     public void Close_Panel_Result() {

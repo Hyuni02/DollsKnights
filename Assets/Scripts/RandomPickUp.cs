@@ -101,7 +101,7 @@ public class RandomPickUp : MonoBehaviour
     }
 
     void CheckToken() {
-        if(GetData.instance.Token >= Selected_Event.cost) {
+        if(GetData.instance.playerInfo.token >= Selected_Event.cost) {
             FactoryUiContainer.instance.Button_PickUp.interactable = true;
         }
         else {
@@ -112,7 +112,7 @@ public class RandomPickUp : MonoBehaviour
     //뽑기
     int index = 0;
     public void PickUp() {
-        GetData.instance.Token -= Selected_Event.cost;
+        GetData.instance.playerInfo.token -= Selected_Event.cost;
         int pick_tier = Random.Range(0, 100);
         index = Selected_Event.List_Tier[0].possibility;
         for(int i = 0; i < Selected_Event.List_Tier.Count; i++) {

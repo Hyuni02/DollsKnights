@@ -52,6 +52,18 @@ public class LevelData {
     }
 }
 
+[System.Serializable]
+public class PlayerInfo {
+    public int token;
+    public int index_partner;
+
+    public PlayerInfo(int _token,int _index_partner) {
+        this.token = _token;
+        this.index_partner = _index_partner;
+    }
+
+}
+
 public class GetData : MonoBehaviour
 {
     public static GetData instance;
@@ -62,10 +74,10 @@ public class GetData : MonoBehaviour
     string FileName_LevelData = "LevelData";
     string FileName_PlayerInfo = "PlayerInfo";
     string FileName_PickUpData = "PickUpData";
-    //string MapListData = "MapListData";
 
     [Header("Player Info")]
-    public int Token = 0;
+    [SerializeField]
+    public PlayerInfo playerInfo;
     
     [Header("인형 능력치")]
     [SerializeField]
@@ -398,11 +410,11 @@ public class GetData : MonoBehaviour
         }
 
         string Pdate = File.ReadAllText(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json");
-        Token = JsonConvert.DeserializeObject<int>(Pdate);
+        playerInfo = JsonConvert.DeserializeObject<PlayerInfo>(Pdate);
         //print("Load LevelData File");
     }
     public void SavePlayerInfoFile() {
-        string Pdata = JsonConvert.SerializeObject(Token);
+        string Pdata = JsonConvert.SerializeObject(playerInfo);
         File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json", Pdata);
     }
 
@@ -443,7 +455,8 @@ public class GetData : MonoBehaviour
         }
     }
 
-    int index_doll;
+    [HideInInspector]
+    public int index_doll;
     public void Click_DollList(string _name, GameObject button) {
         switch (MainMenuSceneController.instance.screenType) {
             case ScreenType.list: {

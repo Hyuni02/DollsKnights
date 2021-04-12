@@ -38,6 +38,6 @@ public class UIContainer_LevelSelect : MonoBehaviour
 
     void ViewToken() {
         GetData.instance.LoadPlayerInfoFile();
-        Text_Token.text = GetData.instance.Token.ToString();
+        Text_Token.text = GetData.instance.playerInfo.token.ToString();
     }
 }

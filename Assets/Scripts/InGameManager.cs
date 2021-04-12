@@ -342,7 +342,7 @@ public class InGameManager : MonoBehaviour {
             InGameUIContainer.instance.Text_RestHP.text = "잔여 HP : " + RemainLife.ToString();//잔여 HP 띄우기
             InGameUIContainer.instance.Text_Reward.text = "x" + reward.ToString(); //보상 띄우기
 
-            GetData.instance.Token += reward;   
+            GetData.instance.playerInfo.token += reward;   
             GetData.instance.SavePlayerInfoFile();
 
             GetData.instance.List_LevelData[GameManager.instance.Index_SelectedLevel].count_clear++;
