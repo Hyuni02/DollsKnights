@@ -251,7 +251,7 @@ public class GetData : MonoBehaviour
         //--기본 인형 설정
         //Todo
         foreach (DollData doll in List_DollData) {
-            doll.level = 1;
+            doll.level = 99;
         }
    
         //새로운 파일 생성

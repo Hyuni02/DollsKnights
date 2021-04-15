@@ -39,7 +39,7 @@ public class Button_FormatedDollInfo : MonoBehaviour
     void Refresh() {
         Slider_HP.value = model.GetComponent<FinalState>().hp;
         placed = model.GetComponent<DollController>().placed;
-        if (model.GetComponent<FinalState>().hp != maxhp) {
+        if (maxhp - model.GetComponent<FinalState>().hp >= 1) {
             Slider_HP.gameObject.SetActive(true);
             if (!placed) {
                 Button_heal.gameObject.SetActive(true);
