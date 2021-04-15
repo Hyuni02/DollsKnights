@@ -28,7 +28,7 @@ public abstract class SkillBase : MonoBehaviour
 
         GetLevel();
     }
-    public void Update() {
+    public virtual void Update() {
         if(skill_cool_timer >= 0)
             skill_cool_timer -= Time.deltaTime;
         if(skill_duration_timer >= 0)
