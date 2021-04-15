@@ -339,6 +339,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -347,6 +348,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -358,6 +360,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -365,6 +369,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &4935433757848981106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +393,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -455,11 +463,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415b8ef1be9fcd74d816f7b55f717064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skilllevel: 0
+  skilllevel: 9
   skill_name: "\uC0B4\uC0C1\uB958\uD0C4"
   skill_describe_form: "\uC720\uD0C4\uC744 \uBC1C\uC0AC\uD558\uC5EC 1.5 \uBC94\uC704\uC5D0
-    \uACF5\uACA9\uB825\uC758 _c_dmg\uBC30\uC758 \uD53C\uD574\uB97C \uC900"
-  skill_describe: 
+    \uACF5\uACA9\uB825\uC758 _c_dmg\uBC30\uC758 \uD53C\uD574\uB97C \uC900\uB2E4"
+  skill_describe: "\uC720\uD0C4\uC744 \uBC1C\uC0AC\uD558\uC5EC 1.5 \uBC94\uC704\uC5D0
+    \uACF5\uACA9\uB825\uC758 12\uBC30\uC758 \uD53C\uD574\uB97C \uC900"
   skill_icon: {fileID: 21300000, guid: 4985faafc2f10824ab60203f566d73f6, type: 3}
   type: 1
   skill_InitCooltime: 8
@@ -498,6 +507,7 @@ MonoBehaviour:
   - 6.6
   - 7.3
   - 8.1
+  - 8.9
   - 9.6
   - 10.4
   - 11.2

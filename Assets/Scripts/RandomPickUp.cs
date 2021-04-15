@@ -145,7 +145,14 @@ public class RandomPickUp : MonoBehaviour
         for (int i = 0; i < GetData.instance.List_DollData.Count; i++) {
             if (Picked_Doll.name.Equals(GetData.instance.List_DollData[i].name)) {
                 print(GetData.instance.List_DollData[i].name);
-                GetData.instance.List_DollData[i].level++;
+
+                if (GetData.instance.List_DollData[i].level < 99) {
+                    GetData.instance.List_DollData[i].level++;
+                }
+                else{
+                    //최대 레벨 도달 알림
+                    print("Max Level");
+                }
                 GetData.instance.SaveDollDataFile();
                 GetData.instance.Instantiate_Doll_ButtonList();
                 return;

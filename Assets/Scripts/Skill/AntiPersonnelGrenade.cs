@@ -8,7 +8,7 @@ public class AntiPersonnelGrenade : SkillBase
     public Sprite image;
     public float range = 1.5f;
     public float maxHeight;
-    public float[] cofficient_dmg = { 5, 5.8f, 6.6f, 7.3f, 8.1f, 9.6f, 10.4f, 11.2f, 12f };
+    public float[] cofficient_dmg = { 5, 5.8f, 6.6f, 7.3f, 8.1f, 8.9f, 9.6f, 10.4f, 11.2f, 12f };
     float dmg;
 
     public override void SkillActive() {

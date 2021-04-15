@@ -36,6 +36,11 @@ public class InGameManager : MonoBehaviour {
     public GameObject field;
     public GameObject projectile;
 
+    [Header("Clear Result")]
+    public bool Lost_Life = false;
+    public bool Lost_Doll = false;
+    public int Score = 0;
+
     void Awake() {
         instance = this;
     }
@@ -304,6 +309,7 @@ public class InGameManager : MonoBehaviour {
     public void LifeLossAlert() {
         //TODO
         print("Life Loss!!");
+        Lost_Life = true;
     }
 
     public void Eliminated(int _cost, int _parts) {
@@ -333,11 +339,31 @@ public class InGameManager : MonoBehaviour {
                 reward = Map.GetComponent<LevelInfo>().Next_Reward;
             }
 
-            //MVP 띄우기
+            //무작위 인형 출력
             InGameUIContainer.instance.Image_mvp.sprite = Spawned_Dolls[Random.Range(0, Spawned_Dolls.Count)].GetComponent<DollController>().Sprite_Doll;
 
-            //전투 결과 띄우기
+            //전투 평가 출력
+            if (Lost_Life)
+                Score++;
+            if (Lost_Doll)
+                Score++;
 
+            switch (Score) {
+                case 0:
+                    print("S");
+                    break;
+                case 1:
+                    print("A");
+                    break;
+                case 2:
+                    print("B");
+                    break;
+                default:
+                    Debug.LogError("잘못된 전투 평가");
+                    break;
+            }
+
+            //전투 결과 띄우기
             InGameUIContainer.instance.Text_MapName.text = Map.GetComponent<LevelInfo>().title; //맵 이름 띄우기
             InGameUIContainer.instance.Text_RestHP.text = "잔여 HP : " + RemainLife.ToString();//잔여 HP 띄우기
             InGameUIContainer.instance.Text_Reward.text = "x" + reward.ToString(); //보상 띄우기
