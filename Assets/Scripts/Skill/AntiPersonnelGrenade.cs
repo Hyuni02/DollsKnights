@@ -9,7 +9,7 @@ public class AntiPersonnelGrenade : SkillBase
     public float range = 1.5f;
     public float maxHeight;
     public float[] cofficient_dmg = { 5, 5.8f, 6.6f, 7.3f, 8.1f, 8.9f, 9.6f, 10.4f, 11.2f, 12f };
-    float dmg;
+    int dmg;
 
     public override void SkillActive() {
         target = GetComponent<CharacterBase>().Target;
@@ -35,7 +35,7 @@ public class AntiPersonnelGrenade : SkillBase
         print("launch grenade");
         GameObject grenade = Instantiate(InGameManager.instance.projectile);
         grenade.GetComponent<Projectile>().Caster = gameObject;
-        dmg = GetComponent<FinalState>().damage * cofficient_dmg[skilllevel];
+        dmg = (int)(GetComponent<FinalState>().damage * cofficient_dmg[skilllevel]);
         grenade.GetComponent<Projectile>().ExplosionSetting(range, dmg);
         grenade.GetComponent<Projectile>().LaunchProjectile(image, GetComponent<DollController>().skillPoint, target.transform, maxHeight, true, false);
     }

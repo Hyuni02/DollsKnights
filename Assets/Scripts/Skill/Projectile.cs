@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour {
 
     [Header("Explosion")]
     public float range;
-    public float dmg;
+    public int dmg;
 
     [Header("Field")]
     public float field_range;
@@ -35,9 +35,9 @@ public class Projectile : MonoBehaviour {
         transform.position = startPos;
     }
 
-    public void ExplosionSetting(float _range, float _dmg) {
+    public void ExplosionSetting(float _range, int _dmg) {
         range = _range;
-        //dmg = _dmg;
+        dmg = _dmg;
     }
     public void DeployFieldSetting(float _range, float _duration, float _dmg, GameObject caster) {
         field_dmg = _dmg;
@@ -63,6 +63,7 @@ public class Projectile : MonoBehaviour {
             //찾은 적에게 효과 주기
             for (int i = 0; i < List_Targets.Count; i++) {
                 Caster.GetComponent<SkillBase>().Effect(List_Targets[i]);
+                List_Targets[i].GetComponent<CharacterBase>().GetAttacked(dmg, -1, Caster.GetComponent<FinalState>().critrate, Caster.GetComponent<FinalState>().armorpen);
             }
         }
 

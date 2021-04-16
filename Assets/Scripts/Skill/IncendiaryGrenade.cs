@@ -12,7 +12,7 @@ public class IncendiaryGrenade : SkillBase
 
     public float[] c_dmg = { 3, 3.3f, 3.7f, 4, 4.3f, 4.7f, 5, 5.3f, 5.7f, 6 };
     public float[] c_dmg2 = { 0.5f, 0.6f, 0.6f, 0.7f, 0.7f, 0.8f, 0.8f, 0.9f, 0.9f, 1};
-    float dmg;
+    int dmg;
     float dmg2;
 
 
@@ -40,7 +40,7 @@ public class IncendiaryGrenade : SkillBase
         print("throw molotov");
         GameObject molotov = Instantiate(InGameManager.instance.projectile);
         molotov.GetComponent<Projectile>().Caster = gameObject;
-        dmg = GetComponent<FinalState>().damage * c_dmg[skilllevel];
+        dmg = (int)(GetComponent<FinalState>().damage * c_dmg[skilllevel]);
         dmg2 = GetComponent<FinalState>().damage * c_dmg2[skilllevel];
         molotov.GetComponent<Projectile>().ExplosionSetting(range, dmg);
         molotov.GetComponent<Projectile>().DeployFieldSetting(range, GetDuration(), dmg2, gameObject);

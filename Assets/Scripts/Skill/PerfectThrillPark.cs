@@ -7,6 +7,7 @@ public class PerfectThrillPark : SkillBase
     public float[] c_dmg = { 1.2f, 1.2f, 1.3f, 1.47f, 1.56f, 1.64f, 1.73f, 1.82f, 1.91f, 2 };
     public float[] _range = { 2.5f, 2.67f, 2.83f, 3f, 3.17f, 3.33f, 3.5f, 3.67f, 3.83f, 4 };
     public bool skilling;
+    public Sprite image;
 
     public override void SkillActive() {
         if (GetComponent<DollController>().Target == null)

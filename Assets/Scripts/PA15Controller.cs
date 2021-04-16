@@ -56,8 +56,10 @@ public class PA15Controller : DollController
         SetFaceDir(Target.transform.position.x);
         if (ptp.skilling) {
             if (Target != null) {
-                ptp.Effect(Target);
-                Target.GetComponent<CharacterBase>().GetAttacked((int)(fs.damage * ptp.c_dmg[ptp.skilllevel]), -1, fs.critrate, fs.armorpen);
+                GameObject skillattack = Instantiate(InGameManager.instance.projectile);
+                skillattack.GetComponent<Projectile>().Caster = gameObject;
+                skillattack.GetComponent<Projectile>().ExplosionSetting(ptp._range[ptp.skilllevel], (int)(fs.damage * ptp.c_dmg[ptp.skilllevel]));
+                skillattack.GetComponent<Projectile>().LaunchProjectile(ptp.image, GetComponent<DollController>().skillPoint, Target.transform, 0, true, false);
                 ptp.skilling = false;
             }
         }
