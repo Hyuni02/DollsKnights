@@ -1656,9 +1656,9 @@ GameObject:
   - component: {fileID: 6159268845441013350}
   - component: {fileID: 506062816698817495}
   - component: {fileID: 944067974040685162}
-  - component: {fileID: 2048972174919357203}
+  - component: {fileID: 7743300562758697671}
   - component: {fileID: 8663810822310917561}
-  - component: {fileID: -6183308697443218218}
+  - component: {fileID: -8152641178010750399}
   m_Layer: 0
   m_Name: PA15
   m_TagString: Untagged
@@ -1711,6 +1711,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -1719,6 +1720,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -1730,6 +1732,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -1737,6 +1741,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &944067974040685162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1759,6 +1765,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -1767,7 +1775,7 @@ MonoBehaviour:
   _evasion: 0
   _rateoffire: 0
   _armor: 0
---- !u!114 &2048972174919357203
+--- !u!114 &7743300562758697671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1776,7 +1784,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6159268845441013351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8821e59a582492d44a873738914d2811, type: 3}
+  m_Script: {fileID: 11500000, guid: e59e7b171663da641861280b5eb482c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
@@ -1802,6 +1810,8 @@ MonoBehaviour:
   Blocked_Enemies: []
   stunFrame: 0
   skillPoint: {fileID: 0}
+  List_temp_target: []
+  temp_target: {fileID: 0}
 --- !u!114 &8663810822310917561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1815,7 +1825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuffList: []
---- !u!114 &-6183308697443218218
+--- !u!114 &-8152641178010750399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1828,25 +1838,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skilllevel: 0
-  skill_name: "\uC9DC\uB9BF\uD55C \uD55C\uBC29"
-  skill_describe_form: "\uCCB4\uB825\uC774 \uAC00\uC7A5 \uB9CE\uC740 \uC801\uC744
-    _duration\uCD08 \uAE30\uC808\uC2DC\uD0A4\uACE0 _c_dmg\uBC30\uC758 \uBE44\uD574\uB97C
-    \uC900\uB2E4. \uBAA9\uD45C\uC5D0\uC11C 2.5 \uC774\uB0B4\uC5D0 \uB2E4\uB978 \uC801\uC774
-    \uC788\uC744 \uC2DC \uBC94\uC704 \uB0B4 \uBAA8\uB4E0 \uC801\uC744 _duration2\uCD08
-    \uAE30\uC808\uC2DC\uD0A4\uACE0 _c_dmg2\uBC30\uC758 \uD53C\uD574\uB97C \uC900\uB2E4."
+  skill_name: "\uC9DC\uB9BF\uD55C\uD55C\uBC29"
+  skill_describe_form: "\uCCB4\uB825\uC774 \uAC00\uC7A5 \uB9CE\uC740 \uC801\uACFC
+    \uC8FC\uBCC0 _range \uBC94\uC704 \uB0B4 \uBAA8\uB4E0 \uC801\uC744 _duration\uCD08
+    \uAE30\uC808\uC2DC\uD0A4\uACE0 _dmg\uBC30\uC758 \uD53C\uD574\uB97C \uC900\uB2E4."
   skill_describe: 
   skill_icon: {fileID: 21300000, guid: 5511947233b5e4541a582ac6345f2df2, type: 3}
   type: 0
   skill_InitCooltime: 6
-  skill_Cooltime: []
-  skill_Duration: []
+  skill_Cooltime:
+  - 15
+  - 14.7
+  - 14.3
+  - 14
+  - 13.7
+  - 13.3
+  - 13
+  - 12.7
+  - 12.3
+  - 12
+  skill_Duration:
+  - 1.5
+  - 1.7
+  - 1.8
+  - 2
+  - 2.2
+  - 2.3
+  - 2.5
+  - 2.7
+  - 2.8
+  - 3
   autoActive: 0
   skill_cool_timer: 0
   skill_duration_timer: 0
-  duration: []
-  duration2: []
-  c_dmg: []
-  c_dmg2: []
+  c_dmg:
+  - 1.2
+  - 1.2
+  - 1.3
+  - 1.47
+  - 1.56
+  - 1.64
+  - 1.73
+  - 1.82
+  - 1.91
+  - 2
+  _range:
+  - 2.5
+  - 2.67
+  - 2.83
+  - 3
+  - 3.17
+  - 3.33
+  - 3.5
+  - 3.67
+  - 3.83
+  - 4
+  skilling: 0
 --- !u!1 &6159268845513726694
 GameObject:
   m_ObjectHideFlags: 0

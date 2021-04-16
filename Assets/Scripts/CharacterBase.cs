@@ -41,7 +41,7 @@ public abstract class CharacterBase : MonoBehaviour {
         sb = GetComponent<SkillBase>();
 
         os = GetComponent<OriginalState>();
-        os.SetState();
+        os.InitializeState();
         Slider_HPBar = transform.Find("Canvas_InGameDoll").transform.Find("Slider_HPBar").GetComponent<Slider>();
         Slider_HPBar.maxValue = os.maxHP;
         Slider_HPBar.value = os.maxHP;

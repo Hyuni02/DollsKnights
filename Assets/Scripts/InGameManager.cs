@@ -73,7 +73,7 @@ public class InGameManager : MonoBehaviour {
                     //능력치 적용
                     doll.GetComponent<OriginalState>().level = GetData.instance.List_DollData[i].level;
                     doll.GetComponent<OriginalState>().dollstate = GetData.instance.List_DollState[i];
-                    doll.GetComponent<OriginalState>().SetState();
+                    doll.GetComponent<OriginalState>().InitializeState();
 
                     doll.SetActive(false);
                 }

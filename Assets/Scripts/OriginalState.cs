@@ -11,9 +11,14 @@ public class OriginalState : MonoBehaviour {
     public DollState dollstate;
     public EnemyState enemystate;
 
-    //temp
-    public void SetState() {
-        FinalState fs = GetComponent<FinalState>();
+    CharacterBase cb;
+    FinalState fs;
+    BuffContainer bf;
+
+    public void InitializeState() {
+        if(fs == null)
+            fs = GetComponent<FinalState>();
+
         if (GetComponent<DollController>() != null) {
             fs.accuracy = dollstate.accuracy + (int)(dollstate._accuracy * (level - 1));
             fs.armor = dollstate.armor + (int)(dollstate._armor * (level - 1));
@@ -43,10 +48,17 @@ public class OriginalState : MonoBehaviour {
             fs.part = enemystate.part + (int)(enemystate._part * (level - 1));
         }
         maxHP = fs.hp;
+    }
 
-        BuffContainer bf = GetComponent<BuffContainer>();
-        GetComponent<CharacterBase>().stun = false;
-        GetComponent<CharacterBase>().forceShield = false;
+    public void SetState() {
+        if (cb == null || bf == null) {
+            cb = GetComponent<CharacterBase>();
+            bf = GetComponent<BuffContainer>();
+        }
+
+
+        cb.stun = false;
+        cb.forceShield = false;
         if (bf.BuffList.Count > 0) {
             for(int i = 0; i < bf.BuffList.Count; i++) {
                 Buff buff = bf.BuffList[i].GetComponent<Buff>();
@@ -57,8 +69,8 @@ public class OriginalState : MonoBehaviour {
                 fs.speed = Mathf.RoundToInt((1 + buff.speed * 0.01f) * fs.speed);
                 fs.rateoffire = Mathf.RoundToInt((1 + buff.rateoffire * 0.01f) * fs.rateoffire);
                 fs.critrate = Mathf.RoundToInt((1 + buff.critrate * 0.01f) * fs.critrate);
-                GetComponent<CharacterBase>().stun |= buff.stun;
-                GetComponent<CharacterBase>().forceShield |= buff.forceshield;
+                cb.stun |= buff.stun;
+                cb.forceShield |= buff.forceshield;
             }
         }
     }
