@@ -41,11 +41,15 @@ public class Button_FormatedDollInfo : MonoBehaviour
         placed = model.GetComponent<DollController>().placed;
         if (maxhp - model.GetComponent<FinalState>().hp >= 1) {
             Slider_HP.gameObject.SetActive(true);
-            if (!placed) {
-                Button_heal.gameObject.SetActive(true);
+            Button_heal.gameObject.SetActive(true);
 
-                //클래스 별 수복 계수
-                switch (model.GetComponent<OriginalState>().dollstate._class) {
+            if (placed) 
+                Button_heal.interactable = false;
+            else 
+                Button_heal.interactable = true;
+
+            //클래스 별 수복 계수
+            switch (model.GetComponent<OriginalState>().dollstate._class) {
                     case "HG": type_c = 20; type_p = 7; type_p = 24; break;
                     case "SMG": type_c = 45; type_p = 12; type_p = 48; break;
                     case "AR": type_c = 40; type_p = 14; type_p = 48; break;
@@ -55,15 +59,14 @@ public class Button_FormatedDollInfo : MonoBehaviour
                     case "MG": type_c = 75; type_p = 30; type_p = 96; break;
                 }
                 //남은 체력 비율
-                hp_rate = (float)model.GetComponent<FinalState>().hp / (float)maxhp;
+                hp_rate = Mathf.Max((float)model.GetComponent<FinalState>().hp, 0) / (float)maxhp;
                 //수복 인력 계산
-                cost_heal = Mathf.CeilToInt(type_c * hp_rate);
+                cost_heal = Mathf.CeilToInt(type_c * (1.0f - hp_rate));
                 //수복 부품 계산
-                part_heal = Mathf.CeilToInt(type_p * hp_rate);
+                part_heal = Mathf.CeilToInt(type_p * (1.0f - hp_rate));
 
                 Text_Cost_heal.text = cost_heal.ToString();
                 Text_Part_heal.text = part_heal.ToString();
-            }
         }
         else {
             Slider_HP.gameObject.SetActive(false);
@@ -97,22 +100,6 @@ public class Button_FormatedDollInfo : MonoBehaviour
     int type_c, type_p, type_t = 0;
     float hp_rate, t;
     public void HealDoll() {
-        ////클래스 별 수복 계수
-        //switch (model.GetComponent<OriginalState>().dollstate._class) {
-        //    case "HG": type_c = 20; type_p = 7; type_p = 24; break;
-        //    case "SMG": type_c = 45; type_p = 12; type_p = 48; break;
-        //    case "AR": type_c = 40; type_p = 14; type_p = 48; break;
-        //    case "DMR": type_c = 35; type_p = 16; type_p = 48; break;
-        //    case "SR": type_c = 35; type_p = 16; type_p = 48; break;
-        //    case "SG": type_c = 65; type_p = 32; type_p = 96; break;
-        //    case "MG": type_c = 75; type_p = 30; type_p = 96; break;
-        //}
-        ////남은 체력 비율
-        //hp_rate = (float)model.GetComponent<FinalState>().hp / (float)maxhp;
-        ////수복 인력 계산
-        //cost_heal = Mathf.CeilToInt(type_c * hp_rate);
-        ////수복 부품 계산
-        //part_heal = Mathf.CeilToInt(type_p * hp_rate);
 
         if (InGameManager.instance.cost < cost_heal || InGameManager.instance.parts < part_heal) {
             //코스트 창 강조
