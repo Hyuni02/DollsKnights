@@ -92,6 +92,8 @@ public class InGameManager : MonoBehaviour {
         for (int i = 0; i < Map.GetComponent<LevelInfo>().waves.Length; i++) {
             TotalEnemyCount += Map.GetComponent<LevelInfo>().waves[i].Count_spawn;
         }
+
+        SoundManager.instance.PlaySound_Voice(Spawned_Dolls[Random.Range(0, Spawned_Dolls.Count)].GetComponent<SoundContainer>().BattleStart);
     }
 
     public DamageIndicator CreateIndicator() {

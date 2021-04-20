@@ -20,7 +20,7 @@ public abstract class SkillBase : MonoBehaviour
     public float[] skill_Duration;
     public bool autoActive;
 
-    [HideInInspector]
+    //[HideInInspector]
     public float skill_cool_timer, skill_duration_timer;
 
     public virtual void Start() {
@@ -40,12 +40,18 @@ public abstract class SkillBase : MonoBehaviour
     }
 
     public void GetLevel() {
-        for (int i = 0; i < GetData.instance.List_DollData.Count; i++) {
-            if (GetData.instance.List_DollData[i].name.Equals(transform.name.Replace("(Clone)", ""))) {
-                level = GetData.instance.List_DollData[i].level;
-                skilllevel = (int)((level - 1) * 0.1f);
-                break;
+        if (GetComponent<DollController>() != null) {
+            for (int i = 0; i < GetData.instance.List_DollData.Count; i++) {
+                if (GetData.instance.List_DollData[i].name.Equals(transform.name.Replace("(Clone)", ""))) {
+                    level = GetData.instance.List_DollData[i].level;
+                    skilllevel = (int)((level - 1) * 0.1f);
+                    break;
+                }
             }
+        }
+        else {
+            level = GetComponent<OriginalState>().level;
+            skilllevel = (int)((level - 1) * 0.1f);
         }
     }
     public virtual void SkillDescribe() {

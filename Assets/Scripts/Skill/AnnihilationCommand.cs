@@ -13,6 +13,8 @@ public class AnnihilationCommand : SkillBase
         //배치된 모든 인형들에게 버프 부여
         skill_cool_timer = GetCoolDown();
         skill_duration_timer = GetDuration();
+        SoundManager.instance.PlaySound_Voice(GetComponent<SoundContainer>().SkillActive[Random.Range(0,3)]);
+
         for (int i = 0; i < InGameManager.instance.Spawned_Dolls.Count; i++) {
             //버프 소환
             GameObject buff_ppk = Instantiate(InGameManager.instance.buff);

@@ -615,6 +615,7 @@ GameObject:
   - component: {fileID: 3550306293497905155}
   - component: {fileID: 4314234549748653517}
   - component: {fileID: -4511562235236312903}
+  - component: {fileID: -5911540566529864755}
   m_Layer: 0
   m_Name: IWS2000
   m_TagString: Untagged
@@ -758,6 +759,9 @@ MonoBehaviour:
   RouteToMove: []
   uac: {fileID: 0}
   fs: {fileID: 0}
+  os: {fileID: 0}
+  sb: {fileID: 0}
+  sc: {fileID: 0}
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
@@ -826,6 +830,27 @@ MonoBehaviour:
   autoActive: 0
   skill_cool_timer: 0
   skill_duration_timer: 0
+--- !u!114 &-5911540566529864755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4314234549748653516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickUp: {fileID: 0}
+  BattleStart: {fileID: 0}
+  Place: {fileID: 0}
+  SkillActive:
+  - {fileID: 0}
+  Die: {fileID: 0}
+  Victory: {fileID: 0}
+  attack: {fileID: 0}
+  SkillEffect: {fileID: 8300000, guid: c0820c1f25994ec40bea954e4d8d13a1, type: 3}
 --- !u!1 &4314234549795435784
 GameObject:
   m_ObjectHideFlags: 0

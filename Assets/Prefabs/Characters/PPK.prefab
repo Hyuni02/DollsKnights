@@ -986,6 +986,7 @@ GameObject:
   - component: {fileID: 4871938635096453369}
   - component: {fileID: 2390288076817229910}
   - component: {fileID: -7040657547989999788}
+  - component: {fileID: -1859375201750262458}
   m_Layer: 0
   m_Name: PPK
   m_TagString: Untagged
@@ -1038,6 +1039,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -1046,6 +1048,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -1057,6 +1060,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -1064,6 +1069,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &-3961775093076925009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1086,6 +1093,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -1121,6 +1130,9 @@ MonoBehaviour:
   RouteToMove: []
   uac: {fileID: 0}
   fs: {fileID: 0}
+  os: {fileID: 0}
+  sb: {fileID: 0}
+  sc: {fileID: 0}
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
@@ -1189,6 +1201,27 @@ MonoBehaviour:
   skill_duration_timer: 0
   increase_dmg: 06000000060000000700000007000000080000000800000009000000090000000a0000000a000000
   increase_crit: 190000001a0000001b0000001c0000001d0000001f00000020000000210000002200000023000000
+--- !u!114 &-1859375201750262458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560506200609923633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickUp: {fileID: 0}
+  BattleStart: {fileID: 0}
+  Place: {fileID: 0}
+  SkillActive:
+  - {fileID: 0}
+  Die: {fileID: 0}
+  Victory: {fileID: 0}
+  attack: {fileID: 8300000, guid: 42dc4b3e32157ea4a8d71cbaa1946367, type: 3}
+  SkillEffect: {fileID: 0}
 --- !u!1 &1560506200612701117
 GameObject:
   m_ObjectHideFlags: 0

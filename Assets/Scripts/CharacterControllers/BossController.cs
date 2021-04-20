@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : CharacterBase
+public class BossController : EnemyController
 {
-    public override void UpdateState() {
-        throw new System.NotImplementedException();
-    }
+    public uint stunFrame = 0;
+    public Transform skillPoint;
+
+    //public override void UpdateState() {
+    //    throw new System.NotImplementedException();
+    //}
+
+    //public override void Getstun() {
+    //    throw new System.NotImplementedException();
+    //}
 
     public override void Getstun() {
-        throw new System.NotImplementedException();
+        uac.animation.GotoAndStopByFrame("die", stunFrame);
     }
 }

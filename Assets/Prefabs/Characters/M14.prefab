@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 1094898439987460813}
   - component: {fileID: 7568058977958836550}
   - component: {fileID: 7568058977958836568}
+  - component: {fileID: 2626904451435850608}
   m_Layer: 0
   m_Name: M14
   m_TagString: Untagged
@@ -471,6 +472,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -479,6 +481,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -490,6 +493,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -497,6 +502,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &7568058977958836551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +526,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -554,6 +563,9 @@ MonoBehaviour:
   RouteToMove: []
   uac: {fileID: 0}
   fs: {fileID: 0}
+  os: {fileID: 0}
+  sb: {fileID: 0}
+  sc: {fileID: 0}
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
@@ -562,6 +574,8 @@ MonoBehaviour:
   Blocked_Enemies: []
   stunFrame: 0
   skillPoint: {fileID: 0}
+  List_temp_target: []
+  temp_target: {fileID: 0}
 --- !u!114 &7568058977958836550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,6 +634,27 @@ MonoBehaviour:
   skill_cool_timer: 0
   skill_duration_timer: 0
   increase_dmg: 2300000026000000290000002b0000002e000000310000003400000036000000390000003c000000
+--- !u!114 &2626904451435850608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7568058977958836571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickUp: {fileID: 0}
+  BattleStart: {fileID: 0}
+  Place: {fileID: 0}
+  SkillActive:
+  - {fileID: 0}
+  Die: {fileID: 0}
+  Victory: {fileID: 0}
+  attack: {fileID: 0}
+  SkillEffect: {fileID: 8300000, guid: c0820c1f25994ec40bea954e4d8d13a1, type: 3}
 --- !u!1 &7568058978107884433
 GameObject:
   m_ObjectHideFlags: 0

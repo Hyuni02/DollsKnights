@@ -1415,6 +1415,7 @@ GameObject:
   - component: {fileID: -18283151779992916}
   - component: {fileID: 8298037425098336333}
   - component: {fileID: 9070655268786178416}
+  - component: {fileID: 8457827225555419760}
   m_Layer: 0
   m_Name: Saiga12
   m_TagString: Untagged
@@ -1663,6 +1664,25 @@ MonoBehaviour:
   - 8.3
   - 3.3
   - 3.5
+--- !u!114 &8457827225555419760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298037425098336332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BattleStart: {fileID: 0}
+  Place: {fileID: 0}
+  SkillActive: {fileID: 0}
+  Die: {fileID: 0}
+  Victory: {fileID: 0}
+  attack: {fileID: 0}
+  SkillEffect: {fileID: 0}
 --- !u!1 &8298037425249810281
 GameObject:
   m_ObjectHideFlags: 0

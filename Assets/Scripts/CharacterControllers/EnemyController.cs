@@ -11,14 +11,6 @@ public class EnemyController : CharacterBase {
 
     public bool arrive = false;
 
-    //public override void Start() {
-
-    //}
-
-    //public override void Update() {
-        
-    //}
-
     public override void UpdateState() {
         if (state == State.die)
             return;
@@ -63,7 +55,7 @@ public class EnemyController : CharacterBase {
     }
 
     //목표 지점 도달 확인
-    void CheckArrive() {
+    protected void CheckArrive() {
         if (!arrive && RouteToMove.Count == 0) {
             InGameManager.instance.RemainLife--;
             InGameManager.instance.EliminatedEnemyCount++;
@@ -80,7 +72,7 @@ public class EnemyController : CharacterBase {
         }
     }
     //저지 당함 확인
-    void CheckBlocked() {
+    protected void CheckBlocked() {
         if (Blocker == null)
             blocked = false;
         else {

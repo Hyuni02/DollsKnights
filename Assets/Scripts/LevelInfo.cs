@@ -29,6 +29,8 @@ public class LevelInfo : MonoBehaviour
     public float recovery_cost;//초당 코스트 회복량
     public int init_parts;//초기 보유 부품(수복용)
 
+    public AudioClip BGM;
+
     [Header("Map Info")]
     public Vector2 MapSize;
     public GameObject heilporticon;
@@ -51,6 +53,11 @@ public class LevelInfo : MonoBehaviour
     {
         Invoke("StartWave", 3f);
         InvokeRepeating("Cost_Recover", 2f, 1f);
+
+        if (BGM == null)
+            Debug.LogError("No BGM");
+
+        SoundManager.instance.PlaySound_Bgm(BGM);
     }
 
 

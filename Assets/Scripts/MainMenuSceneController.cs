@@ -5,14 +5,22 @@ using UnityEngine.UI;
 
 public enum ScreenType { lobby, list, formation, factory, level }
 
-public class MainMenuSceneController : MonoBehaviour
-{
+public class MainMenuSceneController : MonoBehaviour {
     public static MainMenuSceneController instance;
     public ScreenType screenType;
     [Header("Lobby")]
     public Image Image_Partner;
     public Image Image_Background;
     public GameObject Panel_Setting;
+    [Header("Setting")]
+    public Sprite mute;
+    public Sprite notmute;
+    public Button Button_muteBgm;
+    public Button Button_muteSfx;
+    public Button Button_muteVoice;
+    public Slider Slider_BGM_Volume;
+    public Slider Slider_SFX_Volume;
+    public Slider Slider_VOICE_Volume;
     [Header("Level Select")]
     //public GameObject Button_LevelSelect;
     public GameObject Panel_LevelSelect;
@@ -29,8 +37,7 @@ public class MainMenuSceneController : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
+    void Start() {
         //==Todo    배경 이미지 설정
         //==Todo    부관 이미지 설정
 
@@ -38,12 +45,17 @@ public class MainMenuSceneController : MonoBehaviour
         Close_Panel_All();
     }
 
-    void Update()
-    {
+    void Update() {
         if (GameManager.instance.Index_SelectedEchlons.Count == 0)
             UIContainer_LevelSelect.instance.Button_Start.interactable = false;
         else
             UIContainer_LevelSelect.instance.Button_Start.interactable = true;
+
+        if (Panel_Setting.activeSelf) {
+            SoundManager.instance.audioSource_bgm.volume = Slider_BGM_Volume.value;
+            SoundManager.instance.audioSource_sfx.volume = Slider_SFX_Volume.value;
+            SoundManager.instance.audioSource_voice.volume = Slider_VOICE_Volume.value;
+        }
     }
 
     public void Refresh_Doll_ButtonList(int index = 0) {
@@ -59,16 +71,16 @@ public class MainMenuSceneController : MonoBehaviour
                 break;
             case ScreenType.formation:
                 //print("Refresh Doll Button List(Formation)");
-                for(int i = 0; i < GetData.instance.List_DollButton.Count; i++) {
-                    for(int j = 0; j < GetData.instance.List_DollData.Count; j++) {
+                for (int i = 0; i < GetData.instance.List_DollButton.Count; i++) {
+                    for (int j = 0; j < GetData.instance.List_DollData.Count; j++) {
                         if (GetData.instance.List_DollButton[i].GetComponent<Button_DollInfo>().Name.Equals(GetData.instance.List_DollData[j].name)) {
                             GetData.instance.Refresh_DollButton(GetData.instance.List_DollButton[i], GetData.instance.List_DollData[j]);
                         }
                     }
                 }
                 FormationController.instance.List_Echlon_Dolls.Clear();
-                for(int i = 0; i < GetData.instance.List_DollButton.Count; i++) {
-                    if(GetData.instance.List_DollButton[i].GetComponent<Button_DollInfo>().echlon != index) {
+                for (int i = 0; i < GetData.instance.List_DollButton.Count; i++) {
+                    if (GetData.instance.List_DollButton[i].GetComponent<Button_DollInfo>().echlon != index) {
                         GetData.instance.List_DollButton[i].SetActive(true);
                     }
                     else {
@@ -94,7 +106,7 @@ public class MainMenuSceneController : MonoBehaviour
         FormationController.instance.Refresh_Formation_Pos_Image();
     }
     void Emphasize_Button(int index) {
-        for(int i = 0; i < UIContainer_Formation.instance.Button_Echlon.Length; i++) {
+        for (int i = 0; i < UIContainer_Formation.instance.Button_Echlon.Length; i++) {
             UIContainer_Formation.instance.Button_Echlon[i].GetComponent<Image>().color = Color.white;
         }
         UIContainer_Formation.instance.Button_Echlon[index].GetComponent<Image>().color = Color.green;
@@ -173,5 +185,46 @@ public class MainMenuSceneController : MonoBehaviour
     void RefreshPartner() {
         Image_Partner.sprite = DollContainer.instance.Dolls[GetData.instance.playerInfo.index_partner].GetComponent<DollController>().Sprite_Doll;
         GetData.instance.SavePlayerInfoFile();
+    }
+
+    public void MuteSound(string type) {
+        switch (type) {
+            case "BGM":
+                if (SoundManager.instance.Bmute) {
+                    SoundManager.instance.Bmute = false;
+                    Button_muteBgm.image.sprite = notmute;
+                    SoundManager.instance.audioSource_bgm.mute = false;
+                }
+                else {
+                    SoundManager.instance.Bmute = true;
+                    Button_muteBgm.image.sprite = mute;
+                    SoundManager.instance.audioSource_bgm.mute = true;
+                }
+                break;
+            case "SFX":
+                if (SoundManager.instance.Smute) {
+                    SoundManager.instance.Smute = false;
+                    Button_muteSfx.image.sprite = notmute;
+                    SoundManager.instance.audioSource_sfx.mute = false;
+                }
+                else {
+                    SoundManager.instance.Smute = true;
+                    Button_muteSfx.image.sprite = mute;
+                    SoundManager.instance.audioSource_sfx.mute = true;
+                }
+                break;
+            case "VOICE":
+                if (SoundManager.instance.Vmute) {
+                    SoundManager.instance.Vmute = false;
+                    Button_muteVoice.image.sprite = notmute;
+                    SoundManager.instance.audioSource_voice.mute = false;
+                }
+                else {
+                    SoundManager.instance.Vmute = true;
+                    Button_muteVoice.image.sprite = mute;
+                    SoundManager.instance.audioSource_voice.mute = true;
+                }
+                break;
+        }
     }
 }

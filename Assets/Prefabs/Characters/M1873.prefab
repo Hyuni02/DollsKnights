@@ -1391,6 +1391,7 @@ GameObject:
   - component: {fileID: 5909665338567827225}
   - component: {fileID: 3673510945409991706}
   - component: {fileID: 5098048909862143065}
+  - component: {fileID: 4650554873017767139}
   m_Layer: 0
   m_Name: M1873
   m_TagString: Untagged
@@ -1443,6 +1444,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -1451,6 +1453,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -1462,6 +1465,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -1469,6 +1474,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &-4681476937042934911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,6 +1498,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -1592,6 +1601,25 @@ MonoBehaviour:
   skill_cool_timer: 0
   skill_duration_timer: 0
   increase_dmg: 0c0000000d0000000e0000000f000000100000001100000012000000140000001500000016000000
+--- !u!114 &4650554873017767139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148996069013754883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BattleStart: {fileID: 0}
+  Place: {fileID: 0}
+  SkillActive: {fileID: 0}
+  Die: {fileID: 0}
+  Victory: {fileID: 0}
+  attack: {fileID: 0}
+  SkillEffect: {fileID: 0}
 --- !u!1 &7148996069119144676
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,13 +4,5 @@ using UnityEngine;
 
 public class HunterController : BossController
 {
-    void Start()
-    {
-        
-    }
 
-    void Update()
-    {
-        
-    }
 }

@@ -27,6 +27,7 @@ public class FactoryUiContainer : MonoBehaviour
 
     private void Start() {
         ViewToken();
+        SoundManager.instance.PlaySound_Bgm(SoundManager.instance.factory);
     }
 
     void ViewToken() {

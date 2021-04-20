@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2810256202797234677}
   - component: {fileID: 2810256202797234676}
   - component: {fileID: 8275312609646447505}
+  - component: {fileID: -3871859856629906200}
   m_Layer: 0
   m_Name: AR15
   m_TagString: Untagged
@@ -170,6 +171,9 @@ MonoBehaviour:
   RouteToMove: []
   uac: {fileID: 0}
   fs: {fileID: 0}
+  os: {fileID: 0}
+  sb: {fileID: 0}
+  sc: {fileID: 0}
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
@@ -223,6 +227,29 @@ MonoBehaviour:
   skill_cool_timer: 0
   skill_duration_timer: 0
   increase_rof: 190000001b0000001d00000020000000220000002400000026000000290000002b0000002d000000
+--- !u!114 &-3871859856629906200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810256202797234674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickUp: {fileID: 8300000, guid: ad84cc8f8d955ed46a645312ebf11887, type: 3}
+  BattleStart: {fileID: 8300000, guid: e29f66fb1d796db4ca85ee08fd64fb5b, type: 3}
+  Place: {fileID: 8300000, guid: 30fea86d5e80d03488a7e49c98cd523f, type: 3}
+  SkillActive:
+  - {fileID: 8300000, guid: 8749430325f72af4884af9aa7a91b39b, type: 3}
+  - {fileID: 8300000, guid: 50a0f0f097d3f024d9ba7f50e2131451, type: 3}
+  - {fileID: 8300000, guid: 722dee179ed0d4341994131d04bc39ad, type: 3}
+  Die: {fileID: 8300000, guid: 01ae742428f2aba48af43cfab29766be, type: 3}
+  Victory: {fileID: 8300000, guid: 31d84311edda7a949884d6d12aaee30d, type: 3}
+  attack: {fileID: 8300000, guid: 7f64d9756ba7feb499112205240e8e43, type: 3}
+  SkillEffect: {fileID: 8300000, guid: c0820c1f25994ec40bea954e4d8d13a1, type: 3}
 --- !u!1 &2810256202883637449
 GameObject:
   m_ObjectHideFlags: 0

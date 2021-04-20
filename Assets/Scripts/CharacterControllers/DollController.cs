@@ -21,7 +21,7 @@ public class DollController : CharacterBase
         if (state == State.die)
             return;
 
-        switch (GetComponent<SkillBase>().type) {
+        switch (sb.type) {
             case SkillBase.Type.boost:
                 if(RouteToMove.Count == 0) {
                     if (attackable) 

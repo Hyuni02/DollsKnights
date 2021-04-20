@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 2579494584301104998}
   - component: {fileID: 2579494584301104985}
   - component: {fileID: 2579494584301104984}
+  - component: {fileID: 4700703828175522277}
   m_Layer: 0
   m_Name: Scout
   m_TagString: Untagged
@@ -480,6 +481,9 @@ MonoBehaviour:
   RouteToMove: []
   uac: {fileID: 0}
   fs: {fileID: 0}
+  os: {fileID: 0}
+  sb: {fileID: 0}
+  sc: {fileID: 0}
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
@@ -500,6 +504,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuffList: []
+--- !u!114 &4700703828175522277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2579494584301104987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickUp: {fileID: 0}
+  BattleStart: {fileID: 0}
+  Place: {fileID: 0}
+  SkillActive:
+  - {fileID: 0}
+  Die: {fileID: 0}
+  Victory: {fileID: 0}
+  attack: {fileID: 8300000, guid: 42dc4b3e32157ea4a8d71cbaa1946367, type: 3}
+  SkillEffect: {fileID: 0}
 --- !u!1 &2579494584748492656
 GameObject:
   m_ObjectHideFlags: 0

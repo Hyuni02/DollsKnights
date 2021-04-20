@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: -2186621587374968647}
   - component: {fileID: 3945091986587538591}
   - component: {fileID: -6628853724305955744}
+  - component: {fileID: 7099610187956062049}
   m_Layer: 0
   m_Name: PKP
   m_TagString: Untagged
@@ -247,6 +248,8 @@ MonoBehaviour:
   stunFrame: 4
   skillPoint: {fileID: 0}
   reloading: 0
+  List_temp_target: []
+  temp_target: {fileID: 0}
   possibility: 0
 --- !u!114 &3945091986587538591
 MonoBehaviour:
@@ -307,6 +310,25 @@ MonoBehaviour:
   skill_cool_timer: 0
   skill_duration_timer: 0
   possibility: 0500000007000000080000000a0000000c0000000d0000000f000000110000001200000014000000
+--- !u!114 &7099610187956062049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945091986587538586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BattleStart: {fileID: 0}
+  Place: {fileID: 0}
+  SkillActive: {fileID: 0}
+  Die: {fileID: 0}
+  Victory: {fileID: 0}
+  attack: {fileID: 0}
+  SkillEffect: {fileID: 0}
 --- !u!1 &3945091986598410990
 GameObject:
   m_ObjectHideFlags: 0

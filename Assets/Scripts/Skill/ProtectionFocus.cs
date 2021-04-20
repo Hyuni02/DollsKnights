@@ -11,6 +11,7 @@ public class ProtectionFocus : SkillBase
         //배치된 모든 인형들에게 버프 부여
         skill_cool_timer = GetCoolDown();
         skill_duration_timer = GetDuration();
+        SoundManager.instance.PlaySound_Voice(GetComponent<SoundContainer>().SkillActive[Random.Range(0,3)]);
 
         //버프 소환
         GameObject buff = Instantiate(InGameManager.instance.buff);

@@ -3088,6 +3088,7 @@ MonoBehaviour:
   init_cost: 10
   recovery_cost: 1.3
   init_parts: 10
+  BGM: {fileID: 8300000, guid: 1317ee0d6bcecd64388942cd9e5a8bf2, type: 3}
   MapSize: {x: 9, y: 3}
   heilporticon: {fileID: 7815657644439843718, guid: 07782f7eea37f084197275b28c4a335f,
     type: 3}

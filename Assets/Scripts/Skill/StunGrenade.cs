@@ -18,6 +18,7 @@ public class StunGrenade : SkillBase
         print("use skill : " + GetSkillName() + "    LV." + skilllevel);
         skill_cool_timer = GetCoolDown();
         skill_duration_timer = GetDuration();
+        SoundManager.instance.PlaySound_Voice(GetComponent<SoundContainer>().SkillActive[Random.Range(0,3)]);
 
         //투척물 소환
         GetComponent<CharacterBase>().state = CharacterBase.State.s;

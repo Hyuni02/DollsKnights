@@ -611,6 +611,7 @@ GameObject:
   - component: {fileID: 8118026396284628426}
   - component: {fileID: 8118026396284628425}
   - component: {fileID: -6100182783524026870}
+  - component: {fileID: 8248051064427105977}
   m_Layer: 0
   m_Name: M16A1
   m_TagString: Untagged
@@ -663,6 +664,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -671,6 +673,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -682,6 +685,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -689,6 +694,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &8118026396284628427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,6 +718,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -759,6 +768,9 @@ MonoBehaviour:
   RouteToMove: []
   uac: {fileID: 0}
   fs: {fileID: 0}
+  os: {fileID: 0}
+  sb: {fileID: 0}
+  sc: {fileID: 0}
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
@@ -817,6 +829,29 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 51dabcec8ce086b47837df2bbfd683a6, type: 3}
   range: 1.5
   maxHeight: 3
+--- !u!114 &8248051064427105977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8118026396284628424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickUp: {fileID: 8300000, guid: ebcb73614360e264b9a48ca4af4222b7, type: 3}
+  BattleStart: {fileID: 8300000, guid: 43c1991ce587ea04591af192525dc91b, type: 3}
+  Place: {fileID: 8300000, guid: cc6b6d6f94cb4cf40a07ec324617154c, type: 3}
+  SkillActive:
+  - {fileID: 8300000, guid: b4de8417c4aca9f48984b5758e7d2ce0, type: 3}
+  - {fileID: 8300000, guid: 3479301c05616cc408ee19ce84a2935e, type: 3}
+  - {fileID: 8300000, guid: cedc21e7838d0f449981f4603842bc61, type: 3}
+  Die: {fileID: 8300000, guid: a6558543667a43a47b8acb85865e0c7a, type: 3}
+  Victory: {fileID: 8300000, guid: e3d7883e38bc8604888ef604c625dc34, type: 3}
+  attack: {fileID: 8300000, guid: 7f64d9756ba7feb499112205240e8e43, type: 3}
+  SkillEffect: {fileID: 8300000, guid: 54b1ef5078189c44d8a4ab4fa9b8bb35, type: 3}
 --- !u!1 &8118026396325983558
 GameObject:
   m_ObjectHideFlags: 0

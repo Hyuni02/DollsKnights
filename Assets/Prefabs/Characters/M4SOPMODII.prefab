@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 4935433757848981107}
   - component: {fileID: 4935433757848981104}
   - component: {fileID: 3589608067619107503}
+  - component: {fileID: 4307747498733108584}
   m_Layer: 0
   m_Name: M4SOPMODII
   m_TagString: Untagged
@@ -443,6 +444,9 @@ MonoBehaviour:
   RouteToMove: []
   uac: {fileID: 0}
   fs: {fileID: 0}
+  os: {fileID: 0}
+  sb: {fileID: 0}
+  sc: {fileID: 0}
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
@@ -512,6 +516,29 @@ MonoBehaviour:
   - 10.4
   - 11.2
   - 12
+--- !u!114 &4307747498733108584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935433757848981105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickUp: {fileID: 8300000, guid: 76687977ef0530644bffb1ecc9ad65a8, type: 3}
+  BattleStart: {fileID: 8300000, guid: 9275b942cc7128444a8fa7f17b4a7f9f, type: 3}
+  Place: {fileID: 8300000, guid: edcda76f358479e4a8715b10b1a568c5, type: 3}
+  SkillActive:
+  - {fileID: 8300000, guid: d703c52a3f8c36a44bcfdced8ef7d6ec, type: 3}
+  - {fileID: 8300000, guid: 01e1588f683a7bd4d89f6037a17c7527, type: 3}
+  - {fileID: 8300000, guid: 6c540e15992241c43ac7a64ee3a6174e, type: 3}
+  Die: {fileID: 8300000, guid: 3e521e34c11aa3c468dc23b1b6f8ffc6, type: 3}
+  Victory: {fileID: 8300000, guid: 897a7686573767642ab7972305140931, type: 3}
+  attack: {fileID: 8300000, guid: 7f64d9756ba7feb499112205240e8e43, type: 3}
+  SkillEffect: {fileID: 8300000, guid: 54b1ef5078189c44d8a4ab4fa9b8bb35, type: 3}
 --- !u!1 &4935433757858981904
 GameObject:
   m_ObjectHideFlags: 0

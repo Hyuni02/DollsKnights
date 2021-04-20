@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6089960124291740126}
   - component: {fileID: 6089960124291740125}
   - component: {fileID: 7580010297442612841}
+  - component: {fileID: -1587801569335088294}
   m_Layer: 0
   m_Name: M590
   m_TagString: Untagged
@@ -226,6 +227,25 @@ MonoBehaviour:
   skill_cool_timer: 0
   skill_duration_timer: 0
   increase_armor: 280000002b0000002f0000003200000035000000390000003c0000003f0000004300000046000000
+--- !u!114 &-1587801569335088294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089960124291740124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BattleStart: {fileID: 0}
+  Place: {fileID: 0}
+  SkillActive: {fileID: 0}
+  Die: {fileID: 0}
+  Victory: {fileID: 0}
+  attack: {fileID: 0}
+  SkillEffect: {fileID: 0}
 --- !u!1 &6090488806645636872
 GameObject:
   m_ObjectHideFlags: 0

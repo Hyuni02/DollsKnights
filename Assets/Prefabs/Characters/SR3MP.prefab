@@ -2395,6 +2395,7 @@ GameObject:
   - component: {fileID: 1690208851875393517}
   - component: {fileID: 1690208851875393518}
   - component: {fileID: -2532239349098291942}
+  - component: {fileID: -3041346695601600377}
   m_Layer: 0
   m_Name: SR3MP
   m_TagString: Untagged
@@ -2447,6 +2448,7 @@ MonoBehaviour:
     armorpen: 0
     block: 0
     ammo: 0
+    cost: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -2455,6 +2457,7 @@ MonoBehaviour:
     _armor: 0
     critrate: 0
     range: 0
+    _cost: 0
   enemystate:
     name: 
     type: 
@@ -2466,6 +2469,8 @@ MonoBehaviour:
     armor: 0
     speed: 0
     armorpen: 0
+    cost: 0
+    part: 0
     _hp: 0
     _damage: 0
     _accuracy: 0
@@ -2473,6 +2478,8 @@ MonoBehaviour:
     _rateoffire: 0
     _armor: 0
     range: 0
+    _cost: 0
+    _part: 0
 --- !u!114 &7500835851031824511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2495,6 +2502,8 @@ MonoBehaviour:
   armorpen: 0
   block: 0
   ammo: 0
+  cost: 0
+  part: 0
   critrate: 0
   range: 0
   _hp: 0
@@ -2596,6 +2605,25 @@ MonoBehaviour:
   skill_cool_timer: 0
   skill_duration_timer: 0
   increase_dmg: a0000000ab000000b6000000c1000000cc000000d8000000e3000000ee000000f900000004010000
+--- !u!114 &-3041346695601600377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690208851875393519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BattleStart: {fileID: 0}
+  Place: {fileID: 0}
+  SkillActive: {fileID: 0}
+  Die: {fileID: 0}
+  Victory: {fileID: 0}
+  attack: {fileID: 0}
+  SkillEffect: {fileID: 0}
 --- !u!1 &1690208851893070901
 GameObject:
   m_ObjectHideFlags: 0

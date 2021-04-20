@@ -581,6 +581,7 @@ GameObject:
   - component: {fileID: 7140818328934211355}
   - component: {fileID: 2225219807899587021}
   - component: {fileID: 8061719131151132141}
+  - component: {fileID: 6540424649053702778}
   m_Layer: 0
   m_Name: Kar98k
   m_TagString: Untagged
@@ -858,6 +859,25 @@ MonoBehaviour:
   stack: 0
   stack_timer: 0
   skilling: 0
+--- !u!114 &6540424649053702778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225219807899587020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BattleStart: {fileID: 0}
+  Place: {fileID: 0}
+  SkillActive: {fileID: 0}
+  Die: {fileID: 0}
+  Victory: {fileID: 0}
+  attack: {fileID: 0}
+  SkillEffect: {fileID: 0}
 --- !u!1 &2225219807901534184
 GameObject:
   m_ObjectHideFlags: 0

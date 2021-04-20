@@ -141,6 +141,8 @@ public class Button_FormatedDollInfo : MonoBehaviour
         model.GetComponent<DollController>().placed = true;
         InGameManager.instance.cost -= dollState.cost;
 
+        SoundManager.instance.PlaySound_Voice(model.GetComponent<SoundContainer>().Place);
+        SoundManager.instance.PlaySound_Sfx(SoundManager.instance.place);
         InGameUIContainer.instance.UpdateButtonState();
         InGameUIContainer.instance.Close_Panel_FormatedDolls();
     }
