@@ -1972,6 +1972,48 @@ MonoBehaviour:
     pickup_Count: 0
     pickup_Limit: 1
     limit: 1
+  - Event_Name: "\uC911\uD615\uC81C\uC870"
+    cost: 18
+    Image_EventThumbNail: {fileID: 0}
+    Image_ButtonThumbNail: {fileID: 0}
+    List_Tier:
+    - possibility: 70
+      tier: 3
+      List_Doll:
+      - {fileID: 7568058977958836571, guid: 1b65f54c6d1486643a71fbdbed195750, type: 3}
+    - possibility: 20
+      tier: 4
+      List_Doll:
+      - {fileID: 7596737116335029306, guid: 18e9fbf8cf03adf4fa6a19ffd82abbb2, type: 3}
+    - possibility: 10
+      tier: 5
+      List_Doll:
+      - {fileID: 2225219807899587020, guid: acbccd3a1808d3f40bcba9ef8c489568, type: 3}
+      - {fileID: 4314234549748653516, guid: e4f1e6ce04efec247a178c38e6a862f9, type: 3}
+    pickup_Count: 0
+    pickup_Limit: 0
+    limit: 0
+  - Event_Name: "\uB300\uD615\uC81C\uC870"
+    cost: 36
+    Image_EventThumbNail: {fileID: 0}
+    Image_ButtonThumbNail: {fileID: 0}
+    List_Tier:
+    - possibility: 70
+      tier: 3
+      List_Doll:
+      - {fileID: 6168729030963215656, guid: 6636ef747163e404482694948a055786, type: 3}
+    - possibility: 20
+      tier: 4
+      List_Doll:
+      - {fileID: 6089960124291740124, guid: 7006f273030e9be499fee21d99587319, type: 3}
+    - possibility: 10
+      tier: 5
+      List_Doll:
+      - {fileID: 8298037425098336332, guid: 3d87e4fa2766af34eaf46bb8c456dec7, type: 3}
+      - {fileID: 3945091986587538586, guid: 60fad62743c9a6d41946e16661e8c7af, type: 3}
+    pickup_Count: 0
+    pickup_Limit: 0
+    limit: 0
   Picked_Doll: {fileID: 0}
 --- !u!222 &4187514028884641960
 CanvasRenderer:
