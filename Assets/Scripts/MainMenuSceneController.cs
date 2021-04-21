@@ -52,9 +52,14 @@ public class MainMenuSceneController : MonoBehaviour {
             UIContainer_LevelSelect.instance.Button_Start.interactable = true;
 
         if (Panel_Setting.activeSelf) {
-            SoundManager.instance.audioSource_bgm.volume = Slider_BGM_Volume.value;
-            SoundManager.instance.audioSource_sfx.volume = Slider_SFX_Volume.value;
-            SoundManager.instance.audioSource_voice.volume = Slider_VOICE_Volume.value;
+            //SoundManager.instance.audioSource_bgm.volume = Slider_BGM_Volume.value;
+            //SoundManager.instance.audioSource_sfx.volume = Slider_SFX_Volume.value;
+            //SoundManager.instance.audioSource_voice.volume = Slider_VOICE_Volume.value;
+            GetData.instance.playerInfo.BGM_Volume = Slider_BGM_Volume.value;
+            GetData.instance.playerInfo.SFX_Volume = Slider_SFX_Volume.value;
+            GetData.instance.playerInfo.Voice_Volume = Slider_VOICE_Volume.value;
+
+            GetData.instance.SetSoundSetting();
         }
     }
 
@@ -173,9 +178,22 @@ public class MainMenuSceneController : MonoBehaviour {
         GameManager.instance.Close_EchlonListContainer();
     }
     public void Open_Panel_Setting() {
+        GetData.instance.LoadPlayerInfoFile();
+        if (GetData.instance.playerInfo.BGM_Mute)
+            Button_muteBgm.image.sprite = mute;
+        if (GetData.instance.playerInfo.SFX_Mute)
+            Button_muteSfx.image.sprite = mute;
+        if (GetData.instance.playerInfo.Voice_Mute)
+            Button_muteVoice.image.sprite = mute;
+
+        Slider_BGM_Volume.value = GetData.instance.playerInfo.BGM_Volume;
+        Slider_SFX_Volume.value = GetData.instance.playerInfo.SFX_Volume;
+        Slider_VOICE_Volume.value = GetData.instance.playerInfo.Voice_Volume;
+
         Panel_Setting.SetActive(true);
     }
     public void Close_Panel_Setting() {
+        GetData.instance.SavePlayerInfoFile();
         Panel_Setting.SetActive(false);
     }
 
@@ -190,37 +208,37 @@ public class MainMenuSceneController : MonoBehaviour {
     public void MuteSound(string type) {
         switch (type) {
             case "BGM":
-                if (SoundManager.instance.Bmute) {
-                    SoundManager.instance.Bmute = false;
+                if (GetData.instance.playerInfo.BGM_Mute) {
+                    GetData.instance.playerInfo.BGM_Mute = false;
                     Button_muteBgm.image.sprite = notmute;
                     SoundManager.instance.audioSource_bgm.mute = false;
                 }
                 else {
-                    SoundManager.instance.Bmute = true;
+                    GetData.instance.playerInfo.BGM_Mute = true;
                     Button_muteBgm.image.sprite = mute;
                     SoundManager.instance.audioSource_bgm.mute = true;
                 }
                 break;
             case "SFX":
-                if (SoundManager.instance.Smute) {
-                    SoundManager.instance.Smute = false;
+                if (GetData.instance.playerInfo.SFX_Mute) {
+                    GetData.instance.playerInfo.SFX_Mute = false;
                     Button_muteSfx.image.sprite = notmute;
                     SoundManager.instance.audioSource_sfx.mute = false;
                 }
                 else {
-                    SoundManager.instance.Smute = true;
+                    GetData.instance.playerInfo.SFX_Mute = true;
                     Button_muteSfx.image.sprite = mute;
                     SoundManager.instance.audioSource_sfx.mute = true;
                 }
                 break;
             case "VOICE":
-                if (SoundManager.instance.Vmute) {
-                    SoundManager.instance.Vmute = false;
+                if (GetData.instance.playerInfo.Voice_Mute) {
+                    GetData.instance.playerInfo.Voice_Mute = false;
                     Button_muteVoice.image.sprite = notmute;
                     SoundManager.instance.audioSource_voice.mute = false;
                 }
                 else {
-                    SoundManager.instance.Vmute = true;
+                    GetData.instance.playerInfo.Voice_Mute = true;
                     Button_muteVoice.image.sprite = mute;
                     SoundManager.instance.audioSource_voice.mute = true;
                 }

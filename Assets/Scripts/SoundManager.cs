@@ -10,29 +10,27 @@ public class SoundManager : MonoBehaviour
     public AudioSource audioSource_bgm, audioSource_sfx, audioSource_voice;
 
     [Header("BGM")]
-    public bool Bmute = false;
     public AudioClip main;
     public AudioClip factory;
     [Header("SFX")]
-    public bool Smute = false;
     public AudioClip click;
     public AudioClip shutter;
     public AudioClip place;
     public AudioClip _return;
     public AudioClip alert;
     public AudioClip lifeloss;
-    [Header("VOICE")]
-    public bool Vmute = false;
+    //[Header("VOICE")]
 
     private void Awake() {
         instance = this;
+        audioSource_bgm = GameObject.Find("BgmPlayer").GetComponent<AudioSource>();
+        audioSource_sfx = GameObject.Find("SFXPlayer").GetComponent<AudioSource>();
+        audioSource_voice = GameObject.Find("VoicePlayer").GetComponent<AudioSource>();
     }
 
     void Start()
     {
-        audioSource_bgm = GameObject.Find("BgmPlayer").GetComponent<AudioSource>();
-        audioSource_sfx = GameObject.Find("SFXPlayer").GetComponent<AudioSource>();
-        audioSource_voice = GameObject.Find("VoicePlayer").GetComponent<AudioSource>();
+        
 
         PlaySound_Bgm(main);
     }

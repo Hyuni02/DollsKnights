@@ -56,12 +56,17 @@ public class LevelData {
 public class PlayerInfo {
     public int token;
     public int index_partner;
+    public bool BGM_Mute;
+    public float BGM_Volume;
+    public bool SFX_Mute;
+    public float SFX_Volume;
+    public bool Voice_Mute;
+    public float Voice_Volume;
 
     public PlayerInfo(int _token,int _index_partner) {
         this.token = _token;
         this.index_partner = _index_partner;
     }
-
 }
 
 public class GetData : MonoBehaviour
@@ -112,6 +117,10 @@ public class GetData : MonoBehaviour
     
     private void Awake() {
         instance = this;
+    }
+
+    private void Start() {
+        LoadPlayerInfoFile();//플레이어 정보 가져오기
     }
 
     public void DataLoad()
@@ -399,23 +408,43 @@ public class GetData : MonoBehaviour
 
     void CreatePlayerInfoFile() {
         //새로운 파일 생성
+        playerInfo.token = 0;
+        playerInfo.index_partner = 0;
+        playerInfo.BGM_Mute = false;
+        playerInfo.BGM_Volume = 0.5f;
+        playerInfo.SFX_Mute = false;
+        playerInfo.SFX_Volume = 0.5f;
+        playerInfo.Voice_Mute = false;
+        playerInfo.Voice_Volume = 0.5f;
         SavePlayerInfoFile();
         print("Create New PlayerInfo.json File");
     }
     public void LoadPlayerInfoFile() {
         FileInfo PlayerInfoFile = new FileInfo(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json");
-        //-존재하지 않으면 DollStateData를 기준으로 새로 생성
+        //-존재하지 않으면 PlayerInfo를 기준으로 새로 생성
         if (!PlayerInfoFile.Exists) {
+
             CreatePlayerInfoFile();
         }
 
         string Pdate = File.ReadAllText(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json");
         playerInfo = JsonConvert.DeserializeObject<PlayerInfo>(Pdate);
+
+        SetSoundSetting();
         //print("Load LevelData File");
     }
     public void SavePlayerInfoFile() {
         string Pdata = JsonConvert.SerializeObject(playerInfo);
         File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json", Pdata);
+    }
+
+    public void SetSoundSetting() {
+        SoundManager.instance.audioSource_bgm.volume = playerInfo.BGM_Volume;
+        SoundManager.instance.audioSource_bgm.mute = playerInfo.BGM_Mute;
+        SoundManager.instance.audioSource_sfx.volume = playerInfo.SFX_Volume;
+        SoundManager.instance.audioSource_sfx.mute = playerInfo.SFX_Mute;
+        SoundManager.instance.audioSource_voice.volume = playerInfo.Voice_Volume;
+        SoundManager.instance.audioSource_voice.mute = playerInfo.Voice_Mute;
     }
 
     public void Refresh_DollButton(GameObject target ,DollData dolldata) {

@@ -342,7 +342,9 @@ public class InGameManager : MonoBehaviour {
             }
 
             //무작위 인형 출력
-            InGameUIContainer.instance.Image_mvp.sprite = Spawned_Dolls[Random.Range(0, Spawned_Dolls.Count)].GetComponent<DollController>().Sprite_Doll;
+            int num = Random.Range(0, Spawned_Dolls.Count);
+            InGameUIContainer.instance.Image_mvp.sprite = Spawned_Dolls[num].GetComponent<DollController>().Sprite_Doll;
+            SoundManager.instance.PlaySound_Voice(Spawned_Dolls[num].GetComponent<SoundContainer>().Victory);
 
             //전투 평가 출력
             if (Lost_Life)
