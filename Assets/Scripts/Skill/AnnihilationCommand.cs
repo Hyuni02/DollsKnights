@@ -14,6 +14,7 @@ public class AnnihilationCommand : SkillBase
         skill_cool_timer = GetCoolDown();
         skill_duration_timer = GetDuration();
         SoundManager.instance.PlaySound_Voice(GetComponent<SoundContainer>().SkillActive[Random.Range(0,3)]);
+        SoundManager.instance.PlaySound_Sfx(GetComponent<SoundContainer>().SkillEffect);
 
         for (int i = 0; i < InGameManager.instance.Spawned_Dolls.Count; i++) {
             //버프 소환

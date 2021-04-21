@@ -20,6 +20,7 @@ public class AntiPersonnelGrenade : SkillBase
         skill_cool_timer = GetCoolDown();
         skill_duration_timer = GetDuration();
         SoundManager.instance.PlaySound_Voice(GetComponent<SoundContainer>().SkillActive[Random.Range(0,3)]);
+        SoundManager.instance.PlaySound_Sfx(GetComponent<SoundContainer>().SkillEffect);
 
         //투척물 소환
         GetComponent<CharacterBase>().state = CharacterBase.State.s;

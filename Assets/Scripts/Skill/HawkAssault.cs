@@ -14,6 +14,7 @@ public class HawkAssault : SkillBase
         skill_cool_timer = GetCoolDown();
         skill_duration_timer = GetDuration();
         SoundManager.instance.PlaySound_Voice(GetComponent<SoundContainer>().SkillActive[Random.Range(0,3)]);
+        SoundManager.instance.PlaySound_Sfx(GetComponent<SoundContainer>().SkillEffect);
 
         GameObject buff_iws = Instantiate(InGameManager.instance.buff);
         buff_iws.GetComponent<Buff>().Initialized(GetSkillName(), GetDuration(), GetComponent<SkillBase>().skill_icon, gameObject, gameObject, increase_dmg[skilllevel], 0, 0, decrease_rof[skilllevel] * (-1), 0, 0, 0, false, 0);

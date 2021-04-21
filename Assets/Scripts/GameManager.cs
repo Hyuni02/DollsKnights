@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
         Close_EchlonListContainer();
     }
 
+    public void Update() {
+        if (Input.GetMouseButtonDown(0))
+            SoundManager.instance.PlaySound_Sfx(SoundManager.instance.click);
+    }
+
     public void Set_SelectedLevel(int index) {
         Index_SelectedLevel = index;
         ShowLevelInfo(index);

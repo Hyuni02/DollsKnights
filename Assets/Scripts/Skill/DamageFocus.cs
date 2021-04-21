@@ -13,6 +13,7 @@ public class DamageFocus : SkillBase
         skill_cool_timer = GetCoolDown();
         skill_duration_timer = GetDuration();
         SoundManager.instance.PlaySound_Voice(GetComponent<SoundContainer>().SkillActive[Random.Range(0,3)]);
+        SoundManager.instance.PlaySound_Sfx(GetComponent<SoundContainer>().SkillEffect);
 
         //버프 소환
         GameObject buff = Instantiate(InGameManager.instance.buff);
