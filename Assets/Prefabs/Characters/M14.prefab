@@ -653,7 +653,7 @@ MonoBehaviour:
   - {fileID: 0}
   Die: {fileID: 0}
   Victory: {fileID: 0}
-  attack: {fileID: 0}
+  attack: {fileID: 8300000, guid: 5e227494b229f2b4d986409c11b741f5, type: 3}
   SkillEffect: {fileID: 8300000, guid: c0820c1f25994ec40bea954e4d8d13a1, type: 3}
 --- !u!1 &7568058978107884433
 GameObject:

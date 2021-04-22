@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 4935433757848981104}
   - component: {fileID: 3589608067619107503}
   - component: {fileID: 4307747498733108584}
+  - component: {fileID: 1136841826188071164}
   m_Layer: 0
   m_Name: M4SOPMODII
   m_TagString: Untagged
@@ -539,6 +540,25 @@ MonoBehaviour:
   Victory: {fileID: 8300000, guid: 897a7686573767642ab7972305140931, type: 3}
   attack: {fileID: 8300000, guid: 7f64d9756ba7feb499112205240e8e43, type: 3}
   SkillEffect: {fileID: 8300000, guid: 54b1ef5078189c44d8a4ab4fa9b8bb35, type: 3}
+--- !u!95 &1136841826188071164
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935433757848981105}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4935433757858981904
 GameObject:
   m_ObjectHideFlags: 0

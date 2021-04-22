@@ -30,12 +30,12 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        
-
-        PlaySound_Bgm(main);
     }
 
     public void PlaySound_Bgm(AudioClip audioClip) {
+        if (audioSource_bgm.clip == audioClip)
+            return;
+
         //있던거 멈추고
         audioSource_bgm.Stop();
         //재생

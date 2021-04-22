@@ -158,6 +158,9 @@ MonoBehaviour:
   RouteToMove: []
   uac: {fileID: 0}
   fs: {fileID: 0}
+  os: {fileID: 0}
+  sb: {fileID: 0}
+  sc: {fileID: 0}
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
@@ -195,7 +198,8 @@ MonoBehaviour:
   skill_name: "\uD3EC\uC2A4\uC2E4\uB4DC"
   skill_describe_form: "\uC790\uC2E0\uC5D0\uAC8C \uD53C\uD574\uB97C \uB9C9\uB294
     \uBC29\uBCBD\uC744 \uC0DD\uC131\uD55C\uB2E4."
-  skill_describe: 
+  skill_describe: "\uC790\uC2E0\uC5D0\uAC8C \uD53C\uD574\uB97C \uB9C9\uB294 \uBC29\uBCBD\uC744
+    \uC0DD\uC131\uD55C\uB2E4."
   skill_icon: {fileID: 21300000, guid: fe7460a094e1c4a47a1053bc1fad1d73, type: 3}
   type: 0
   skill_InitCooltime: 8
@@ -236,12 +240,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PickUp: {fileID: 0}
   BattleStart: {fileID: 0}
   Place: {fileID: 0}
-  SkillActive: {fileID: 0}
+  SkillActive:
+  - {fileID: 0}
   Die: {fileID: 0}
   Victory: {fileID: 0}
-  attack: {fileID: 0}
+  attack: {fileID: 8300000, guid: 1ef7a0487dff37040bea66574ccad8f4, type: 3}
   SkillEffect: {fileID: 0}
 --- !u!1 &5355389893989441071
 GameObject:

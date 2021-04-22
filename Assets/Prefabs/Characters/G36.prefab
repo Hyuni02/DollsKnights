@@ -2286,13 +2286,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickUp: {fileID: 0}
-  BattleStart: {fileID: 0}
-  Place: {fileID: 0}
+  PickUp: {fileID: 8300000, guid: 8d5a6e58f6be35046b692ae660be5c47, type: 3}
+  BattleStart: {fileID: 8300000, guid: a8bff29888d7aef43b91aaa97aba745d, type: 3}
+  Place: {fileID: 8300000, guid: 77ecb9755605fc24b9f57bfd4c8fb173, type: 3}
   SkillActive:
-  - {fileID: 0}
-  Die: {fileID: 0}
-  Victory: {fileID: 0}
+  - {fileID: 8300000, guid: 44cd186ad05840547825c8eb181652f2, type: 3}
+  - {fileID: 8300000, guid: 1f8917b4df376304aa5798c29745c8b1, type: 3}
+  - {fileID: 8300000, guid: 816bb6c756a90d54c9b50dd3455ea42e, type: 3}
+  Die: {fileID: 8300000, guid: 763352a7a8122cb45be167f7fb655cd8, type: 3}
+  Victory: {fileID: 8300000, guid: 8e9da8e6e6c50524082164f6a3605f81, type: 3}
   attack: {fileID: 8300000, guid: 7f64d9756ba7feb499112205240e8e43, type: 3}
   SkillEffect: {fileID: 0}
 --- !u!1 &7192131146124682975

@@ -38,11 +38,10 @@ public class MainMenuSceneController : MonoBehaviour {
     }
 
     void Start() {
-        //==Todo    배경 이미지 설정
-        //==Todo    부관 이미지 설정
-
         //패널 초기화
         Close_Panel_All();
+
+        SoundManager.instance.PlaySound_Bgm(SoundManager.instance.main);
     }
 
     void Update() {

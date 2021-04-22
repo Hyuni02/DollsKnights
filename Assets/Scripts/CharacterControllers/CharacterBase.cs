@@ -83,6 +83,8 @@ public abstract class CharacterBase : MonoBehaviour {
         if (uac.animation.isCompleted) {
             now_animation = null;
             attacking = false;
+
+            //if(sb.type == SkillBase.Type.action & sb)
         }
 
         if (attacking || dying)

@@ -2218,7 +2218,6 @@ GameObject:
   - component: {fileID: 2118816052}
   - component: {fileID: 2118816053}
   - component: {fileID: 2118816055}
-  - component: {fileID: 2118816054}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2293,6 +2292,12 @@ MonoBehaviour:
   playerInfo:
     token: 0
     index_partner: 0
+    BGM_Mute: 0
+    BGM_Volume: 0
+    SFX_Mute: 0
+    SFX_Volume: 0
+    Voice_Mute: 0
+    Voice_Volume: 0
   List_DollState: []
   List_DollData: []
   List_EnemyState: []
@@ -2357,18 +2362,6 @@ MonoBehaviour:
   - {fileID: 1008185809169020297, guid: 9562e8a2e2824244fb6fa29b911c99c4, type: 3}
   - {fileID: 7029471888488806410, guid: cd69351a8d7134947b17fc11371743b4, type: 3}
   - {fileID: 2798557766101866505, guid: 37a79c064049c8a40aac3632d08a20c1, type: 3}
---- !u!114 &2118816054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118816047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd66ef41bcf27574ba23748426e58cb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2118816055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2384,14 +2377,11 @@ MonoBehaviour:
   audioSource_bgm: {fileID: 0}
   audioSource_sfx: {fileID: 0}
   audioSource_voice: {fileID: 0}
-  Bmute: 0
   main: {fileID: 8300000, guid: e70c8591d8c238f4e9590bed09b76f66, type: 3}
   factory: {fileID: 8300000, guid: 39c9e408e9c411b4fba5a7122d7c434f, type: 3}
-  Smute: 0
   click: {fileID: 8300000, guid: 6063b94054d4c344885781ae0ab5f4c8, type: 3}
   shutter: {fileID: 8300000, guid: 723c1ec24940438478109fb216e48b0c, type: 3}
   place: {fileID: 8300000, guid: bcd4cd4e40f7c074785d944901021de1, type: 3}
   _return: {fileID: 8300000, guid: f11f05b5fd4e88b40bb2c51534d906a9, type: 3}
   alert: {fileID: 8300000, guid: df8e494dd71474c438c2352066b14be1, type: 3}
   lifeloss: {fileID: 8300000, guid: 0b3496b966374da469e12eb57ebb9d69, type: 3}
-  Vmute: 0

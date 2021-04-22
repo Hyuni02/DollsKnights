@@ -76,7 +76,7 @@ public class RandomPickUp : MonoBehaviour
             }
         }
 
-        print("Selected Event : " + Selected_Event.Event_Name);
+        //print("Selected Event : " + Selected_Event.Event_Name);
         //FactoryUiContainer.instance.Image_ThumbNail.sprite = Selected_Event.Image_EventThumbNail;
         ViewTierList();
         CheckToken();
@@ -140,6 +140,7 @@ public class RandomPickUp : MonoBehaviour
     void ViewPickUpDoll() {
         FactoryUiContainer.instance.Panel_result.SetActive(true);
         FactoryUiContainer.instance.Image_result.sprite = Picked_Doll.GetComponent<DollController>().Sprite_Doll;
+        SoundManager.instance.PlaySound_Voice(Picked_Doll.GetComponent<SoundContainer>().PickUp);
 
         //저장
         for (int i = 0; i < GetData.instance.List_DollData.Count; i++) {

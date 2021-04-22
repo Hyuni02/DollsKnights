@@ -801,7 +801,8 @@ MonoBehaviour:
   skill_name: "\uC721\uCC38\uACE8\uB2E8"
   skill_describe_form: "\uC790\uC2E0\uC758 \uD654\uB825 _dmg% \uC99D\uAC00, \uC0AC\uC18D
     _rof%\uAC10\uC18C"
-  skill_describe: 
+  skill_describe: "\uC790\uC2E0\uC758 \uD654\uB825 80% \uC99D\uAC00, \uC0AC\uC18D
+    20%\uAC10\uC18C"
   skill_icon: {fileID: 21300000, guid: b3f243cfb200dbb4e9ffec67755cce65, type: 3}
   type: 0
   skill_InitCooltime: 6
@@ -849,7 +850,7 @@ MonoBehaviour:
   - {fileID: 0}
   Die: {fileID: 0}
   Victory: {fileID: 0}
-  attack: {fileID: 0}
+  attack: {fileID: 8300000, guid: 5e227494b229f2b4d986409c11b741f5, type: 3}
   SkillEffect: {fileID: 8300000, guid: c0820c1f25994ec40bea954e4d8d13a1, type: 3}
 --- !u!1 &4314234549795435784
 GameObject:

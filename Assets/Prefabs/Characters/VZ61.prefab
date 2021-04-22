@@ -158,6 +158,9 @@ MonoBehaviour:
   RouteToMove: []
   uac: {fileID: 0}
   fs: {fileID: 0}
+  os: {fileID: 0}
+  sb: {fileID: 0}
+  sc: {fileID: 0}
   Slider_HPBar: {fileID: 0}
   Slider_SkillBar: {fileID: 0}
   BuffIconViewer: {fileID: 0}
@@ -265,12 +268,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c46054c0d51c5409f7081f3e5e894c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PickUp: {fileID: 0}
   BattleStart: {fileID: 0}
   Place: {fileID: 0}
-  SkillActive: {fileID: 0}
+  SkillActive:
+  - {fileID: 0}
   Die: {fileID: 0}
   Victory: {fileID: 0}
-  attack: {fileID: 0}
+  attack: {fileID: 8300000, guid: 1ef7a0487dff37040bea66574ccad8f4, type: 3}
   SkillEffect: {fileID: 0}
 --- !u!1 &4944816450875964597
 GameObject:
