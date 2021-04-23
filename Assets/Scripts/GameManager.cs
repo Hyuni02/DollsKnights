@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public void Update() {
         if (Input.GetMouseButtonDown(0))
             SoundManager.instance.PlaySound_Sfx(SoundManager.instance.click);
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 
     public void Set_SelectedLevel(int index) {
