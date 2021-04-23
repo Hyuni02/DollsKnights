@@ -543,7 +543,12 @@ PlayerSettings:
   webGLWasmStreaming: 0
   scriptingDefineSymbols: {}
   platformArchitecture: {}
+<<<<<<< Updated upstream
   scriptingBackend: {}
+=======
+  scriptingBackend:
+    Standalone: 1
+>>>>>>> Stashed changes
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
