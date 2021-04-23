@@ -127,19 +127,22 @@ public class GetData : MonoBehaviour
     public void DataLoad()
     {
         LoadPlayerInfoFile();//플레이어 정보 가져오기
+
         Load_DollStateData();//DollStateData.csv 데이터 불러오기(Resources)
         Check_DollData();//DollContainer의 인형 개수 확인
+
         Load_EnemyStateData();//EnemyStateData.csv 데이터 불러오기(Resources)
         Check_EnemyData();//EnemyContainer의 적 개수 확인
+
         Instantiate_Doll_ButtonList();
-        
+
         //맵데이터 불러오기
         Check_LevelData();
-
+        
         SceneController.instance.ChangeScene(1);
     }
     void Load_DollStateData() {
-        StreamReader sr = new StreamReader(Application.streamingAssetsPath + "/" + FileName_DollStateData + ".csv");
+        StreamReader sr = new StreamReader(Application.dataPath + "/Resources/Data/" + FileName_DollStateData + ".csv");
         bool endoffile = false;
         while (!endoffile) {
             string data_String = sr.ReadLine();
@@ -201,7 +204,7 @@ public class GetData : MonoBehaviour
     }
 
     void Load_EnemyStateData() {
-        StreamReader sr = new StreamReader(Application.streamingAssetsPath + "/" + FileName_EnemyStateData + ".csv");
+        StreamReader sr = new StreamReader(Application.dataPath + "/Resources/Data/" + FileName_EnemyStateData + ".csv");
         bool endoffile = false;
         while (!endoffile) {
             string data_String = sr.ReadLine();

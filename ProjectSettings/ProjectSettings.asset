@@ -677,8 +677,12 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols: {}
   platformArchitecture: {}
+<<<<<<< HEAD
   scriptingBackend:
     Standalone: 1
+=======
+  scriptingBackend: {}
+>>>>>>> parent of 6dbb9ad (PC버전 빌드 설정)
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
