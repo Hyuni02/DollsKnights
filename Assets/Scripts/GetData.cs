@@ -4,7 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
+
+[System.Serializable]
+public class Serialization<T> {
+    public List<T> target;
+    public Serialization(List<T> _target) => target = _target;
+}
 
 [System.Serializable]
 public class DollData {
@@ -122,27 +128,37 @@ public class GetData : MonoBehaviour
 
     private void Start() {
         LoadPlayerInfoFile();//플레이어 정보 가져오기
+        ige.color = Color.white;
+
     }
 
     public void DataLoad()
     {
+        ige.color = Color.red;
         LoadPlayerInfoFile();//플레이어 정보 가져오기
 
+        ige.color = Color.magenta;
         Load_DollStateData();//DollStateData.csv 데이터 불러오기(Resources)
+        ige.color = Color.yellow;
         Check_DollData();//DollContainer의 인형 개수 확인
 
+        ige.color = Color.green;
         Load_EnemyStateData();//EnemyStateData.csv 데이터 불러오기(Resources)
+        ige.color = Color.cyan;
         Check_EnemyData();//EnemyContainer의 적 개수 확인
 
+        ige.color = Color.blue;
         Instantiate_Doll_ButtonList();
 
         //맵데이터 불러오기
+        ige.color = Color.black;
         Check_LevelData();
-        
+
+        ige.color = Color.gray;
         SceneController.instance.ChangeScene(1);
     }
     void Load_DollStateData() {
-        StreamReader sr = new StreamReader(Application.dataPath + "/Resources/Data/" + FileName_DollStateData + ".csv");
+        StreamReader sr = new StreamReader(Application.streamingAssetsPath + "/" + FileName_DollStateData + ".csv");
         bool endoffile = false;
         while (!endoffile) {
             string data_String = sr.ReadLine();
@@ -194,7 +210,7 @@ public class GetData : MonoBehaviour
             return;
         }
         //개수가 일치하면 DollData.json 존재 확인
-        FileInfo DollDataFile = new FileInfo(Application.streamingAssetsPath + "/" + FileName_DollData + ".json");
+        FileInfo DollDataFile = new FileInfo(Application.persistentDataPath + "/" + FileName_DollData + ".json");
         //-존재하지 않으면 DollStateData를 기준으로 새로 생성
         if (!DollDataFile.Exists) {
             CreateDollDataFile();
@@ -204,7 +220,7 @@ public class GetData : MonoBehaviour
     }
 
     void Load_EnemyStateData() {
-        StreamReader sr = new StreamReader(Application.dataPath + "/Resources/Data/" + FileName_EnemyStateData + ".csv");
+        StreamReader sr = new StreamReader(Application.streamingAssetsPath + "/" + FileName_EnemyStateData + ".csv");
         bool endoffile = false;
         while (!endoffile) {
             string data_String = sr.ReadLine();
@@ -248,7 +264,7 @@ public class GetData : MonoBehaviour
         //-개수가 일치 하지 않으면 오류발생
         if (GetComponent<EnemyContainer>().Enemies.Count != List_EnemyState.Count) {
             Debug.LogError("Enemy Data Count is not match with Enemy Prefab Count");
-            Debug.LogError("EnemyData : " + List_EnemyState.Count + "\n Enemy Prefab : " + List_EnemyState.Count);
+            Debug.LogError("EnemyData : " + List_EnemyState.Count + "\n Enemy Prefab : " + GetComponent<EnemyContainer>().Enemies.Count);
             return;
         }
     }
@@ -269,9 +285,8 @@ public class GetData : MonoBehaviour
         print("Create New DollData.json File");
     }
     public void LoadDollDataFile() {
-        string Ddate = File.ReadAllText(Application.streamingAssetsPath + "/" + FileName_DollData + ".json");
-        List_DollData = JsonConvert.DeserializeObject<List<DollData>>(Ddate);
-        //print("Load DollState File");
+        string Ddata = File.ReadAllText(Application.persistentDataPath + "/" + FileName_DollData + ".json");
+        List_DollData = JsonUtility.FromJson<Serialization<DollData>>(Ddata).target;
 
         //캐릭터 데이터가 추가되었을 시
         if(List_DollData.Count != List_DollState.Count) {
@@ -284,16 +299,15 @@ public class GetData : MonoBehaviour
         }
     }
     public void SaveDollDataFile() {
-        string Ddata = JsonConvert.SerializeObject(List_DollData);
-        File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_DollData + ".json", Ddata);
+        string Ddata = JsonUtility.ToJson(new Serialization<DollData>(List_DollData));
+        File.WriteAllText(Application.persistentDataPath + "/" + FileName_DollData + ".json", Ddata);
     }
 
     public void Check_PickUpData() {
         //PickUpData.json 존재 확인
-        FileInfo PickUpDataFile = new FileInfo(Application.streamingAssetsPath + "/" + FileName_PickUpData + ".json");
+        FileInfo PickUpDataFile = new FileInfo(Application.persistentDataPath + "/" + FileName_PickUpData + ".json");
         //-존재하지 않으면 List_PickUpData를 기준으로 새로 생성
         if (!PickUpDataFile.Exists) {
-            //print("No Level Data File");
             CreatePickUpDataFile();
         }
         //-존재하면 LevelData.json 불러오기
@@ -301,7 +315,6 @@ public class GetData : MonoBehaviour
     }
     void CreatePickUpDataFile() {
         for (int i = 0; i < RandomPickUp.instance.PickUps.Count; i++) {
-            //print("Add " + List_DollState[i].name);
             List_PickUpData.Add(new PickUp(RandomPickUp.instance.PickUps[i].Event_Name, 0));
         }
 
@@ -310,9 +323,8 @@ public class GetData : MonoBehaviour
         print("Create New PickUpData.json File");
     }
     void LoadPickUpDataFile() {
-        string Pdate = File.ReadAllText(Application.streamingAssetsPath + "/" + FileName_PickUpData + ".json");
-        List_PickUpData = JsonConvert.DeserializeObject<List<PickUp>>(Pdate);
-        //print("Load PickUp Data File");
+        string Pdata = File.ReadAllText(Application.persistentDataPath + "/" + FileName_PickUpData + ".json");
+        List_PickUpData = JsonUtility.FromJson<Serialization<PickUp>>(Pdata).target;
 
         //픽업 데이터가 추가되었을 시
         if (List_PickUpData.Count != RandomPickUp.instance.PickUps.Count) {
@@ -325,8 +337,8 @@ public class GetData : MonoBehaviour
         }
     }
     public void SavePickUpDataFile() {
-        string Pdata = JsonConvert.SerializeObject(List_PickUpData);
-        File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_PickUpData + ".json", Pdata);
+        string Pdata = JsonUtility.ToJson(new Serialization<PickUp>(List_PickUpData));
+        File.WriteAllText(Application.persistentDataPath + "/" + FileName_PickUpData + ".json", Pdata);
     }
 
     public void Instantiate_Doll_ButtonList() {
@@ -361,10 +373,9 @@ public class GetData : MonoBehaviour
 
     void Check_LevelData() {
         //LevelData.json 존재 확인
-        FileInfo LevelDataFile = new FileInfo(Application.streamingAssetsPath + "/" + FileName_LevelData + ".json");
+        FileInfo LevelDataFile = new FileInfo(Application.persistentDataPath + "/" + FileName_LevelData + ".json");
         //-존재하지 않으면 List_LevelData를 기준으로 새로 생성
         if (!LevelDataFile.Exists) {
-            //print("No Level Data File");
             CreateLevelDataFile();
         }
         //-존재하면 LevelData.json 불러오기
@@ -372,7 +383,6 @@ public class GetData : MonoBehaviour
     }
     void CreateLevelDataFile() {
         for (int i = 0; i < LevelContainer.instance.Levels.Count; i++) {
-            //print("Add " + LevelContainer.instance.Levels[i]);
             List_LevelData.Add(new LevelData(i + 1));
         }
         List_LevelData[0].open = true;
@@ -382,8 +392,8 @@ public class GetData : MonoBehaviour
         print("Create New LevelData.json File");
     }
     void LoadLevelDataFile() {
-        string Ldate = File.ReadAllText(Application.streamingAssetsPath + "/" + FileName_LevelData + ".json");
-        List_LevelData = JsonConvert.DeserializeObject<List<LevelData>>(Ldate);
+        string Ldata = File.ReadAllText(Application.persistentDataPath + "/" + FileName_LevelData + ".json");
+        List_LevelData = JsonUtility.FromJson<Serialization<LevelData>>(Ldata).target;
         //print("Load LevelData File");
 
         //레벨 데이터가 추가되었을 시
@@ -403,8 +413,8 @@ public class GetData : MonoBehaviour
             }
         }
 
-        string Ldata = JsonConvert.SerializeObject(List_LevelData);
-        File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_LevelData + ".json", Ldata);
+        string Ldata = JsonUtility.ToJson(new Serialization<LevelData>(List_LevelData));
+        File.WriteAllText(Application.persistentDataPath + "/" + FileName_LevelData + ".json", Ldata);
     }
 
     void CreatePlayerInfoFile() {
@@ -421,23 +431,23 @@ public class GetData : MonoBehaviour
         print("Create New PlayerInfo.json File");
     }
     public void LoadPlayerInfoFile() {
-        FileInfo PlayerInfoFile = new FileInfo(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json");
+        FileInfo PlayerInfoFile = new FileInfo(Application.persistentDataPath + "/" + FileName_PlayerInfo + ".json");
         //-존재하지 않으면 PlayerInfo를 기준으로 새로 생성
         if (!PlayerInfoFile.Exists) {
             CreatePlayerInfoFile();
         }
 
-        string Pdate = File.ReadAllText(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json");
-        playerInfo = JsonConvert.DeserializeObject<PlayerInfo>(Pdate);
+        string Pdate = File.ReadAllText(Application.persistentDataPath + "/" + FileName_PlayerInfo + ".json");
+        //playerInfo = JsonConvert.DeserializeObject<PlayerInfo>(Pdate);
+        playerInfo = JsonUtility.FromJson<PlayerInfo>(Pdate);
 
         SetSoundSetting();
         //print("Load LevelData File");
     }
     public void SavePlayerInfoFile() {
-        string Pdata = JsonConvert.SerializeObject(playerInfo);
-        ige.color = Color.red;
-        File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json", Pdata);
-        ige.color = Color.green;
+        //string Pdata = JsonConvert.SerializeObject(playerInfo);
+        string Pdata = JsonUtility.ToJson(playerInfo);
+        File.WriteAllText(Application.persistentDataPath + "/" + FileName_PlayerInfo + ".json", Pdata);
     }
 
     public void SetSoundSetting() {
