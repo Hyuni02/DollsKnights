@@ -428,14 +428,7 @@ public class GetData : MonoBehaviour
         playerInfo = JsonConvert.DeserializeObject<PlayerInfo>(Pdate);
 
         SetSoundSetting();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         //print("Load LevelData File");
-=======
-
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     }
     public void SavePlayerInfoFile() {
         string Pdata = JsonConvert.SerializeObject(playerInfo);
