@@ -80,6 +80,7 @@ public class GetData : MonoBehaviour
     string FileName_PlayerInfo = "PlayerInfo";
     string FileName_PickUpData = "PickUpData";
 
+    public Image ige;
     [Header("Player Info")]
     [SerializeField]
     public PlayerInfo playerInfo;
@@ -420,7 +421,6 @@ public class GetData : MonoBehaviour
         FileInfo PlayerInfoFile = new FileInfo(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json");
         //-존재하지 않으면 PlayerInfo를 기준으로 새로 생성
         if (!PlayerInfoFile.Exists) {
-
             CreatePlayerInfoFile();
         }
 
@@ -429,14 +429,19 @@ public class GetData : MonoBehaviour
 
         SetSoundSetting();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         //print("Load LevelData File");
 =======
 
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     }
     public void SavePlayerInfoFile() {
         string Pdata = JsonConvert.SerializeObject(playerInfo);
+        ige.color = Color.red;
         File.WriteAllText(Application.streamingAssetsPath + "/" + FileName_PlayerInfo + ".json", Pdata);
+        ige.color = Color.green;
     }
 
     public void SetSoundSetting() {
