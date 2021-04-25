@@ -10,6 +10,9 @@ public class PKPController : MGController
         SetFaceDir(Target.transform.position.x);
         if (Random.Range(0, 100) < possibility) {
             Target.GetComponent<CharacterBase>().GetAttacked((int)(fs.damage * 1.5f), fs.accuracy, fs.critrate, fs.armorpen);
+            if (!SoundManager.instance.audioSource_voice.isPlaying) {
+                SoundManager.instance.PlaySound_Voice(GetComponent<SoundContainer>().SkillActive[0]);
+            }
         }
         else {
             Target.GetComponent<CharacterBase>().GetAttacked(fs.damage, fs.accuracy, fs.critrate, fs.armorpen);
